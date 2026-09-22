@@ -764,6 +764,57 @@ footer p {
   text-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
+  /* 날개와 제목 영역 확대 */
+
+.notice-title-area {
+  position: relative;
+  width: 100%;
+  min-height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* 천사 날개 확대 */
+
+.notice-wings {
+  position: absolute;
+  width: 145%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  opacity: 1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 시뮬레이터 제목 확대 */
+
+.notice-content .notice-main-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: clamp(23px, 6vw, 34px);
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  letter-spacing: -1.5px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+  .notice-content .notice-heading {
+  margin-bottom: 15px;
+}
+
+  /* 팝업 글씨 전체 흰색 통일 */
+
+.notice-subtitle,
+.notice-content .notice-heading,
+.notice-content .notice-main-title {
+  color: #ffffff;
+}
+
 </style>
 </head>
 
