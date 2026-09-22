@@ -1,1016 +1,966 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>루아엘교회</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Malgun Gothic", Arial, sans-serif;
-      color: #293d56;
-      background: #ffffff;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    .icon {
-      width: 28px;
-      height: 28px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.7;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      flex-shrink: 0;
-    }
-
-    /* 상단 헤더 */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #ffffff;
-      border-bottom: 1px solid #e5eaf0;
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      height: 76px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .brand-name {
-      font-size: 21px;
-      font-weight: bold;
-      letter-spacing: -1px;
-    }
-
-    .brand-eng {
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      color: #8390a0;
-    }
-
-    .menu-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-      border: none;
-      background: transparent;
-      color: #293d56;
-      cursor: pointer;
-    }
-
-    /* 햄버거 메뉴 */
-
-    .navigation {
-      display: none;
-      background: #ffffff;
-      border-top: 1px solid #e5eaf0;
-    }
-
-    .navigation.open {
-      display: block;
-    }
-
-    .navigation-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 12px 24px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .navigation a {
-      padding: 16px 4px;
-      font-size: 15px;
-      border-bottom: 1px solid #edf0f4;
-    }
-
-    .navigation a:hover {
-      color: #7891ad;
-    }
-
-    .navigation a:last-child {
-      border-bottom: none;
-    }
-
-    .menu-divider {
-      height: 1px;
-      margin: 14px 0;
-      background: #e5eaf0;
-    }
-
-    .menu-label {
-      padding: 10px 4px 6px;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      color: #8390a0;
-    }
-
-    /* 전체 콘텐츠 */
-
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-
-    /* 메인 슬라이드 배너 */
-
-    .hero-slider {
-      position: relative;
-      height: 520px;
-      overflow: hidden;
-      border-radius: 12px;
-      background: #eaf0f7;
-      touch-action: pan-y;
-    }
-
-    .slides {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.45s ease;
-    }
-
-    .slide {
-      position: relative;
-      flex: 0 0 100%;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 80px;
-      background-color: #eaf0f7;
-      background-size: cover;
-      background-position: center;
-      text-align: center;
-    }
-
-    /* 이미지가 들어간 슬라이드에만 어두운 막 적용 */
-
-    .slide.has-image::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(17, 29, 43, 0.48);
-    }
-
-    .slide-content {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .slide-label {
-      margin-bottom: 22px;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      color: #7891ad;
-    }
-
-    .slide h1 {
-      margin: 0;
-      font-size: 43px;
-      line-height: 1.5;
-      letter-spacing: -1.5px;
-      color: #293d56;
-      word-break: keep-all;
-    }
-
-    .slide-description {
-      margin: 24px 0 0;
-      font-size: 16px;
-      line-height: 1.9;
-      color: #65758a;
-      word-break: keep-all;
-    }
-
-    .slide.has-image .slide-label,
-    .slide.has-image h1,
-    .slide.has-image .slide-description {
-      color: #ffffff;
-    }
-
-    /* 좌우 화살표 */
-
-    .slide-arrow {
-      position: absolute;
-      z-index: 5;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(41, 61, 86, 0.12);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.85);
-      color: #293d56;
-      cursor: pointer;
-    }
-
-    .slide-arrow:hover {
-      background: #ffffff;
-    }
-
-    .slide-arrow.prev {
-      left: 20px;
-    }
-
-    .slide-arrow.next {
-      right: 20px;
-    }
-
-    .slide-arrow .icon {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* 하단 페이지 표시 점 */
-
-    .slide-dots {
-      position: absolute;
-      z-index: 5;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .slide-dot {
-      width: 9px;
-      height: 9px;
-      padding: 0;
-      border: none;
-      border-radius: 20px;
-      background: rgba(120, 145, 173, 0.45);
-      cursor: pointer;
-      transition: width 0.25s, background 0.25s;
-    }
-
-    .slide-dot.active {
-      width: 28px;
-      background: #a5cc58;
-    }
-
-    /* 환영 공지 */
-
-    .welcome {
-      margin-top: 24px;
-      padding: 30px;
-      background: #ffffff;
-      border: 1px solid #e5eaf0;
-      border-radius: 10px;
-    }
-
-    .welcome h2 {
-      margin: 0 0 14px;
-      font-size: 22px;
-      line-height: 1.5;
-    }
-
-    .welcome p {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.8;
-      color: #65758a;
-    }
-
-    /* 주일 말씀 안내 */
-
-    .worship {
-      margin-top: 24px;
-      padding: 30px;
-      background: #ffffff;
-      border: 1px solid #e5eaf0;
-      border-radius: 10px;
-    }
-
-    .worship-label {
-      margin-bottom: 12px;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      color: #8390a0;
-    }
-
-    .worship h2 {
-      margin: 0 0 12px;
-      font-size: 22px;
-      color: #293d56;
-    }
-
-    .worship-description {
-      margin: 0 0 24px;
-      font-size: 14px;
-      color: #65758a;
-    }
-
-    .worship-time {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 16px 0;
-      border-top: 1px solid #e5eaf0;
-      font-size: 15px;
-      color: #293d56;
-    }
-
-    .worship-time strong {
-      font-weight: 600;
-    }
-
-    /* 아이콘 메뉴 */
-
-    .quick-links {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .quick-links a {
-      min-height: 150px;
-      padding: 28px 24px;
-      background: #ffffff;
-      border: 1px solid #e5eaf0;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 20px;
-      font-size: 17px;
-      font-weight: bold;
-      transition: background 0.2s, border-color 0.2s;
-    }
-
-    .quick-links a:hover {
-      background: #f2f5f9;
-      border-color: #cbd7e5;
-    }
-
-    .quick-links .icon {
-      width: 30px;
-      height: 30px;
-      color: #7891ad;
-    }
-
-    .quick-links a:hover .icon {
-      color: #a5cc58;
-    }
-
-    /* 하단 */
-
-    footer {
-      margin-top: 60px;
-      padding: 45px 24px;
-      background: #f7f9fc;
-      border-top: 1px solid #e5eaf0;
-      text-align: center;
-    }
-
-    .footer-name {
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    footer p {
-      font-size: 12px;
-      line-height: 1.8;
-      color: #8390a0;
-    }
-
-    /* 공지사항 팝업 */
-
-    .notice-overlay[hidden] {
-      display: none;
-    }
-
-    .notice-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: rgba(20, 31, 45, 0.65);
-    }
-
-    .notice-popup {
-      position: relative;
-      width: min(400px, 90vw, 56vh);
-      aspect-ratio: 2 / 3;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      background-color: #eaf0f7;
-
-      /* 공지창 배경 이미지 주소 입력 */
-      background-image: url("");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-
-      border-radius: 8px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    }
-
-    .notice-content {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .notice-content h2 {
-      margin: 0;
-      color: #ffffff;
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 1.6;
-      word-break: keep-all;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
-    }
-
-    #noticeClose {
-      width: 100%;
-      height: 46px;
-      flex-shrink: 0;
-      border: none;
-      background: rgba(255, 255, 255, 0.95);
-      color: #293d56;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    #noticeClose:hover {
-      background: #ffffff;
-    }
-
-    /* 모바일 */
-
-    @media (max-width: 700px) {
-      .header-inner {
-        height: 70px;
-        padding: 0 18px;
-      }
-
-      .brand img {
-        width: 42px;
-        height: 42px;
-      }
-
-      .brand-name {
-        font-size: 18px;
-      }
-
-      .brand-eng {
-        font-size: 9px;
-      }
-
-      .navigation-inner {
-        padding: 12px 20px;
-      }
-
-      main {
-        padding: 16px;
-      }
-
-      .hero-slider {
-        height: 500px;
-      }
-
-      .slide {
-        padding: 60px 48px;
-      }
-
-      .slide-label {
-        font-size: 10px;
-        letter-spacing: 2px;
-      }
-
-      .slide h1 {
-        font-size: 30px;
-      }
-
-      .slide-description {
-        font-size: 14px;
-      }
-
-      .slide-arrow {
-        width: 34px;
-        height: 34px;
-      }
-
-      .slide-arrow.prev {
-        left: 8px;
-      }
-
-      .slide-arrow.next {
-        right: 8px;
-      }
-
-      .welcome {
-        padding: 24px 20px;
-      }
-
-      .welcome h2 {
-        font-size: 19px;
-      }
-
-      .worship {
-        padding: 24px 20px;
-      }
-
-      .worship h2 {
-        font-size: 19px;
-      }
-
-      .quick-links {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
-
-      .quick-links a {
-        min-height: 135px;
-        padding: 22px 18px;
-        font-size: 15px;
-      }
-
-      .quick-links .icon {
-        width: 27px;
-        height: 27px;
-      }
-
-      .notice-content h2 {
-        font-size: 19px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>루아엘교회</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+:root {
+  --paper: #f8f7f1;
+  --surface: #fffefa;
+  --ink: #30342a;
+  --muted: #77796b;
+  --line: #e5e5d8;
+  --accent: #9aaa51;
+  --accent-light: #f0f3df;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button { font: inherit; cursor: pointer; }
+
+h1, h2, .brand-name, .footer-name {
+  font-family: 'Gowun Batang', serif;
+  font-weight: 400;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* 헤더 */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  max-width: 1200px;
+  height: 76px;
+  margin: auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.brand-name {
+  font-size: 22px;
+  letter-spacing: -1px;
+}
+
+.brand-eng {
+  font-family: Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+}
+
+/* 펼쳐지는 메뉴 */
+
+.navigation {
+  display: none;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+
+.navigation.open { display: block; }
+
+.navigation-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation a {
+  padding: 16px 4px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--line);
+  transition: color .2s;
+}
+
+.navigation a:hover { color: var(--accent); }
+
+.navigation a:last-child { border-bottom: none; }
+
+.menu-divider {
+  height: 1px;
+  margin: 14px 0;
+  background: var(--line);
+}
+
+.menu-label {
+  padding: 10px 4px 6px;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* 전체 콘텐츠 */
+
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+}
+
+/* 메인 슬라이드 */
+
+.hero-slider {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #eeefdf;
+  touch-action: pan-y;
+}
+
+.slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform .45s ease;
+}
+
+.slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 80px;
+  background-color: #eeefdf;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+.slide.has-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(29,35,25,.48);
+}
+
+.slide-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 760px;
+  margin: auto;
+}
+
+.slide-label {
+  margin-bottom: 22px;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--accent);
+}
+
+.slide h1 {
+  margin: 0;
+  font-size: 43px;
+  line-height: 1.5;
+  letter-spacing: -1.5px;
+  color: var(--ink);
+  word-break: keep-all;
+}
+
+.slide-description {
+  margin: 24px 0 0;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--muted);
+  word-break: keep-all;
+}
+
+.slide.has-image .slide-label,
+.slide.has-image h1,
+.slide.has-image .slide-description {
+  color: #fff;
+}
+
+/* 슬라이드 화살표 */
+
+.slide-arrow {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(255,255,255,.85);
+  color: var(--ink);
+}
+
+.slide-arrow:hover { background: var(--surface); }
+
+.slide-arrow.prev { left: 20px; }
+.slide-arrow.next { right: 20px; }
+
+.slide-arrow .icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 슬라이드 점 */
+
+.slide-dots {
+  position: absolute;
+  z-index: 5;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slide-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 20px;
+  background: rgba(154,170,81,.35);
+  transition: width .25s, background .25s;
+}
+
+.slide-dot.active {
+  width: 28px;
+  background: var(--accent);
+}
+
+/* 환영 안내 */
+
+.welcome {
+  margin-top: 24px;
+  padding: 30px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.welcome h2 {
+  margin: 0 0 14px;
+  font-size: 23px;
+  line-height: 1.5;
+}
+
+.welcome p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* 주일 말씀 */
+
+.worship {
+  margin-top: 24px;
+  padding: 30px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.worship-label {
+  margin-bottom: 12px;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+.worship h2 {
+  margin: 0 0 12px;
+  font-size: 23px;
+  color: var(--ink);
+}
+
+.worship-description {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.worship-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+}
+
+.worship-time strong { font-weight: 600; }
+
+/* 바로가기 메뉴 */
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.quick-links a {
+  min-height: 150px;
+  padding: 28px 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 17px;
+  font-weight: 500;
+  transition: background .2s, border-color .2s, transform .2s;
+}
+
+.quick-links a:hover {
+  background: var(--accent-light);
+  border-color: #cbd5a6;
+  transform: translateY(-2px);
+}
+
+.quick-links .icon {
+  width: 30px;
+  height: 30px;
+  color: var(--accent);
+}
+
+/* 하단 */
+
+footer {
+  margin-top: 60px;
+  padding: 45px 24px;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.footer-name { font-size: 20px; }
+
+footer p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* 공지사항 팝업 */
+
+.notice-overlay[hidden] { display: none; }
+
+.notice-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(34,39,29,.65);
+}
+
+.notice-popup {
+  position: relative;
+  width: min(400px, 90vw, 56vh);
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--paper);
+
+  /* 공지창 배경 이미지 주소 */
+  background-image: url("");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
+.notice-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+}
+
+.notice-content h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.6;
+  word-break: keep-all;
+  text-shadow: 0 2px 8px rgba(0,0,0,.45);
+}
+
+#noticeClose {
+  width: 100%;
+  height: 46px;
+  flex-shrink: 0;
+  border: none;
+  background: rgba(255,255,255,.95);
+  color: var(--ink);
+  font-size: 13px;
+}
+
+#noticeClose:hover { background: var(--surface); }
+
+/* 모바일 */
+
+@media (max-width: 700px) {
+
+  .header-inner {
+    height: 70px;
+    padding: 0 18px;
+  }
+
+  .brand img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand-name { font-size: 19px; }
+  .brand-eng { font-size: 9px; }
+
+  .navigation-inner { padding: 12px 20px; }
+
+  main { padding: 16px; }
+
+  .hero-slider { height: 500px; }
+
+  .slide { padding: 60px 48px; }
+
+  .slide-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .slide h1 {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+
+  .slide-description { font-size: 14px; }
+
+  .slide-arrow {
+    width: 34px;
+    height: 34px;
+  }
+
+  .slide-arrow.prev { left: 8px; }
+  .slide-arrow.next { right: 8px; }
+
+  .welcome, .worship { padding: 24px 20px; }
+
+  .welcome h2, .worship h2 { font-size: 20px; }
+
+  .quick-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .quick-links a {
+    min-height: 135px;
+    padding: 22px 18px;
+    font-size: 15px;
+  }
+
+  .quick-links .icon {
+    width: 27px;
+    height: 27px;
+  }
+
+  .notice-content h2 { font-size: 19px; }
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- 공지사항 팝업 -->
+<!-- 공지사항 팝업 -->
 
-  <div class="notice-overlay" id="noticeOverlay" hidden>
-    <div
-      class="notice-popup"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="noticeTitle"
-    >
+<div class="notice-overlay" id="noticeOverlay" hidden>
+  <div class="notice-popup"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="noticeTitle">
 
-      <div class="notice-content">
-        <h2 id="noticeTitle">
-          이곳에 원하는 문구를 입력하세요.
-        </h2>
-      </div>
-
-      <button type="button" id="noticeClose">
-        닫기
-      </button>
-
-    </div>
-  </div>
-
-  <!-- 상단 로고와 메뉴 -->
-
-  <header>
-    <div class="header-inner">
-
-      <a class="brand" href="#home">
-        <img
-          src="https://i.ibb.co/60kWKKZY/file-000000003940822fb276a79aa6bc4e32.png"
-          alt="루아엘교회 로고"
-        >
-
-        <div class="brand-text">
-          <span class="brand-name">루아엘교회</span>
-          <span class="brand-eng">LUHAEL CHURCH</span>
-        </div>
-      </a>
-
-      <button
-        class="menu-button"
-        id="menuButton"
-        type="button"
-        aria-label="메뉴 열기"
-        aria-expanded="false"
-        aria-controls="navigation"
-      >
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-
-    </div>
-
-    <!-- 펼쳐지는 메뉴 -->
-
-<!-- 펼쳐지는 메뉴 -->
-
-<nav class="navigation" id="navigation">
-  <div class="navigation-inner">
-
-    <a href="about.html">교회 소개</a>
-    <a href="faith.html">교리와 신앙</a>
-    <a href="characters.html">등장인물</a>
-    <a href="news.html">교회 소식</a>
-
-    <div class="menu-divider"></div>
-    <span class="menu-label">EXTRA</span>
-
-    <a href="gallery.html">비공식 화보</a>
-    <a href="creator.html">제작자 TMI</a>
-
-  </div>
-</nav>
-
-    <!-- 메인 슬라이드 배너 -->
-
-    <section
-      class="hero-slider"
-      id="heroSlider"
-      aria-label="루아엘교회 주요 소식"
-      aria-roledescription="슬라이드"
-    >
-
-      <div class="slides" id="slides">
-
-        <!-- 첫 번째 슬라이드: 창립 25주년 -->
-
-        <article class="slide" id="slide1">
-          <div class="slide-content">
-
-            <div class="slide-label">
-              25TH ANNIVERSARY
-            </div>
-
-            <h1>
-              창립 25주년
-            </h1>
-
-            <p class="slide-description">
-              함께 걸어온 25년,<br>
-              새로운 내일을 향해.
-            </p>
-
-          </div>
-        </article>
-
-        <!-- 두 번째 슬라이드: 헌혈 봉사 -->
-
-        <article class="slide" id="slide2">
-          <div class="slide-content">
-
-            <div class="slide-label">
-              BLOOD DONATION
-            </div>
-
-            <h1>
-              사랑을 나누는<br>
-              헌혈 봉사
-            </h1>
-
-            <p class="slide-description">
-              작은 나눔이 모여<br>
-              소중한 생명을 지킵니다.
-            </p>
-
-          </div>
-        </article>
-
-      </div>
-
-      <!-- 이전 슬라이드 -->
-
-      <button
-        class="slide-arrow prev"
-        id="prevSlide"
-        type="button"
-        aria-label="이전 슬라이드"
-      >
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="m15 18-6-6 6-6"/>
-        </svg>
-      </button>
-
-      <!-- 다음 슬라이드 -->
-
-      <button
-        class="slide-arrow next"
-        id="nextSlide"
-        type="button"
-        aria-label="다음 슬라이드"
-      >
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="m9 18 6-6-6-6"/>
-        </svg>
-      </button>
-
-      <!-- 페이지 표시 점 -->
-
-      <div class="slide-dots" aria-label="슬라이드 선택">
-
-        <button
-          class="slide-dot active"
-          type="button"
-          aria-label="창립 25주년 슬라이드 보기"
-          aria-current="true"
-          data-slide="0"
-        ></button>
-
-        <button
-          class="slide-dot"
-          type="button"
-          aria-label="헌혈 봉사 슬라이드 보기"
-          data-slide="1"
-        ></button>
-
-      </div>
-
-    </section>
-
-    <!-- 환영 문구 -->
-
-    <section class="welcome" id="welcome">
-      <h2>
-        루아엘교회 홈페이지에 오신 것을 환영합니다.
+    <div class="notice-content">
+      <h2 id="noticeTitle">
+        이곳에 원하는 문구를 입력하세요.
       </h2>
+    </div>
 
-      <p>
-        교회의 다양한 소식을 이곳에서 확인하실 수 있습니다.
-      </p>
-    </section>
+    <button type="button" id="noticeClose">
+      닫기
+    </button>
 
-    <!-- 주일 말씀 안내 -->
+  </div>
+</div>
 
-    <section class="worship">
+<!-- 상단 헤더 -->
 
-      <div class="worship-label">
-        202X SUNDAY SERVICE
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="#home">
+      <img
+        src="https://i.ibb.co/60kWKKZY/file-000000003940822fb276a79aa6bc4e32.png"
+        alt="루아엘교회 로고"
+      >
+
+      <div class="brand-text">
+        <span class="brand-name">루아엘교회</span>
+        <span class="brand-eng">LUHAEL CHURCH</span>
       </div>
+    </a>
 
-      <h2>주일 말씀</h2>
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="메뉴 열기"
+      aria-expanded="false"
+      aria-controls="navigation"
+    >
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
 
-      <p class="worship-description">
-        매주 일요일 · 루아엘교회
-      </p>
+  </div>
 
-      <div class="worship-time">
-        <span>1부 예배</span>
-        <strong>오전 8:00</strong>
-      </div>
+  <!-- 펼쳐지는 메뉴 -->
 
-      <div class="worship-time">
-        <span>2부 예배</span>
-        <strong>오전 9:30</strong>
-      </div>
+  <nav class="navigation" id="navigation">
+    <div class="navigation-inner">
 
-    </section>
+      <a href="about.html">교회 소개</a>
+      <a href="faith.html">교리와 신앙</a>
+      <a href="characters.html">등장인물</a>
+      <a href="news.html">교회 소식</a>
 
-    <!-- 아이콘 메뉴 4개 -->
+      <div class="menu-divider"></div>
+      <span class="menu-label">EXTRA</span>
 
-    <section class="quick-links" aria-label="주요 메뉴">
+      <a href="gallery.html">비공식 화보</a>
+      <a href="creator.html">제작자 TMI</a>
 
-      <a href="about.html">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-7h6v7M12 3v5M9.5 5.5h5"/>
-        </svg>
-        <span>교회 소개</span>
-      </a>
+    </div>
+  </nav>
+</header>
 
-      <a href="faith.html">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 7c-3-2-6-2-9-1v14c3-1 6-1 9 1 3-2 6-2 9-1V6c-3-1-6-1-9 1ZM12 7v14"/>
-        </svg>
-        <span>교리와 신앙</span>
-      </a>
+<main id="home">
 
-      <a href="characters.html">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="9" cy="8" r="3"/>
-          <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6M17 14a5 5 0 0 1 4 5v1"/>
-        </svg>
-        <span>등장인물</span>
-      </a>
+  <!-- 메인 슬라이드 배너 -->
 
-      <a href="news.html">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 3h14v16a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2ZM18 7h3v12a2 2 0 0 1-2 2M7 7h7M7 11h7M7 15h3M13 15h2"/>
-        </svg>
-        <span>교회 소식</span>
-      </a>
+  <section
+    class="hero-slider"
+    id="heroSlider"
+    aria-label="루아엘교회 주요 소식"
+    aria-roledescription="슬라이드"
+  >
 
-    </section>
+    <div class="slides" id="slides">
 
-  </main>
+      <!-- 첫 번째 슬라이드 -->
 
-  <!-- 하단 -->
+      <article class="slide" id="slide1">
+        <div class="slide-content">
 
-  <footer>
-    <div class="footer-name">루아엘교회</div>
-    <p>LUHAEL CHURCH</p>
+          <div class="slide-label">
+            25TH ANNIVERSARY
+          </div>
+
+          <h1>창립 25주년</h1>
+
+          <p class="slide-description">
+            함께 걸어온 25년,<br>
+            새로운 내일을 향해.
+          </p>
+
+        </div>
+      </article>
+
+      <!-- 두 번째 슬라이드 -->
+
+      <article class="slide" id="slide2">
+        <div class="slide-content">
+
+          <div class="slide-label">
+            BLOOD DONATION
+          </div>
+
+          <h1>
+            사랑을 나누는<br>
+            헌혈 봉사
+          </h1>
+
+          <p class="slide-description">
+            작은 나눔이 모여<br>
+            소중한 생명을 지킵니다.
+          </p>
+
+        </div>
+      </article>
+
+    </div>
+
+    <!-- 이전 슬라이드 -->
+
+    <button
+      class="slide-arrow prev"
+      id="prevSlide"
+      type="button"
+      aria-label="이전 슬라이드"
+    >
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+    </button>
+
+    <!-- 다음 슬라이드 -->
+
+    <button
+      class="slide-arrow next"
+      id="nextSlide"
+      type="button"
+      aria-label="다음 슬라이드"
+    >
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m9 18 6-6-6-6"/>
+      </svg>
+    </button>
+
+    <!-- 슬라이드 페이지 표시 -->
+
+    <div class="slide-dots" aria-label="슬라이드 선택">
+
+      <button
+        class="slide-dot active"
+        type="button"
+        aria-label="창립 25주년 슬라이드 보기"
+        aria-current="true"
+        data-slide="0"
+      ></button>
+
+      <button
+        class="slide-dot"
+        type="button"
+        aria-label="헌혈 봉사 슬라이드 보기"
+        data-slide="1"
+      ></button>
+
+    </div>
+
+  </section>
+
+  <!-- 환영 문구 -->
+
+  <section class="welcome" id="welcome">
+
+    <h2>
+      루아엘교회 홈페이지에 오신 것을 환영합니다.
+    </h2>
+
     <p>
-      © 2026 LUHAEL CHURCH.<br>
-      All Rights Reserved.
+      교회의 다양한 소식을 이곳에서 확인하실 수 있습니다.
     </p>
-  </footer>
 
-  <script>
-    /* 햄버거 메뉴 */
+  </section>
 
-    const menuButton = document.getElementById("menuButton");
-    const navigation = document.getElementById("navigation");
+  <!-- 주일 말씀 -->
 
-    menuButton.addEventListener("click", function () {
-      const isOpen = navigation.classList.toggle("open");
+  <section class="worship">
 
-      menuButton.setAttribute("aria-expanded", isOpen);
-      menuButton.setAttribute(
-        "aria-label",
-        isOpen ? "메뉴 닫기" : "메뉴 열기"
-      );
-    });
+    <div class="worship-label">
+      202X SUNDAY SERVICE
+    </div>
 
-    navigation.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        navigation.classList.remove("open");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "메뉴 열기");
-      });
-    });
+    <h2>주일 말씀</h2>
 
-    /* 슬라이드 기능 */
+    <p class="worship-description">
+      매주 일요일 · 루아엘교회
+    </p>
 
-    const slider = document.getElementById("heroSlider");
-    const slides = document.getElementById("slides");
-    const slideElements = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".slide-dot");
+    <div class="worship-time">
+      <span>1부 예배</span>
+      <strong>오전 8:00</strong>
+    </div>
 
-    const prevButton = document.getElementById("prevSlide");
-    const nextButton = document.getElementById("nextSlide");
+    <div class="worship-time">
+      <span>2부 예배</span>
+      <strong>오전 9:30</strong>
+    </div>
 
-    let currentSlide = 0;
-    const totalSlides = slideElements.length;
+  </section>
 
-    function showSlide(index) {
-      currentSlide = (index + totalSlides) % totalSlides;
+  <!-- 바로가기 메뉴 -->
 
-      slides.style.transform =
-        "translateX(-" + (currentSlide * 100) + "%)";
+  <section class="quick-links" aria-label="주요 메뉴">
 
-      dots.forEach(function (dot, dotIndex) {
-        const isActive = dotIndex === currentSlide;
+    <a href="about.html">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-7h6v7M12 3v5M9.5 5.5h5"/>
+      </svg>
+      <span>교회 소개</span>
+    </a>
 
-        dot.classList.toggle("active", isActive);
+    <a href="faith.html">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 7c-3-2-6-2-9-1v14c3-1 6-1 9 1 3-2 6-2 9-1V6c-3-1-6-1-9 1ZM12 7v14"/>
+      </svg>
+      <span>교리와 신앙</span>
+    </a>
 
-        if (isActive) {
-          dot.setAttribute("aria-current", "true");
-        } else {
-          dot.removeAttribute("aria-current");
-        }
-      });
+    <a href="characters.html">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="9" cy="8" r="3"/>
+        <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6M17 14a5 5 0 0 1 4 5v1"/>
+      </svg>
+      <span>등장인물</span>
+    </a>
 
-      slideElements.forEach(function (slide, slideIndex) {
-        slide.setAttribute(
-          "aria-hidden",
-          slideIndex === currentSlide ? "false" : "true"
-        );
-      });
+    <a href="news.html">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 3h14v16a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2ZM18 7h3v12a2 2 0 0 1-2 2M7 7h7M7 11h7M7 15h3M13 15h2"/>
+      </svg>
+      <span>교회 소식</span>
+    </a>
+
+  </section>
+
+</main>
+
+<!-- 하단 -->
+
+<footer>
+  <div class="footer-name">루아엘교회</div>
+  <p>LUHAEL CHURCH</p>
+  <p>
+    © 2026 LUHAEL CHURCH.<br>
+    All Rights Reserved.
+  </p>
+</footer>
+
+<script>
+
+/* 햄버거 메뉴 */
+
+const menuButton = document.getElementById("menuButton");
+const navigation = document.getElementById("navigation");
+
+menuButton.addEventListener("click", function () {
+  const isOpen = navigation.classList.toggle("open");
+
+  menuButton.setAttribute("aria-expanded", isOpen);
+  menuButton.setAttribute(
+    "aria-label",
+    isOpen ? "메뉴 닫기" : "메뉴 열기"
+  );
+});
+
+navigation.querySelectorAll("a").forEach(function (link) {
+  link.addEventListener("click", function () {
+    navigation.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "메뉴 열기");
+  });
+});
+
+/* 슬라이드 기능 */
+
+const slider = document.getElementById("heroSlider");
+const slides = document.getElementById("slides");
+const slideElements = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".slide-dot");
+
+const prevButton = document.getElementById("prevSlide");
+const nextButton = document.getElementById("nextSlide");
+
+let currentSlide = 0;
+const totalSlides = slideElements.length;
+
+function showSlide(index) {
+  currentSlide = (index + totalSlides) % totalSlides;
+
+  slides.style.transform =
+    "translateX(-" + (currentSlide * 100) + "%)";
+
+  dots.forEach(function (dot, dotIndex) {
+    const isActive = dotIndex === currentSlide;
+
+    dot.classList.toggle("active", isActive);
+
+    if (isActive) {
+      dot.setAttribute("aria-current", "true");
+    } else {
+      dot.removeAttribute("aria-current");
     }
+  });
 
-    prevButton.addEventListener("click", function () {
-      showSlide(currentSlide - 1);
-    });
+  slideElements.forEach(function (slide, slideIndex) {
+    slide.setAttribute(
+      "aria-hidden",
+      slideIndex === currentSlide ? "false" : "true"
+    );
+  });
+}
 
-    nextButton.addEventListener("click", function () {
+prevButton.addEventListener("click", function () {
+  showSlide(currentSlide - 1);
+});
+
+nextButton.addEventListener("click", function () {
+  showSlide(currentSlide + 1);
+});
+
+dots.forEach(function (dot) {
+  dot.addEventListener("click", function () {
+    showSlide(Number(dot.dataset.slide));
+  });
+});
+
+/* 모바일 좌우 스와이프 */
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+slider.addEventListener("touchstart", function (event) {
+  touchStartX = event.changedTouches[0].screenX;
+  touchStartY = event.changedTouches[0].screenY;
+}, { passive: true });
+
+slider.addEventListener("touchend", function (event) {
+  const touchEndX = event.changedTouches[0].screenX;
+  const touchEndY = event.changedTouches[0].screenY;
+
+  const differenceX = touchStartX - touchEndX;
+  const differenceY = touchStartY - touchEndY;
+
+  if (
+    Math.abs(differenceX) > 50 &&
+    Math.abs(differenceX) > Math.abs(differenceY)
+  ) {
+    if (differenceX > 0) {
       showSlide(currentSlide + 1);
-    });
+    } else {
+      showSlide(currentSlide - 1);
+    }
+  }
+}, { passive: true });
 
-    dots.forEach(function (dot) {
-      dot.addEventListener("click", function () {
-        showSlide(Number(dot.dataset.slide));
-      });
-    });
+/* 첫 슬라이드 초기화 */
 
-    /* 모바일 좌우 스와이프 */
+showSlide(0);
 
-    let touchStartX = 0;
-    let touchStartY = 0;
+/* 배너 배경 이미지 주소 입력 */
 
-    slider.addEventListener("touchstart", function (event) {
-      touchStartX = event.changedTouches[0].screenX;
-      touchStartY = event.changedTouches[0].screenY;
-    }, { passive: true });
+const bannerImages = [
+  "", // 첫 번째: 창립 25주년 이미지 URL
+  ""  // 두 번째: 헌혈 봉사 이미지 URL
+];
 
-    slider.addEventListener("touchend", function (event) {
-      const touchEndX = event.changedTouches[0].screenX;
-      const touchEndY = event.changedTouches[0].screenY;
+bannerImages.forEach(function (imageUrl, index) {
+  if (!imageUrl) return;
 
-      const differenceX = touchStartX - touchEndX;
-      const differenceY = touchStartY - touchEndY;
+  slideElements[index].style.backgroundImage =
+    'url("' + imageUrl + '")';
 
-      if (
-        Math.abs(differenceX) > 50 &&
-        Math.abs(differenceX) > Math.abs(differenceY)
-      ) {
-        if (differenceX > 0) {
-          showSlide(currentSlide + 1);
-        } else {
-          showSlide(currentSlide - 1);
-        }
-      }
-    }, { passive: true });
+  slideElements[index].classList.add("has-image");
+});
 
-    /* 첫 슬라이드 초기화 */
+/* 공지사항 팝업 */
 
-    showSlide(0);
+const noticeOverlay = document.getElementById("noticeOverlay");
+const noticeClose = document.getElementById("noticeClose");
 
-    /* 배너 배경 이미지 주소 입력 */
+noticeOverlay.hidden = false;
 
-    const bannerImages = [
-      "", // 첫 번째: 창립 25주년 이미지 URL
-      ""  // 두 번째: 헌혈 봉사 이미지 URL
-    ];
+noticeClose.addEventListener("click", function () {
+  noticeOverlay.hidden = true;
+});
 
-    bannerImages.forEach(function (imageUrl, index) {
-      if (!imageUrl) return;
-
-      slideElements[index].style.backgroundImage =
-        'url("' + imageUrl + '")';
-
-      slideElements[index].classList.add("has-image");
-    });
-
-    /* 공지사항 팝업 기능 */
-
-    const noticeOverlay = document.getElementById("noticeOverlay");
-    const noticeClose = document.getElementById("noticeClose");
-
-    noticeOverlay.hidden = false;
-
-    noticeClose.addEventListener("click", function () {
-      noticeOverlay.hidden = true;
-    });
-
-  </script>
+</script>
 
 </body>
 </html>
