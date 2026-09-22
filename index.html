@@ -131,9 +131,6 @@
     .navigation a:hover {
       color: #7891ad;
     }
-    .quick-links a:hover .icon {
-  color: #a5cc58;
-}
 
     .navigation a:last-child {
       border-bottom: none;
@@ -236,8 +233,6 @@
       word-break: keep-all;
     }
 
-    /* 이미지가 있을 때 글씨를 흰색으로 변경 */
-
     .slide.has-image .slide-label,
     .slide.has-image h1,
     .slide.has-image .slide-description {
@@ -332,6 +327,52 @@
       color: #65758a;
     }
 
+    /* 주일 말씀 안내 */
+
+    .worship {
+      margin-top: 24px;
+      padding: 30px;
+      background: #ffffff;
+      border: 1px solid #e5eaf0;
+      border-left: 3px solid #a5cc58;
+      border-radius: 10px;
+    }
+
+    .worship-label {
+      margin-bottom: 12px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #8390a0;
+    }
+
+    .worship h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      color: #293d56;
+    }
+
+    .worship-description {
+      margin: 0 0 24px;
+      font-size: 14px;
+      color: #65758a;
+    }
+
+    .worship-time {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 0;
+      border-top: 1px solid #e5eaf0;
+      font-size: 15px;
+      color: #293d56;
+    }
+
+    .worship-time strong {
+      font-weight: 600;
+    }
+
     /* 아이콘 메뉴 */
 
     .quick-links {
@@ -367,6 +408,10 @@
       color: #7891ad;
     }
 
+    .quick-links a:hover .icon {
+      color: #a5cc58;
+    }
+
     /* 하단 */
 
     footer {
@@ -386,6 +431,76 @@
       font-size: 12px;
       line-height: 1.8;
       color: #8390a0;
+    }
+
+    /* 공지사항 팝업 */
+
+    .notice-overlay[hidden] {
+      display: none;
+    }
+
+    .notice-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(20, 31, 45, 0.65);
+    }
+
+    .notice-popup {
+      position: relative;
+      width: min(400px, 90vw, 56vh);
+      aspect-ratio: 2 / 3;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background-color: #eaf0f7;
+
+      /* 공지창 배경 이미지 주소 입력 */
+      background-image: url("");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .notice-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .notice-content h2 {
+      margin: 0;
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.6;
+      word-break: keep-all;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    }
+
+    #noticeClose {
+      width: 100%;
+      height: 46px;
+      flex-shrink: 0;
+      border: none;
+      background: rgba(255, 255, 255, 0.95);
+      color: #293d56;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    #noticeClose:hover {
+      background: #ffffff;
     }
 
     /* 모바일 */
@@ -459,6 +574,14 @@
         font-size: 19px;
       }
 
+      .worship {
+        padding: 24px 20px;
+      }
+
+      .worship h2 {
+        font-size: 19px;
+      }
+
       .quick-links {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
@@ -474,188 +597,38 @@
         width: 27px;
         height: 27px;
       }
+
+      .notice-content h2 {
+        font-size: 19px;
+      }
     }
-
-    /* 주일 말씀 안내 */
-
-.worship {
-  margin-top: 24px;
-  padding: 30px;
-  background: #ffffff;
-  border: 1px solid #e5eaf0;
-  border-radius: 10px;
-}
-
-.worship-label {
-  margin-bottom: 12px;
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: #8390a0;
-}
-
-.worship h2 {
-  margin: 0 0 12px;
-  font-size: 22px;
-  color: #293d56;
-}
-
-.worship-description {
-  margin: 0 0 24px;
-  font-size: 14px;
-  color: #65758a;
-}
-
-.worship-time {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 16px 0;
-  border-top: 1px solid #e5eaf0;
-  font-size: 15px;
-  color: #293d56;
-}
-
-.worship-time strong {
-  font-weight: 600;
-}
-
-@media (max-width: 700px) {
-  .worship {
-    padding: 24px 20px;
-  }
-
-  .worship h2 {
-    font-size: 19px;
-  }
-}
-
-    /* 공지사항 팝업 */
-
-.notice-overlay[hidden] {
-  display: none;
-}
-
-.notice-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: rgba(20, 31, 45, 0.55);
-}
-
-.notice-popup {
-  width: 100%;
-  max-width: 460px;
-  max-height: 90vh;
-  overflow-y: auto;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
-}
-
-.notice-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 22px 28px 0;
-  color: #8390a0;
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 1.5px;
-}
-
-.notice-x {
-  border: none;
-  background: transparent;
-  color: #8390a0;
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.notice-body {
-  padding: 20px 28px 32px;
-}
-
-.notice-line {
-  width: 40px;
-  height: 3px;
-  margin-bottom: 24px;
-  background: #a5cc58;
-}
-
-.notice-body h2 {
-  margin: 0 0 24px;
-  color: #293d56;
-  font-size: 23px;
-}
-
-.notice-body p {
-  margin: 0 0 12px;
-  color: #65758a;
-  font-size: 14px;
-  line-height: 1.8;
-  word-break: keep-all;
-}
-
-.notice-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 18px 28px;
-  border-top: 1px solid #e5eaf0;
-}
-
-#noticeNever {
-  padding: 10px 0;
-  border: none;
-  background: transparent;
-  color: #8390a0;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-#noticeClose {
-  padding: 11px 25px;
-  border: none;
-  border-radius: 5px;
-  background: #293d56;
-  color: #ffffff;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-#noticeClose:hover {
-  background: #405875;
-}
-
-@media (max-width: 700px) {
-  .notice-header {
-    padding: 20px 22px 0;
-  }
-
-  .notice-body {
-    padding: 18px 22px 28px;
-  }
-
-  .notice-footer {
-    padding: 16px 22px;
-  }
-
-  .notice-body h2 {
-    font-size: 20px;
-  }
-}
-    
   </style>
 </head>
 
 <body>
+
+  <!-- 공지사항 팝업 -->
+
+  <div class="notice-overlay" id="noticeOverlay" hidden>
+    <div
+      class="notice-popup"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="noticeTitle"
+    >
+
+      <div class="notice-content">
+        <h2 id="noticeTitle">
+          이곳에 원하는 문구를 입력하세요.
+        </h2>
+      </div>
+
+      <button type="button" id="noticeClose">
+        닫기
+      </button>
+
+    </div>
+  </div>
 
   <!-- 상단 로고와 메뉴 -->
 
@@ -688,53 +661,6 @@
       </button>
 
     </div>
-
-    <body>
-
-  <!-- 공지사항 팝업 -->
-  <div class="notice-overlay" id="noticeOverlay" hidden>
-    <div
-      class="notice-popup"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="noticeTitle"
-    >
-
-      <div class="notice-header">
-        <span>LUHAEL CHURCH · NOTICE</span>
-        <button
-          type="button"
-          class="notice-x"
-          id="noticeX"
-          aria-label="공지창 닫기"
-        >×</button>
-      </div>
-
-      <div class="notice-body">
-        <div class="notice-line"></div>
-
-        <h2 id="noticeTitle">루아엘교회 공지사항</h2>
-
-        <p>
-          루아엘교회 홈페이지를 방문해 주셔서 감사합니다.
-        </p>
-
-      </div>
-
-      <div class="notice-footer">
-        <button type="button" id="noticeNever">
-          더 이상 보지 않기
-        </button>
-
-        <button type="button" id="noticeClose">
-          닫기
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 상단 로고와 메뉴 -->
 
     <!-- 펼쳐지는 메뉴 -->
 
@@ -875,34 +801,31 @@
       </p>
     </section>
 
-    
+    <!-- 주일 말씀 안내 -->
 
-<!-- 주일 말씀 안내 -->
+    <section class="worship">
 
-<section class="worship">
+      <div class="worship-label">
+        202X SUNDAY SERVICE
+      </div>
 
-  <div class="worship-label">
-    202X SUNDAY SERVICE
-  </div>
+      <h2>주일 말씀</h2>
 
-  <h2>주일 말씀</h2>
+      <p class="worship-description">
+        매주 일요일 · 루아엘교회
+      </p>
 
-  <p class="worship-description">
-    매주 일요일 · 루아엘교회
-  </p>
+      <div class="worship-time">
+        <span>1부 예배</span>
+        <strong>오전 8:00</strong>
+      </div>
 
-  <div class="worship-time">
-    <span>1부 예배</span>
-    <strong>오전 8:00</strong>
-  </div>
+      <div class="worship-time">
+        <span>2부 예배</span>
+        <strong>오전 9:30</strong>
+      </div>
 
-  <div class="worship-time">
-    <span>2부 예배</span>
-    <strong>오전 9:30</strong>
-  </div>
-
-</section>
-
+    </section>
 
     <!-- 아이콘 메뉴 4개 -->
 
@@ -990,7 +913,6 @@
     const totalSlides = slideElements.length;
 
     function showSlide(index) {
-
       currentSlide = (index + totalSlides) % totalSlides;
 
       slides.style.transform =
@@ -1041,14 +963,11 @@
     }, { passive: true });
 
     slider.addEventListener("touchend", function (event) {
-
       const touchEndX = event.changedTouches[0].screenX;
       const touchEndY = event.changedTouches[0].screenY;
 
       const differenceX = touchStartX - touchEndX;
       const differenceY = touchStartY - touchEndY;
-
-      /* 세로 스크롤은 슬라이드 전환으로 처리하지 않음 */
 
       if (
         Math.abs(differenceX) > 50 &&
@@ -1060,16 +979,13 @@
           showSlide(currentSlide - 1);
         }
       }
-
     }, { passive: true });
 
     /* 첫 슬라이드 초기화 */
 
     showSlide(0);
 
-    /* =====================================
-       배경 이미지 주소 입력하는 곳
-       ===================================== */
+    /* 배너 배경 이미지 주소 입력 */
 
     const bannerImages = [
       "", // 첫 번째: 창립 25주년 이미지 URL
@@ -1077,41 +993,25 @@
     ];
 
     bannerImages.forEach(function (imageUrl, index) {
-
       if (!imageUrl) return;
 
       slideElements[index].style.backgroundImage =
         'url("' + imageUrl + '")';
 
       slideElements[index].classList.add("has-image");
-
     });
 
-/* 공지사항 팝업 기능 */
+    /* 공지사항 팝업 기능 */
 
-const noticeOverlay = document.getElementById("noticeOverlay");
-const noticeClose = document.getElementById("noticeClose");
-const noticeNever = document.getElementById("noticeNever");
-const noticeX = document.getElementById("noticeX");
+    const noticeOverlay = document.getElementById("noticeOverlay");
+    const noticeClose = document.getElementById("noticeClose");
 
-const noticeKey = "luhael-notice-001";
+    noticeOverlay.hidden = false;
 
-if (localStorage.getItem(noticeKey) !== "hidden") {
-  noticeOverlay.hidden = false;
-}
+    noticeClose.addEventListener("click", function () {
+      noticeOverlay.hidden = true;
+    });
 
-function closeNotice() {
-  noticeOverlay.hidden = true;
-}
-
-noticeClose.addEventListener("click", closeNotice);
-noticeX.addEventListener("click", closeNotice);
-
-noticeNever.addEventListener("click", function () {
-  localStorage.setItem(noticeKey, "hidden");
-  closeNotice();
-});
-    
   </script>
 
 </body>
