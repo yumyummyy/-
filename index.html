@@ -5,150 +5,360 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>루아엘교회</title>
 
+  <!-- 아이콘 라이브러리 -->
+  <script src="https://i.ibb.co/60kWKKZY/file-000000003940822fb276a79aa6bc4e32.png"></script>
+
   <style>
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: "Malgun Gothic", Arial, sans-serif;
-      color: #283747;
+      color: #34432b;
       background: #ffffff;
     }
 
-    /* 상단 메뉴 */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 상단 헤더 */
+
     header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: white;
+      border-bottom: 1px solid #e8edde;
+    }
+
+    .header-inner {
+      max-width: 1200px;
       height: 76px;
+      margin: auto;
       padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #e5e5e5;
-      background: white;
     }
 
-    .logo {
-      font-size: 22px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .brand-name {
+      font-size: 21px;
       font-weight: bold;
-      color: #253c59;
+      letter-spacing: -1px;
+    }
+
+    .brand-eng {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: #84966b;
     }
 
     .menu-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: none;
-      background: none;
-      font-size: 30px;
+      background: transparent;
       cursor: pointer;
+      color: #34432b;
+      padding: 8px;
+    }
+
+    .menu-button svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* 펼쳐지는 메뉴 */
+
+    .navigation {
+      display: none;
+      background: white;
+      border-top: 1px solid #edf0e8;
+    }
+
+    .navigation.open {
+      display: block;
+    }
+
+    .navigation-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 12px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navigation a {
+      padding: 16px 4px;
+      border-bottom: 1px solid #f0f2eb;
+      font-size: 15px;
+    }
+
+    .navigation a:last-child {
+      border-bottom: none;
     }
 
     /* 전체 콘텐츠 */
+
     main {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: auto;
       padding: 24px;
     }
 
     /* 메인 배너 */
+
     .hero {
-      min-height: 480px;
-      background: #eaf0f7;
+      min-height: 520px;
+      background: #f4f8ed;
       border-radius: 12px;
-      padding: 32px;
+      padding: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .hero-card {
-      width: 100%;
-      max-width: 650px;
-      padding: 48px 36px;
-      background: white;
-      border-radius: 14px;
+    .hero-content {
       text-align: center;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+      max-width: 700px;
     }
 
-    .hero-card small {
-      color: #7288a4;
+    .hero-label {
+      font-size: 12px;
+      font-weight: bold;
       letter-spacing: 3px;
+      color: #87a955;
     }
 
-    .hero-card h1 {
-      margin: 24px 0;
-      font-size: 32px;
-      color: #253c59;
+    .hero-symbol {
+      margin: 30px auto;
+      color: #a4c86a;
     }
 
-    .hero-card p {
-      line-height: 1.9;
-      color: #667588;
+    .hero-symbol svg {
+      width: 48px;
+      height: 48px;
+      stroke-width: 1.3;
     }
 
-    .hero-card a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 13px 28px;
-      background: #38577d;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
+    .hero h1 {
+      margin: 0;
+      font-size: 38px;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: -1.5px;
     }
 
-    /* 공지사항 */
-    .notice {
+    .hero-description {
       margin-top: 24px;
-      padding: 30px;
-      border: 1px solid #e3e8ef;
-      border-radius: 10px;
+      color: #68765c;
+      font-size: 16px;
+      line-height: 1.9;
     }
 
-    .notice small {
-      color: #7288a4;
+    .hero-line {
+      width: 40px;
+      height: 1px;
+      background: #91b35c;
+      margin: 28px auto;
     }
 
-    .notice h2 {
-      margin: 12px 0;
-      font-size: 22px;
+    .hero-keywords {
+      font-size: 13px;
+      color: #84966b;
+      letter-spacing: 2px;
     }
 
-    /* 바로가기 */
+    .hero-button {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 14px 32px;
+      background: white;
+      border: 1px solid #dfe8d2;
+      border-radius: 30px;
+      color: #455a31;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .hero-button:hover {
+      background: #e7f1d6;
+    }
+
+    /* 교리 소개 */
+
+    .faith-section {
+      padding: 70px 12px;
+      border-bottom: 1px solid #edf0e8;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #87a955;
+    }
+
+    .section-title {
+      margin: 14px 0;
+      font-size: 28px;
+      letter-spacing: -1px;
+    }
+
+    .section-description {
+      color: #788471;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .section-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #58763b;
+    }
+
+    .section-link svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    /* 바로가기 4개 */
+
     .quick-links {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
-      margin-top: 24px;
+      margin-top: 30px;
     }
 
     .quick-links a {
-      padding: 36px 24px;
-      background: #f0f4f9;
+      min-height: 150px;
+      padding: 28px 24px;
+      background: #f4f8ed;
+      border: 1px solid #edf1e6;
       border-radius: 10px;
-      color: #253c59;
-      text-decoration: none;
-      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 17px;
       font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .quick-links a:hover {
+      background: #eaf3dd;
+    }
+
+    .quick-links svg {
+      width: 30px;
+      height: 30px;
+      color: #87a955;
+      stroke-width: 1.6;
+    }
+
+    /* 교회 소식 */
+
+    .news-section {
+      padding: 70px 12px;
+    }
+
+    .news-card {
+      margin-top: 26px;
+      padding: 28px;
+      border: 1px solid #e5ebdc;
+      border-radius: 10px;
+    }
+
+    .news-card small {
+      color: #91a17e;
+      font-size: 12px;
+    }
+
+    .news-card h3 {
+      margin: 12px 0;
+      font-size: 19px;
+    }
+
+    .news-card p {
+      color: #788471;
+      font-size: 14px;
+      line-height: 1.8;
     }
 
     /* 하단 */
+
     footer {
-      margin-top: 60px;
-      padding: 40px 24px;
-      background: #f7f8fa;
-      color: #7a8490;
+      padding: 45px 24px;
+      background: #f7f9f4;
+      border-top: 1px solid #e9eee2;
       text-align: center;
-      font-size: 13px;
     }
 
-    /* 모바일 화면 */
-    @media (max-width: 600px) {
-      header {
-        height: 68px;
-        padding: 0 20px;
+    .footer-name {
+      font-size: 18px;
+      font-weight: bold;
+      color: #455a31;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: #919c87;
+      line-height: 1.8;
+    }
+
+    /* 모바일 */
+
+    @media (max-width: 700px) {
+
+      .header-inner {
+        height: 70px;
+        padding: 0 18px;
       }
 
-      .logo {
-        font-size: 19px;
+      .brand img {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand-name {
+        font-size: 18px;
+      }
+
+      .brand-eng {
+        font-size: 9px;
       }
 
       main {
@@ -157,20 +367,44 @@
 
       .hero {
         min-height: 520px;
-        padding: 18px;
+        padding: 35px 20px;
       }
 
-      .hero-card {
-        padding: 42px 22px;
+      .hero h1 {
+        font-size: 29px;
       }
 
-      .hero-card h1 {
-        font-size: 26px;
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .faith-section,
+      .news-section {
+        padding: 55px 8px;
+      }
+
+      .section-title {
+        font-size: 25px;
+      }
+
+      .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
       }
 
       .quick-links a {
-        padding: 28px 18px;
-        font-size: 17px;
+        min-height: 135px;
+        padding: 22px 18px;
+        font-size: 15px;
+      }
+
+      .quick-links svg {
+        width: 27px;
+        height: 27px;
+      }
+
+      .news-card {
+        padding: 22px;
       }
     }
   </style>
@@ -178,52 +412,256 @@
 
 <body>
 
-  <!-- 상단 -->
+  <!-- 상단 헤더 -->
+
   <header>
-    <div class="logo">루아엘교회</div>
-    <button class="menu-button" aria-label="메뉴">☰</button>
+    <div class="header-inner">
+
+      <a class="brand" href="#home">
+
+        <!-- 이곳에 외부 로고 이미지 주소 입력 -->
+        <img
+          src="여기에_로고_이미지_URL"
+          alt="루아엘교회 로고"
+        >
+
+        <div class="brand-text">
+          <span class="brand-name">루아엘교회</span>
+          <span class="brand-eng">LUHAEL CHURCH</span>
+        </div>
+
+      </a>
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="메뉴 열기"
+        aria-expanded="false"
+        aria-controls="navigation"
+      >
+        <i data-lucide="menu"></i>
+      </button>
+
+    </div>
+
+    <!-- 펼쳐지는 메뉴 -->
+
+    <nav class="navigation" id="navigation">
+      <div class="navigation-inner">
+        <a href="#about">교회 소개</a>
+        <a href="#faith">교리와 신앙</a>
+        <a href="#characters">등장인물</a>
+        <a href="#news">교회 소식</a>
+      </div>
+    </nav>
+
   </header>
 
-  <main>
+  <main id="home">
 
-    <!-- 메인 배너 -->
+    <!-- 메인 화면 -->
+
     <section class="hero">
-      <div class="hero-card">
-        <small>LUHAEL CHURCH</small>
 
-        <h1>사랑과 평안이 머무는 곳</h1>
+      <div class="hero-content">
 
-        <p>
-          루아엘교회에 오신 여러분을 환영합니다.<br>
-          함께하는 믿음, 따뜻한 공동체.
+        <div class="hero-label">
+          LUHAEL CHURCH
+        </div>
+
+        <div class="hero-symbol">
+          <i data-lucide="sparkles"></i>
+        </div>
+
+        <h1>
+          당신의 삶에<br>
+          평안이 깃들기를
+        </h1>
+
+        <p class="hero-description">
+          루아엘교회에 오신 여러분을 환영합니다.
         </p>
 
-        <a href="#about">교회 소개 →</a>
+        <div class="hero-line"></div>
+
+        <div class="hero-keywords">
+          믿음 · 사랑 · 평안
+        </div>
+
+        <a class="hero-button" href="#about">
+          교회 소개 →
+        </a>
+
       </div>
+
     </section>
 
-    <!-- 공지사항 -->
-    <section class="notice">
-      <small>NOTICE</small>
-      <h2>루아엘교회 소식</h2>
-      <p>새로운 소식을 전해드립니다.</p>
+    <!-- 교회 소개 -->
+
+    <section class="faith-section" id="about">
+
+      <div class="section-label">
+        ABOUT US
+      </div>
+
+      <h2 class="section-title">
+        루아엘교회
+      </h2>
+
+      <p class="section-description">
+        루아엘교회에 오신 여러분을 환영합니다.<br>
+        교회의 이야기를 소개합니다.
+      </p>
+
+      <a class="section-link" href="#faith">
+        우리의 신앙 알아보기
+        <i data-lucide="arrow-right"></i>
+      </a>
+
+    </section>
+
+    <!-- 교리 소개 -->
+
+    <section class="faith-section" id="faith">
+
+      <div class="section-label">
+        OUR FAITH
+      </div>
+
+      <h2 class="section-title">
+        루아엘의 가르침
+      </h2>
+
+      <p class="section-description">
+        우리가 믿고 따르는 가치를 소개합니다.
+      </p>
+
+      <a class="section-link" href="#quickMenu">
+        자세히 보기
+        <i data-lucide="arrow-right"></i>
+      </a>
+
     </section>
 
     <!-- 바로가기 -->
-<section class="quick-links">
-  <a href="#about">교회 소개 →</a>
-  <a href="#leader">교주님 말씀 →</a>
-  <a href="#characters">등장인물 →</a>
-  <a href="#news">교회 소식 →</a>
-</section>
+
+    <section class="quick-links" id="quickMenu">
+
+      <a href="#about">
+        <i data-lucide="church"></i>
+        <span>교회 소개</span>
+      </a>
+
+      <a href="#faith">
+        <i data-lucide="book-open"></i>
+        <span>교리와 신앙</span>
+      </a>
+
+      <a href="#characters">
+        <i data-lucide="users"></i>
+        <span>등장인물</span>
+      </a>
+
+      <a href="#news">
+        <i data-lucide="newspaper"></i>
+        <span>교회 소식</span>
+      </a>
+
+    </section>
+
+    <!-- 등장인물 -->
+
+    <section class="faith-section" id="characters">
+
+      <div class="section-label">
+        PEOPLE
+      </div>
+
+      <h2 class="section-title">
+        등장인물
+      </h2>
+
+      <p class="section-description">
+        루아엘교회의 사람들을 소개합니다.
+      </p>
+
+    </section>
+
+    <!-- 교회 소식 -->
+
+    <section class="news-section" id="news">
+
+      <div class="section-label">
+        NEWS & NOTICE
+      </div>
+
+      <h2 class="section-title">
+        교회 소식
+      </h2>
+
+      <p class="section-description">
+        루아엘교회의 새로운 소식을 전해드립니다.
+      </p>
+
+      <div class="news-card">
+
+        <small>NOTICE</small>
+
+        <h3>루아엘교회 홈페이지에 오신 것을 환영합니다.</h3>
+
+        <p>
+          교회의 다양한 소식을 이곳에서 확인하실 수 있습니다.
+        </p>
+
+      </div>
+
+    </section>
+
   </main>
 
-  <!-- 하단 -->
+  <!-- 하단 정보 -->
+
   <footer>
-    <strong>루아엘교회</strong>
+
+    <div class="footer-name">
+      루아엘교회
+    </div>
+
     <p>LUHAEL CHURCH</p>
-    <p>© 2026 LUHAEL CHURCH. All Rights Reserved.</p>
+
+    <p>
+      © 2026 LUHAEL CHURCH.<br>
+      All Rights Reserved.
+    </p>
+
   </footer>
+
+  <!-- 아이콘 및 메뉴 기능 -->
+
+  <script>
+    lucide.createIcons();
+
+    const menuButton = document.getElementById("menuButton");
+    const navigation = document.getElementById("navigation");
+
+    menuButton.addEventListener("click", function () {
+      const isOpen = navigation.classList.toggle("open");
+
+      menuButton.setAttribute("aria-expanded", isOpen);
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "메뉴 닫기" : "메뉴 열기"
+      );
+    });
+
+    navigation.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navigation.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "메뉴 열기");
+      });
+    });
+  </script>
 
 </body>
 </html>
