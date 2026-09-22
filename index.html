@@ -472,6 +472,73 @@
         height: 27px;
       }
     }
+
+    /* 교주님 말씀 안내 */
+
+.worship {
+  margin-top: 24px;
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #e5eaf0;
+  border-radius: 10px;
+}
+
+.worship-label {
+  margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #8390a0;
+}
+
+.worship h2 {
+  margin: 0 0 24px;
+  font-size: 22px;
+  color: #293d56;
+}
+
+.worship-info,
+.worship-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid #e5eaf0;
+}
+
+.worship-info {
+  color: #65758a;
+  font-size: 14px;
+}
+
+.worship-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #f1f6e7;
+  color: #78994a;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.worship-time {
+  font-size: 15px;
+  color: #293d56;
+}
+
+.worship-time strong {
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .worship {
+    padding: 24px 20px;
+  }
+
+  .worship h2 {
+    font-size: 19px;
+  }
+}
   </style>
 </head>
 
@@ -648,6 +715,34 @@
         교회의 다양한 소식을 이곳에서 확인하실 수 있습니다.
       </p>
     </section>
+
+    
+
+<!-- 교주님 말씀 안내 -->
+
+<section class="worship">
+
+  <div class="worship-label">WORSHIP SERVICE</div>
+
+  <h2>20XX 교주님 말씀</h2>
+
+  <div class="worship-info">
+    <span>매주 일요일</span>
+    <span class="worship-badge">정기 예배</span>
+  </div>
+
+  <div class="worship-time">
+    <span>1부</span>
+    <strong>오전 8:00</strong>
+  </div>
+
+  <div class="worship-time">
+    <span>2부</span>
+    <strong>오전 9:30</strong>
+  </div>
+
+</section>
+
 
     <!-- 아이콘 메뉴 4개 -->
 
