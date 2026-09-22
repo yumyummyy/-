@@ -689,6 +689,81 @@ footer p {
   text-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
+  /* 팝업 전체 배경 */
+
+.notice-popup {
+  background-image: url("https://i.ibb.co/GfF3QsRy/photo-1718385678258-45a3b6b7525a.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* 글씨 전체 배치 */
+
+.notice-design {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* 상단 문구 */
+
+.notice-subtitle {
+  margin: 0 0 12px;
+  font-family: 'Gowun Batang', serif;
+  font-size: 14px;
+  color: #b99a5a;
+  letter-spacing: 1px;
+}
+
+/* 신의 아이 */
+
+.notice-content .notice-heading {
+  margin: 0 0 35px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #b38c43;
+  text-shadow: none;
+}
+
+/* 투명 이미지와 제목이 겹치는 영역 */
+
+.notice-title-area {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 제목 뒤 투명 이미지 */
+
+.notice-wings {
+  position: absolute;
+  width: 115%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 천사 되기 시뮬레이터 */
+
+.notice-content .notice-main-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: clamp(18px, 5vw, 26px);
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
 </style>
 </head>
 
@@ -702,34 +777,39 @@ footer p {
        aria-modal="true"
        aria-labelledby="noticeTitle">
 
-<div class="notice-content">
+    <div class="notice-content">
+      <div class="notice-design">
 
-  <div class="notice-design">
+        <p class="notice-subtitle">
+          사이비 교단의 성스러운 존재
+        </p>
 
-    <p class="notice-subtitle">
-      사이비 교단의 성스러운 존재
-    </p>
+        <h2 class="notice-heading">
+          신의 아이
+        </h2>
 
-    <h2 class="notice-heading">
-      신의 아이
-    </h2>
+        <div class="notice-title-area">
 
-    <div class="notice-title-area">
+          <img
+            class="notice-wings"
+            src="https://i.ibb.co/392yLNR8/file-0000000051f082099f26b0e5dacac06d.png"
+            alt=""
+          >
 
-      <img
-        class="notice-wings"
-        src="https://i.ibb.co/392yLNR8/file-0000000051f082099f26b0e5dacac06d.png"
-        alt=""
-      >
+          <h2 class="notice-main-title" id="noticeTitle">
+            천사 되기 시뮬레이터
+          </h2>
 
-      <h2 class="notice-main-title" id="noticeTitle">
-        천사 되기 시뮬레이터
-      </h2>
+        </div>
 
+      </div>
     </div>
 
-  </div>
+    <button type="button" id="noticeClose">
+      닫기
+    </button>
 
+  </div>
 </div>
 <!-- 상단 헤더 -->
 
