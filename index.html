@@ -654,7 +654,38 @@ footer p {
 .worship h2 {
   font-weight: 800;
 }
-  
+
+  /* 공지 이미지 위에 글씨 배치 */
+.notice-poster {
+  position: relative;
+  width: 100%;
+}
+
+.notice-text {
+  position: absolute;
+  top: 18%;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+  color: #665749;
+}
+
+.notice-subtitle {
+  margin: 0 0 12px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.notice-text h2 {
+  margin: 0;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  word-break: keep-all;
+}
   
 </style>
 </head>
@@ -1042,7 +1073,7 @@ showSlide(0);
 
 const bannerImages = [
   "https://i.ibb.co/JwwDmdxJ/file-00000000f89c81fd8d14c2a496c25963.png",
-  "https://i.ibb.co/cGzfV9m/file-0000000067748206a626281aae1622fe.png"
+  "https://i.ibb.co/4wsW7Str/file-00000000f42c81fa9f669aab9cf44c71.png"
 ];
   
 bannerImages.forEach(function (imageUrl, index) {
