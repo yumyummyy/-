@@ -1,15 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>등장인물 | 루아엘교회</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:#f8f7f1;
+  --surface:#fffefa;
+  --ink:#30342a;
+  --muted:#77796b;
+  --line:#e5e5d8;
+  --accent:#9aaa51;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans KR',sans-serif;
+}
+
+a { color:inherit; text-decoration:none; }
+button { font:inherit; cursor:pointer; }
+
+header {
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+}
+
+.header-inner {
+  max-width:1200px;
+  height:76px;
+  margin:auto;
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand img {
+  width:48px;
+  height:48px;
+  object-fit:contain;
+}
+
+.brand-text {
+  display:flex;
+  flex-direction:column;
+}
+
+.brand-name {
+  font-family:'Gowun Batang',serif;
+  font-size:22px;
+}
+
+.brand-eng {
+  font-family:Georgia,serif;
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--accent);
+}
+
+.menu-button {
+  border:0;
+  background:transparent;
+  padding:8px;
+}
+
+.menu-button svg {
+  width:28px;
+  height:28px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+}
+
+.navigation {
+  display:none;
+  background:var(--surface);
+  border-top:1px solid var(--line);
+}
+
+.navigation.open { display:block; }
+
+.navigation-inner {
+  max-width:1200px;
+  margin:auto;
+  padding:12px 24px;
+  display:flex;
+  flex-direction:column;
+}
+
+.navigation a {
+  padding:16px 4px;
+  border-bottom:1px solid var(--line);
+  font-size:15px;
+}
+
+.menu-divider {
+  height:1px;
+  margin:14px 0;
+  background:var(--line);
+}
+
+.menu-label {
+  padding:10px 4px 6px;
+  font-family:Georgia,serif;
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--muted);
+}
+
+
+/* 본문 */
+
+main {
+  max-width:1050px;
+  margin:auto;
+  padding:70px 24px 100px;
+}
+
+.page-header {
+  margin-bottom:60px;
+  text-align:center;
+}
+
+.page-label {
+  margin-bottom:16px;
+  font-family:Georgia,serif;
+  font-size:11px;
+  letter-spacing:4px;
+  color:var(--accent);
+}
+
+.page-header h1 {
+  margin:0;
+  font-family:'Gowun Batang',serif;
+  font-size:38px;
+  font-weight:400;
+}
+
+.page-line {
+  width:36px;
+  height:1px;
+  margin:24px auto;
+  background:var(--accent);
+}
+
+
+/* 캐릭터 카드 */
+
+.character-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+.character-card {
+  overflow:hidden;
+  background:var(--surface);
+  border:1px solid var(--line);
+}
+
+.character-image {
+  width:100%;
+  aspect-ratio:3 / 4;
+  background:#efefe7;
+}
+
+.character-image img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.character-info {
+  padding:22px;
+}
+
+.character-info h2 {
+  min-height:29px;
+  margin:0 0 10px;
+  font-family:'Gowun Batang',serif;
+  font-size:21px;
+  font-weight:400;
+}
+
+.character-info p {
+  min-height:45px;
+  margin:0;
+  font-size:13px;
+  line-height:1.8;
+  color:var(--muted);
+}
+
+
+/* footer */
+
+footer {
+  padding:45px 24px;
+  border-top:1px solid var(--line);
+  text-align:center;
+}
+
+.footer-name {
+  font-family:'Gowun Batang',serif;
+  font-size:20px;
+}
+
+footer p {
+  font-size:11px;
+  color:var(--muted);
+}
+
+
+@media(max-width:750px) {
+  main { padding:50px 20px 75px; }
+
+  .page-header h1 { font-size:30px; }
+
+  .character-grid {
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .character-info {
+    padding:16px;
+  }
+}
+
+@media(max-width:430px) {
+  .character-grid {
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+      <img src="https://i.ibb.co/60kWKKZY/file-000000003940822fb276a79aa6bc4e32.png" alt="">
+      <div class="brand-text">
+        <span class="brand-name">루아엘교회</span>
+        <span class="brand-eng">LUHAEL CHURCH</span>
+      </div>
+    </a>
+
+    <button class="menu-button" id="menuButton">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+  </div>
+
+  <nav class="navigation" id="navigation">
+    <div class="navigation-inner">
+      <a href="about.html">교회 소개</a>
+      <a href="faith.html">교주님 말씀</a>
+      <a href="characters.html">등장인물</a>
+      <a href="news.html">교회 소식</a>
+      <div class="menu-divider"></div>
+      <span class="menu-label">EXTRA</span>
+      <a href="gallery.html">비공식 화보</a>
+      <a href="creator.html">제작자 TMI</a>
+    </div>
+  </nav>
+</header>
+
+
 <main>
 
-  <section class="about-header">
+  <section class="page-header">
+    <div class="page-label">CHARACTERS</div>
+    <h1>등장인물</h1>
+    <div class="page-line"></div>
+  </section>
 
-    <div class="about-label">
-      CREATOR
-    </div>
 
-    <h1>제작자 TMI</h1>
+  <section class="character-grid">
 
-    <div class="about-line"></div>
+    <article class="character-card">
+      <div class="character-image"></div>
+      <div class="character-info">
+        <h2></h2>
+        <p></p>
+      </div>
+    </article>
+
+    <article class="character-card">
+      <div class="character-image"></div>
+      <div class="character-info">
+        <h2></h2>
+        <p></p>
+      </div>
+    </article>
+
+    <article class="character-card">
+      <div class="character-image"></div>
+      <div class="character-info">
+        <h2></h2>
+        <p></p>
+      </div>
+    </article>
+
+    <article class="character-card">
+      <div class="character-image"></div>
+      <div class="character-info">
+        <h2></h2>
+        <p></p>
+      </div>
+    </article>
+
+    <article class="character-card">
+      <div class="character-image"></div>
+      <div class="character-info">
+        <h2></h2>
+        <p></p>
+      </div>
+    </article>
+
+    <article class="character-card">
+      <div class="character-image"></div>
+      <div class="character-info">
+        <h2></h2>
+        <p></p>
+      </div>
+    </article>
 
   </section>
 
 </main>
+
+
+<footer>
+  <div class="footer-name">루아엘교회</div>
+  <p>LUHAEL CHURCH</p>
+</footer>
+
+<script>
+const menuButton=document.getElementById("menuButton");
+const navigation=document.getElementById("navigation");
+
+menuButton.addEventListener("click",function(){
+  navigation.classList.toggle("open");
+});
+</script>
+
+</body>
+</html>
