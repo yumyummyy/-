@@ -274,26 +274,36 @@ main {
   height: 20px;
 }
 
-/* 슬라이드 동그라미 */
-.dots button,
-.slide-dots button {
-  width: 10px;
-  height: 10px;
+/* 슬라이드 점 전체 위치 */
+.slide-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* 기본 동그라미 */
+.slide-dot {
+  width: 12px;
+  height: 12px;
   padding: 0;
+  border: 2px solid #ffffff;
   border-radius: 50%;
-  background: #ffffff;
-  border: 1px solid #9AAA51;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
   opacity: 1;
 }
 
-/* 선택된 동그라미 */
-.dots button.active,
-.slide-dots button.active {
+/* 현재 선택된 동그라미 */
+.slide-dot.active {
   background: #9AAA51;
   border-color: #ffffff;
 }
-
 /* 환영 안내 */
 
 .welcome {
