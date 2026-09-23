@@ -164,11 +164,14 @@ main {
   padding: 24px;
 }
 
-/* 메인 슬라이드 */
+/* 메인 슬라이드 — 세로 2:3 비율 */
 
 .hero-slider {
   position: relative;
-  height: 520px;
+  width: min(400px, 100%);
+  aspect-ratio: 2 / 3;
+  height: auto;
+  margin: 0 auto;
   overflow: hidden;
   border-radius: 4px;
   background: #eeefdf;
@@ -490,8 +493,6 @@ footer p {
 
   main { padding: 16px; }
 
-  .hero-slider { height: 500px; }
-
   .slide { padding: 60px 48px; }
 
   .slide-label {
@@ -597,6 +598,11 @@ footer p {
   .welcome h2 {
   font-size: 15px;
   }
+
+  /* 창립 25주년 · 헌혈 봉사 슬라이드 글씨 숨기기 */
+.slide-content {
+  display: none;
+}
   
 </style>
 </head>
