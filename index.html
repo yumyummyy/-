@@ -603,6 +603,18 @@ footer p {
 .slide-content {
   display: none;
 }
+
+  /* 슬라이드 이미지 위의 어두운 막 제거 */
+.slide.has-image::before {
+  display: none;
+}
+
+  /* 포스터 이미지 전체 표시 */
+.slide {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
   
 </style>
 </head>
