@@ -3,11 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>교회 소식 | 루아엘교회</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================
+   기본 설정
+========================= */
+
 :root {
   --paper:#f8f7f1;
   --surface:#fffefa;
@@ -17,7 +25,13 @@
   --accent:#9aaa51;
 }
 
-* { box-sizing:border-box; }
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
 
 body {
   margin:0;
@@ -26,13 +40,26 @@ body {
   font-family:'Noto Sans KR',sans-serif;
 }
 
-a { color:inherit; text-decoration:none; }
-button { font:inherit; cursor:pointer; }
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+button {
+  font:inherit;
+  cursor:pointer;
+}
+
+
+/* =========================
+   헤더
+========================= */
 
 header {
   position:sticky;
   top:0;
   z-index:100;
+
   background:var(--surface);
   border-bottom:1px solid var(--line);
 }
@@ -42,19 +69,35 @@ header {
   height:76px;
   margin:auto;
   padding:0 24px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
 
-.brand { display:flex; align-items:center; gap:12px; }
-.brand img { width:48px; height:48px; object-fit:contain; }
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
-.brand-text { display:flex; flex-direction:column; }
+.brand img {
+  width:48px;
+  height:48px;
+  object-fit:contain;
+}
+
+.brand-text {
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
 
 .brand-name {
-  font-family:'Gowun Batang',serif;
+  font-family:'Nanum Myeongjo',serif;
   font-size:22px;
+  font-weight:700;
+  letter-spacing:1px;
 }
 
 .brand-eng {
@@ -65,40 +108,68 @@ header {
 }
 
 .menu-button {
-  border:0;
-  background:transparent;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   padding:8px;
+
+  border:none;
+  background:transparent;
+  color:var(--ink);
 }
 
-.menu-button svg {
+.icon {
   width:28px;
   height:28px;
+
   fill:none;
   stroke:currentColor;
   stroke-width:1.7;
   stroke-linecap:round;
+  stroke-linejoin:round;
 }
+
+
+/* =========================
+   펼쳐지는 메뉴
+========================= */
 
 .navigation {
   display:none;
+
   background:var(--surface);
   border-top:1px solid var(--line);
 }
 
-.navigation.open { display:block; }
+.navigation.open {
+  display:block;
+}
 
 .navigation-inner {
   max-width:1200px;
   margin:auto;
   padding:12px 24px;
+
   display:flex;
   flex-direction:column;
 }
 
 .navigation a {
   padding:16px 4px;
-  border-bottom:1px solid var(--line);
+
   font-size:15px;
+  border-bottom:1px solid var(--line);
+
+  transition:color .2s;
+}
+
+.navigation a:hover {
+  color:var(--accent);
+}
+
+.navigation a:last-child {
+  border-bottom:none;
 }
 
 .menu-divider {
@@ -109,12 +180,18 @@ header {
 
 .menu-label {
   padding:10px 4px 6px;
+
   font-family:Georgia,serif;
   font-size:11px;
   letter-spacing:2px;
+
   color:var(--muted);
 }
 
+
+/* =========================
+   본문
+========================= */
 
 main {
   max-width:850px;
@@ -129,28 +206,34 @@ main {
 
 .page-label {
   margin-bottom:16px;
+
   font-family:Georgia,serif;
   font-size:11px;
   letter-spacing:4px;
+
   color:var(--accent);
 }
 
 .page-header h1 {
   margin:0;
-  font-family:'Gowun Batang',serif;
+
+  font-family:'Nanum Myeongjo',serif;
   font-size:38px;
-  font-weight:400;
+  font-weight:800;
 }
 
 .page-line {
   width:36px;
   height:1px;
   margin:24px auto 0;
+
   background:var(--accent);
 }
 
 
-/* 일정 */
+/* =========================
+   일정
+========================= */
 
 .schedule {
   background:var(--surface);
@@ -159,6 +242,7 @@ main {
 
 .schedule-month {
   padding:30px;
+
   text-align:center;
   border-bottom:1px solid var(--line);
 
@@ -170,7 +254,9 @@ main {
 .schedule-item {
   display:grid;
   grid-template-columns:110px 1fr;
+
   min-height:105px;
+
   border-bottom:1px solid var(--line);
 }
 
@@ -190,8 +276,10 @@ main {
 
 .schedule-week {
   margin-top:4px;
+
   font-size:10px;
   letter-spacing:1px;
+
   color:var(--accent);
 }
 
@@ -202,36 +290,91 @@ main {
 .schedule-content h2 {
   min-height:25px;
   margin:0 0 9px;
-  font-family:'Gowun Batang',serif;
+
+  font-family:'Nanum Myeongjo',serif;
   font-size:19px;
-  font-weight:400;
+  font-weight:700;
 }
 
 .schedule-content p {
   min-height:20px;
   margin:0;
+
   font-size:13px;
+
   color:var(--muted);
 }
 
 
+/* =========================
+   하단
+========================= */
+
 footer {
   padding:45px 24px;
+
+  background:var(--paper);
   border-top:1px solid var(--line);
+
   text-align:center;
 }
 
 .footer-name {
-  font-family:'Gowun Batang',serif;
+  font-family:'Nanum Myeongjo',serif;
   font-size:20px;
 }
 
-footer p { font-size:11px; color:var(--muted); }
+footer p {
+  font-size:12px;
+  line-height:1.8;
+  color:var(--muted);
+}
 
 
-@media(max-width:600px) {
-  main { padding:50px 20px 75px; }
-  .page-header h1 { font-size:30px; }
+/* =========================
+   헤더 모바일
+   about.html과 동일
+========================= */
+
+@media (max-width:700px) {
+
+  .header-inner {
+    height:70px;
+    padding:0 18px;
+  }
+
+  .brand img {
+    width:42px;
+    height:42px;
+  }
+
+  .brand-name {
+    font-size:19px;
+  }
+
+  .brand-eng {
+    font-size:9px;
+  }
+
+  .navigation-inner {
+    padding:12px 20px;
+  }
+}
+
+
+/* =========================
+   일정 모바일
+========================= */
+
+@media (max-width:600px) {
+
+  main {
+    padding:50px 20px 75px;
+  }
+
+  .page-header h1 {
+    font-size:30px;
+  }
 
   .schedule-item {
     grid-template-columns:80px 1fr;
@@ -245,109 +388,224 @@ footer p { font-size:11px; color:var(--muted); }
     padding:22px;
   }
 }
+
 </style>
 </head>
 
+
 <body>
 
+
+<!-- =========================
+     상단 헤더
+========================= -->
+
 <header>
-<div class="header-inner">
 
-  <a class="brand" href="index.html">
-    <img src="https://i.ibb.co/60kWKKZY/file-000000003940822fb276a79aa6bc4e32.png" alt="">
-    <div class="brand-text">
-      <span class="brand-name">루아엘교회</span>
-      <span class="brand-eng">LUHAEL CHURCH</span>
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+
+      <img
+        src="https://i.ibb.co/60kWKKZY/file-000000003940822fb276a79aa6bc4e32.png"
+        alt="루아엘교회 로고"
+      >
+
+      <div class="brand-text">
+        <span class="brand-name">루아엘교회</span>
+        <span class="brand-eng">LUHAEL CHURCH</span>
+      </div>
+
+    </a>
+
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="메뉴 열기"
+      aria-expanded="false"
+      aria-controls="navigation"
+    >
+
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+
+    </button>
+
+  </div>
+
+
+  <!-- 메뉴 -->
+
+  <nav class="navigation" id="navigation">
+
+    <div class="navigation-inner">
+
+      <a href="about.html">교회 소개</a>
+      <a href="faith.html">교주님 말씀</a>
+      <a href="characters.html">등장인물</a>
+      <a href="news.html">교회 소식</a>
+
+      <div class="menu-divider"></div>
+
+      <span class="menu-label">EXTRA</span>
+
+      <a href="gallery.html">비공식 화보</a>
+      <a href="creator.html">제작자 TMI</a>
+
     </div>
-  </a>
 
-  <button class="menu-button" id="menuButton">
-    <svg viewBox="0 0 24 24">
-      <path d="M4 6h16M4 12h16M4 18h16"/>
-    </svg>
-  </button>
+  </nav>
 
-</div>
-
-<nav class="navigation" id="navigation">
-<div class="navigation-inner">
-  <a href="about.html">교회 소개</a>
-  <a href="faith.html">교주님 말씀</a>
-  <a href="characters.html">등장인물</a>
-  <a href="news.html">교회 소식</a>
-  <div class="menu-divider"></div>
-  <span class="menu-label">EXTRA</span>
-  <a href="gallery.html">비공식 화보</a>
-  <a href="creator.html">제작자 TMI</a>
-</div>
-</nav>
 </header>
 
 
+<!-- =========================
+     본문
+========================= -->
+
 <main>
 
-<section class="page-header">
-  <div class="page-label">CHURCH SCHEDULE</div>
-  <h1>교회 소식</h1>
-  <div class="page-line"></div>
-</section>
 
+  <section class="page-header">
 
-<section class="schedule">
-
-  <div class="schedule-month"></div>
-
-  <article class="schedule-item">
-    <div class="schedule-date">
-      <div class="schedule-day"></div>
-      <div class="schedule-week"></div>
+    <div class="page-label">
+      CHURCH SCHEDULE
     </div>
-    <div class="schedule-content">
-      <h2></h2>
-      <p></p>
-    </div>
-  </article>
 
-  <article class="schedule-item">
-    <div class="schedule-date">
-      <div class="schedule-day"></div>
-      <div class="schedule-week"></div>
-    </div>
-    <div class="schedule-content">
-      <h2></h2>
-      <p></p>
-    </div>
-  </article>
+    <h1>교회 소식</h1>
 
-  <article class="schedule-item">
-    <div class="schedule-date">
-      <div class="schedule-day"></div>
-      <div class="schedule-week"></div>
-    </div>
-    <div class="schedule-content">
-      <h2></h2>
-      <p></p>
-    </div>
-  </article>
+    <div class="page-line"></div>
 
-</section>
+  </section>
+
+
+  <!-- =========================
+       일정
+  ========================= -->
+
+  <section class="schedule">
+
+
+    <div class="schedule-month"></div>
+
+
+    <article class="schedule-item">
+
+      <div class="schedule-date">
+
+        <div class="schedule-day"></div>
+        <div class="schedule-week"></div>
+
+      </div>
+
+      <div class="schedule-content">
+
+        <h2></h2>
+        <p></p>
+
+      </div>
+
+    </article>
+
+
+    <article class="schedule-item">
+
+      <div class="schedule-date">
+
+        <div class="schedule-day"></div>
+        <div class="schedule-week"></div>
+
+      </div>
+
+      <div class="schedule-content">
+
+        <h2></h2>
+        <p></p>
+
+      </div>
+
+    </article>
+
+
+    <article class="schedule-item">
+
+      <div class="schedule-date">
+
+        <div class="schedule-day"></div>
+        <div class="schedule-week"></div>
+
+      </div>
+
+      <div class="schedule-content">
+
+        <h2></h2>
+        <p></p>
+
+      </div>
+
+    </article>
+
+
+  </section>
+
 
 </main>
 
 
+<!-- =========================
+     하단
+========================= -->
+
 <footer>
-  <div class="footer-name">루아엘교회</div>
+
+  <div class="footer-name">
+    루아엘교회
+  </div>
+
   <p>LUHAEL CHURCH</p>
+
 </footer>
 
-<script>
-const menuButton=document.getElementById("menuButton");
-const navigation=document.getElementById("navigation");
 
-menuButton.addEventListener("click",function(){
-  navigation.classList.toggle("open");
+<script>
+
+/* 햄버거 메뉴 */
+
+const menuButton = document.getElementById("menuButton");
+const navigation = document.getElementById("navigation");
+
+menuButton.addEventListener("click", function () {
+
+  const isOpen = navigation.classList.toggle("open");
+
+  menuButton.setAttribute("aria-expanded", isOpen);
+
+  menuButton.setAttribute(
+    "aria-label",
+    isOpen ? "메뉴 닫기" : "메뉴 열기"
+  );
+
 });
+
+
+navigation.querySelectorAll("a").forEach(function (link) {
+
+  link.addEventListener("click", function () {
+
+    navigation.classList.remove("open");
+
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "메뉴 열기");
+
+  });
+
+});
+
 </script>
+
 
 </body>
 </html>
