@@ -275,7 +275,7 @@ main {
   height: 20px;
 }
 
-/* 슬라이드 점 전체 위치 */
+/* 슬라이드 점 위치 */
 .slide-dots {
   position: absolute;
   bottom: 20px;
@@ -290,21 +290,23 @@ main {
 
 /* 기본 동그라미 */
 .slide-dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   padding: 0;
-  border: 2px solid #ffffff;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.65);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-  opacity: 1;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  transition: width 0.3s ease, background 0.3s ease;
 }
 
-/* 현재 선택된 동그라미 */
+/* 선택된 동그라미만 길게 */
 .slide-dot.active {
+  width: 28px;
   background: #9AAA51;
   border-color: #ffffff;
 }
+  
 /* 환영 안내 */
 
 .welcome {
