@@ -6,32 +6,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>루아엘교회</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
+  
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
 
 :root {
-  /* 전체 배경 — 따뜻한 아이보리 */
   --paper: #F8F4EC;
-
-  /* 헤더와 카드 배경 */
   --surface: #FFFCF7;
 
-  /* 기본 글씨 — 짙은 갈색 */
-  --ink: #665749;
+  /* 글씨 색상 원래대로 */
+  --ink: #30342a;
+  --muted: #77796b;
 
-  /* 보조 글씨 */
-  --muted: #8C7D6D;
-
-  /* 구분선 — 연한 베이지 골드 */
   --line: #E6DCCE;
-
-  /* 브랜드 연두색 유지 */
   --accent: #9AAA51;
-
-  /* 연두색의 아주 연한 배경 */
   --accent-light: #F2F4E6;
-
-  /* 장식용 골드 */
   --gold: #B59A73;
 }
 
@@ -717,6 +709,37 @@ footer {
 #noticeClose:hover {
   background: #F3EBDD;
 }
+
+  /* 나눔명조 폰트 적용 */
+
+.brand-name,
+.slide h1,
+.slide-label,
+.worship h2,
+.worship-label,
+.footer-name {
+  font-family: "Nanum Myeongjo", serif;
+}
+
+.brand-name {
+  letter-spacing: 1px;
+}
+
+.slide-label,
+.worship-label {
+  font-family: "Malgun Gothic", sans-serif;
+  letter-spacing: 3px;
+}
+
+.slide h1 {
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.worship h2 {
+  font-weight: 800;
+}
+  
   
 </style>
 </head>
