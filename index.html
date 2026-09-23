@@ -849,6 +849,52 @@ footer p {
   white-space: normal;
   word-break: keep-all;
 }
+
+  /* 상단 문구와 신의 아이 사이 간격 줄이기 */
+.notice-subtitle {
+  margin-bottom: 3px;
+}
+
+/* 신의 아이 글씨 살짝 축소 */
+.notice-content .notice-heading {
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+/* 날개와 제목을 같은 중앙에 배치 */
+.notice-title-area {
+  position: relative;
+  width: 100%;
+  min-height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* 천사 날개 중앙 정렬 */
+.notice-wings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+/* 시뮬레이터 제목 중앙 정렬 */
+.notice-content .notice-main-title {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  font-size: 48px;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+  word-break: keep-all;
+}
   
 </style>
 </head>
