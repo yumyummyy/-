@@ -655,7 +655,8 @@ footer p {
   font-weight: 800;
 }
 
-  /* 공지 이미지 위에 글씨 배치 */
+/* 공지 이미지 위에 글씨 배치 */
+
 .notice-poster {
   position: relative;
   width: 100%;
@@ -663,28 +664,49 @@ footer p {
 
 .notice-text {
   position: absolute;
-  top: 18%;
+  top: 20%;
   left: 0;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 12px;
   text-align: center;
-  color: #665749;
 }
 
 .notice-subtitle {
   margin: 0 0 12px;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 12px;
+  color: #55493c;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: clamp(10px, 2.8vw, 15px);
+  font-weight: 700;
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 .notice-text h2 {
   margin: 0;
+  color: #fffaf2;
   font-family: "Nanum Myeongjo", serif;
-  font-size: 24px;
+  font-size: clamp(37px, 10vw, 62px);
   font-weight: 800;
-  letter-spacing: -0.5px;
+  line-height: 1.2;
+  letter-spacing: -3px;
   word-break: keep-all;
+  text-shadow: 0 2px 12px rgba(65, 49, 33, 0.12);
+}
+
+  .notice-small-title {
+  margin-bottom: 16px;
+  color: #8c6c48;
+  font-family: "Nanum Myeongjo", serif;
+  font-size: clamp(23px, 6vw, 38px);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.notice-line {
+  width: 1px;
+  height: 24px;
+  margin: 0 auto 12px;
+  background: #8c6c48;
 }
   
 </style>
@@ -708,11 +730,16 @@ footer p {
       >
 
       <div class="notice-text">
-        <p class="notice-subtitle">
-          사이비 교단의 성스러운 존재, 신의 아이
-        </p>
-        <h2>천사 되기 시뮬레이션</h2>
-      </div>
+  <p class="notice-subtitle">
+    사이비 교단의 성스러운 존재
+  </p>
+
+  <div class="notice-small-title">신의 아이</div>
+
+  <div class="notice-line"></div>
+
+  <h2>천사 되기<br>시뮬레이션</h2>
+</div>
     </div>
 
     <button type="button" id="noticeClose">닫기</button>
