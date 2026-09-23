@@ -10,13 +10,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
 
 :root {
-  --paper: #f8f7f1;
-  --surface: #fffefa;
-  --ink: #30342a;
-  --muted: #77796b;
-  --line: #e5e5d8;
-  --accent: #9aaa51;
-  --accent-light: #f0f3df;
+  /* 전체 배경 — 따뜻한 아이보리 */
+  --paper: #F8F4EC;
+
+  /* 헤더와 카드 배경 */
+  --surface: #FFFCF7;
+
+  /* 기본 글씨 — 짙은 갈색 */
+  --ink: #665749;
+
+  /* 보조 글씨 */
+  --muted: #8C7D6D;
+
+  /* 구분선 — 연한 베이지 골드 */
+  --line: #E6DCCE;
+
+  /* 브랜드 연두색 유지 */
+  --accent: #9AAA51;
+
+  /* 연두색의 아주 연한 배경 */
+  --accent-light: #F2F4E6;
+
+  /* 장식용 골드 */
+  --gold: #B59A73;
 }
 
 * { box-sizing: border-box; }
@@ -619,6 +635,87 @@ footer p {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+  /* ===== 루아엘교회 디자인 통일 ===== */
+
+/* 헤더 아래 은은한 골드 라인 */
+header {
+  border-bottom: 1px solid var(--gold);
+}
+
+/* 교회 이름은 따뜻한 갈색 */
+.brand-name {
+  color: var(--ink);
+}
+
+/* 로고 아래 영문은 기존 연두색 유지 */
+.brand-eng {
+  color: var(--accent);
+}
+
+/* 메인 슬라이드 테두리 */
+.hero-slider {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+/* 이미지가 없는 경우의 슬라이드 배경 */
+.slide {
+  background-color: var(--surface);
+}
+
+/* 환영 안내와 주일 말씀 카드 */
+.welcome,
+.worship {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--gold);
+}
+
+/* 주일 말씀의 작은 영문 제목 */
+.worship-label {
+  color: var(--gold);
+}
+
+/* 바로가기 메뉴 */
+.quick-links a {
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+/* 바로가기 메뉴에 마우스를 올렸을 때 */
+.quick-links a:hover {
+  background: #F8F2E8;
+  border-color: var(--gold);
+}
+
+/* 아이콘은 브랜드 연두색 유지 */
+.quick-links .icon {
+  color: var(--accent);
+}
+
+/* 슬라이드 화살표 */
+.slide-arrow {
+  background: rgba(255, 252, 247, 0.9);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+/* 하단 */
+footer {
+  background: var(--paper);
+  border-top: 1px solid var(--gold);
+}
+
+/* 팝업 닫기 버튼 */
+#noticeClose {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+#noticeClose:hover {
+  background: #F3EBDD;
 }
   
 </style>
