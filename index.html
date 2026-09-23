@@ -12,7 +12,8 @@
   
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500;700;900&family=Cormorant+Garamond:wght@500;600&display=swap');
+  
 :root {
   --paper: #f8f7f1;
   --surface: #fffefa;
@@ -657,102 +658,69 @@ footer p {
 
 /* 공지 이미지 위에 글씨 배치 */
 
-.notice-poster {
-  position: relative;
-  width: 100%;
-}
-
+/* 공지 타이틀 전체 */
 .notice-text {
   position: absolute;
-  top: 20%;
+  top: 17%;
   left: 0;
   width: 100%;
-  padding: 0 12px;
+  padding: 0 20px;
   text-align: center;
+  font-family: 'Noto Serif KR', serif;
 }
 
-.notice-subtitle {
-  margin: 0 0 12px;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 12px;
-  letter-spacing: 1px;
+/* 사이비 교단의 성스러운 존재 */
+.notice-eyebrow {
+  margin-bottom: 18px;
 
-  color: #FFFFFF;
-  text-shadow: 0 2px 5px rgba(60, 40, 20, 0.32);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+
+  color: #cbb98a;
+
+  text-shadow:
+    0 1px 3px rgba(55, 40, 25, 0.7);
 }
 
-.notice-text h2 {
-  margin: 0;
-  color: #fffaf2;
-  font-family: "Nanum Myeongjo", serif;
-  font-size: clamp(37px, 10vw, 62px);
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -3px;
-  word-break: keep-all;
-  text-shadow: 0 2px 12px rgba(65, 49, 33, 0.12);
+/* 신의 아이 — 금빛 */
+.notice-godchild {
+  margin-bottom: 14px;
+
+  font-family: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+
+  background: linear-gradient(
+    180deg,
+    #fff6dd 0%,
+    #d9b35c 45%,
+    #f7e6ac 60%,
+    #b8934a 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 0 16px rgba(255, 224, 140, 0.3);
 }
 
-.notice-small-title {
-  margin-bottom: 16px;
-  font-family: "Nanum Myeongjo", serif;
-  font-size: clamp(23px, 6vw, 38px);
+/* 천사 되기 시뮬레이션 — 메인 */
+.notice-main-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 50px;
   font-weight: 700;
-  letter-spacing: 2px;
+  line-height: 1.28;
+  letter-spacing: 0.03em;
 
-  color: #FFF3D3;
+  color: #fffdf6;
 
   text-shadow:
-    0 0 5px #FFF9E7,
-    0 0 15px #F8DBA1,
-    0 0 28px rgba(232, 169, 75, 0.75),
-    0 3px 4px rgba(80, 50, 25, 0.45);
-}
-
-.notice-line {
-  width: 1px;
-  height: 24px;
-  margin: 0 auto 12px;
-  background: #8c6c48;
-}
-
-/* 공지창 글씨 색상 — A 조합 */
-
-/* 가운데 세로선 */
-.notice-line {
-  background: #FFFFFF;
-}
-
-/* 천사 되기 시뮬레이션 */
-.notice-text h2 {
-  color: #FFFFFF;
-  text-shadow: 0 2px 5px rgba(60, 40, 20, 0.32);
-}
-
-  /* 작은 문구: 흰색 글씨 + 다크 브라운 그림자 */
-.notice-subtitle {
-  color: #FFFFFF;
-  text-shadow:
-    0 1px 2px #493B30,
-    0 2px 5px rgba(73, 59, 48, 0.9),
-    0 0 10px rgba(73, 59, 48, 0.55);
-}
-
-  /* 공지창 크기 기준으로 글씨 조절 */
-.notice-poster {
-  container-type: inline-size;
-}
-
-/* 신의 아이 */
-.notice-small-title {
-  font-size: 14cqw;
-}
-
-/* 천사 되기 시뮬레이션 */
-.notice-text h2 {
-  font-size: 15cqw;
-  line-height: 1.15;
-  letter-spacing: -2px;
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 46px rgba(255, 224, 140, 0.3);
 }
   
 </style>
@@ -775,18 +743,11 @@ footer p {
         alt=""
       >
 
-      <div class="notice-text">
-  <p class="notice-subtitle">
-    사이비 교단의 성스러운 존재
-  </p>
-
-  <div class="notice-small-title">신의 아이</div>
-
-  <div class="notice-line"></div>
-
-  <h2>천사 되기<br>시뮬레이션</h2>
+ <div class="notice-text">
+  <div class="notice-eyebrow">사이비 교단의 성스러운 존재</div>
+  <div class="notice-godchild">신의 아이</div>
+  <div class="notice-main-title">천사 되기<br>시뮬레이션</div>
 </div>
-    </div>
 
     <button type="button" id="noticeClose">닫기</button>
 
