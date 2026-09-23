@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>등장인물 | 루아엘교회</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,6 +11,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================
+   기본 설정
+========================= */
+
 :root {
   --paper:#f8f7f1;
   --surface:#fffefa;
@@ -19,7 +25,13 @@
   --accent:#9aaa51;
 }
 
-* { box-sizing:border-box; }
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
 
 body {
   margin:0;
@@ -28,142 +40,158 @@ body {
   font-family:'Noto Sans KR',sans-serif;
 }
 
-a { color:inherit; text-decoration:none; }
-button { font:inherit; cursor:pointer; }
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+button {
+  font:inherit;
+  cursor:pointer;
+}
+
+
+/* =========================
+   헤더
+========================= */
 
 header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position:sticky;
+  top:0;
+  z-index:100;
 
-  background: var(--surface);
-  border-bottom: 1px solid var(--line);
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
 }
 
 .header-inner {
-  max-width: 1200px;
-  height: 76px;
-  margin: auto;
-  padding: 0 24px;
+  max-width:1200px;
+  height:76px;
+  margin:auto;
+  padding:0 24px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .brand img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
+  width:48px;
+  height:48px;
+  object-fit:contain;
 }
 
 .brand-text {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
 }
 
 .brand-name {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:1px;
 }
 
 .brand-eng {
-  font-family: Georgia, serif;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--accent);
+  font-family:Georgia,serif;
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--accent);
 }
 
 .menu-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-  padding: 8px;
+  padding:8px;
 
-  border: none;
-  background: transparent;
-  color: var(--ink);
+  border:none;
+  background:transparent;
+  color:var(--ink);
 }
 
 .icon {
-  width: 28px;
-  height: 28px;
+  width:28px;
+  height:28px;
 
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
 
-/* 펼쳐지는 메뉴 */
+/* =========================
+   펼쳐지는 메뉴
+========================= */
 
 .navigation {
-  display: none;
+  display:none;
 
-  background: var(--surface);
-  border-top: 1px solid var(--line);
+  background:var(--surface);
+  border-top:1px solid var(--line);
 }
 
 .navigation.open {
-  display: block;
+  display:block;
 }
 
 .navigation-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 12px 24px;
+  max-width:1200px;
+  margin:auto;
+  padding:12px 24px;
 
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  flex-direction:column;
 }
 
 .navigation a {
-  padding: 16px 4px;
+  padding:16px 4px;
 
-  font-size: 15px;
-  border-bottom: 1px solid var(--line);
+  font-size:15px;
+  border-bottom:1px solid var(--line);
 
-  transition: color .2s;
+  transition:color .2s;
 }
 
 .navigation a:hover {
-  color: var(--accent);
+  color:var(--accent);
 }
 
 .navigation a:last-child {
-  border-bottom: none;
+  border-bottom:none;
 }
 
 .menu-divider {
-  height: 1px;
-  margin: 14px 0;
-  background: var(--line);
+  height:1px;
+  margin:14px 0;
+  background:var(--line);
 }
 
 .menu-label {
-  padding: 10px 4px 6px;
+  padding:10px 4px 6px;
 
-  font-family: Georgia, serif;
-  font-size: 11px;
-  letter-spacing: 2px;
+  font-family:Georgia,serif;
+  font-size:11px;
+  letter-spacing:2px;
 
-  color: var(--muted);
+  color:var(--muted);
 }
 
 
-/* 본문 */
+/* =========================
+   본문
+========================= */
 
 main {
   max-width:1050px;
@@ -178,28 +206,34 @@ main {
 
 .page-label {
   margin-bottom:16px;
+
   font-family:Georgia,serif;
   font-size:11px;
   letter-spacing:4px;
+
   color:var(--accent);
 }
 
 .page-header h1 {
   margin:0;
-  font-family:'Gowun Batang',serif;
+
+  font-family:'Nanum Myeongjo',serif;
   font-size:38px;
-  font-weight:400;
+  font-weight:800;
 }
 
 .page-line {
   width:36px;
   height:1px;
   margin:24px auto;
+
   background:var(--accent);
 }
 
 
-/* 캐릭터 카드 */
+/* =========================
+   캐릭터 카드
+========================= */
 
 .character-grid {
   display:grid;
@@ -209,6 +243,7 @@ main {
 
 .character-card {
   overflow:hidden;
+
   background:var(--surface);
   border:1px solid var(--line);
 }
@@ -216,12 +251,14 @@ main {
 .character-image {
   width:100%;
   aspect-ratio:3 / 4;
+
   background:#efefe7;
 }
 
 .character-image img {
   width:100%;
   height:100%;
+
   object-fit:cover;
   display:block;
 }
@@ -233,40 +270,79 @@ main {
 .character-info h2 {
   min-height:29px;
   margin:0 0 10px;
-  font-family:'Gowun Batang',serif;
+
+  font-family:'Nanum Myeongjo',serif;
   font-size:21px;
-  font-weight:400;
+  font-weight:800;
 }
 
 .character-info p {
   min-height:45px;
   margin:0;
+
   font-size:13px;
+  line-height:1.8;
+
+  color:var(--muted);
+}
+
+
+/* =========================
+   하단
+========================= */
+
+footer {
+  padding:45px 24px;
+
+  background:var(--paper);
+  border-top:1px solid var(--line);
+
+  text-align:center;
+}
+
+.footer-name {
+  font-family:'Nanum Myeongjo',serif;
+  font-size:20px;
+}
+
+footer p {
+  font-size:12px;
   line-height:1.8;
   color:var(--muted);
 }
 
 
-/* footer */
+/* =========================
+   캐릭터 그리드 모바일
+========================= */
 
-footer {
-  padding:45px 24px;
-  border-top:1px solid var(--line);
-  text-align:center;
+@media (max-width:750px) {
+
+  main {
+    padding:50px 20px 75px;
+  }
+
+  .page-header h1 {
+    font-size:30px;
+  }
+
+  .character-grid {
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .character-info {
+    padding:16px;
+  }
 }
 
-.footer-name {
-  font-family:'Gowun Batang',serif;
-  font-size:20px;
-}
 
-footer p {
-  font-size:11px;
-  color:var(--muted);
-}
+/* =========================
+   헤더 모바일
+   about.html과 동일
+========================= */
 
-
-@media(max-width:750px) {
+@media (max-width:700px) {
 
   .header-inner {
     height:70px;
@@ -289,35 +365,30 @@ footer p {
   .navigation-inner {
     padding:12px 20px;
   }
-
-  main {
-    padding:50px 20px 75px;
-  }
-
-  .page-header h1 {
-    font-size:30px;
-  }
-
-  .character-grid {
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-  }
-
-  .character-info {
-    padding:16px;
-  }
 }
 
-@media(max-width:430px) {
+
+/* =========================
+   작은 화면
+========================= */
+
+@media (max-width:430px) {
+
   .character-grid {
     grid-template-columns:1fr;
   }
 }
-  
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     상단 헤더
+========================= -->
 
 <header>
 
@@ -337,6 +408,7 @@ footer p {
 
     </a>
 
+
     <button
       class="menu-button"
       id="menuButton"
@@ -353,6 +425,9 @@ footer p {
     </button>
 
   </div>
+
+
+  <!-- 메뉴 -->
 
   <nav class="navigation" id="navigation">
 
@@ -377,78 +452,148 @@ footer p {
 </header>
 
 
+<!-- =========================
+     본문
+========================= -->
+
 <main>
-
-
 
   <section class="character-grid">
 
-    <article class="character-card">
-      <div class="character-image"></div>
-      <div class="character-info">
-        <h2></h2>
-        <p></p>
-      </div>
-    </article>
 
     <article class="character-card">
+
       <div class="character-image"></div>
+
       <div class="character-info">
         <h2></h2>
         <p></p>
       </div>
+
     </article>
 
-    <article class="character-card">
-      <div class="character-image"></div>
-      <div class="character-info">
-        <h2></h2>
-        <p></p>
-      </div>
-    </article>
 
     <article class="character-card">
+
       <div class="character-image"></div>
+
       <div class="character-info">
         <h2></h2>
         <p></p>
       </div>
+
     </article>
 
-    <article class="character-card">
-      <div class="character-image"></div>
-      <div class="character-info">
-        <h2></h2>
-        <p></p>
-      </div>
-    </article>
 
     <article class="character-card">
+
       <div class="character-image"></div>
+
       <div class="character-info">
         <h2></h2>
         <p></p>
       </div>
+
     </article>
+
+
+    <article class="character-card">
+
+      <div class="character-image"></div>
+
+      <div class="character-info">
+        <h2></h2>
+        <p></p>
+      </div>
+
+    </article>
+
+
+    <article class="character-card">
+
+      <div class="character-image"></div>
+
+      <div class="character-info">
+        <h2></h2>
+        <p></p>
+      </div>
+
+    </article>
+
+
+    <article class="character-card">
+
+      <div class="character-image"></div>
+
+      <div class="character-info">
+        <h2></h2>
+        <p></p>
+      </div>
+
+    </article>
+
 
   </section>
 
 </main>
 
 
+<!-- =========================
+     하단
+========================= -->
+
 <footer>
-  <div class="footer-name">루아엘교회</div>
+
+  <div class="footer-name">
+    루아엘교회
+  </div>
+
   <p>LUHAEL CHURCH</p>
+
+  <p>
+    © 2026 LUHAEL CHURCH.<br>
+    All Rights Reserved.
+  </p>
+
 </footer>
 
-<script>
-const menuButton=document.getElementById("menuButton");
-const navigation=document.getElementById("navigation");
 
-menuButton.addEventListener("click",function(){
-  navigation.classList.toggle("open");
+<script>
+
+/* 햄버거 메뉴 */
+
+const menuButton = document.getElementById("menuButton");
+const navigation = document.getElementById("navigation");
+
+menuButton.addEventListener("click", function () {
+
+  const isOpen = navigation.classList.toggle("open");
+
+  menuButton.setAttribute("aria-expanded", isOpen);
+
+  menuButton.setAttribute(
+    "aria-label",
+    isOpen ? "메뉴 닫기" : "메뉴 열기"
+  );
+
 });
+
+
+navigation.querySelectorAll("a").forEach(function (link) {
+
+  link.addEventListener("click", function () {
+
+    navigation.classList.remove("open");
+
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "메뉴 열기");
+
+  });
+
+});
+
 </script>
+
 
 </body>
 </html>
