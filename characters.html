@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -193,7 +192,7 @@ main {
 
 
 /* =========================
-   등장인물 제목 - 기존 디자인
+   등장인물 제목
 ========================= */
 
 .page-header {
@@ -233,9 +232,9 @@ main {
 }
 
 .section h2 {
-  font-family:'Nanum Myeongjo',serif;
+  font-family:'Noto Sans KR',sans-serif;
   font-size:24px;
-  font-weight:700;
+  font-weight:600;
   margin:0 0 20px;
   padding:0 8%;
 }
@@ -271,7 +270,7 @@ main {
 
 
 /* =========================
-   프로필 전체 테두리 추가
+   프로필 카드
 ========================= */
 
 .card {
@@ -283,10 +282,12 @@ main {
 
   transition:opacity .3s, transform .3s;
 
-  /* 프로필 바깥 테두리 */
   border:1px solid #c9cebd;
   padding:8px;
   background:var(--surface);
+
+  border-radius:12px;
+  overflow:hidden;
 }
 
 .card.active {
@@ -305,6 +306,7 @@ main {
 
   background:linear-gradient(135deg,#f0f2e9,#dce3d4);
   border:1px solid #c9cebd;
+  border-radius:7px;
 
   overflow:hidden;
 }
@@ -339,18 +341,24 @@ main {
 
 
 /* =========================
-   이름 및 소속
+   이름 / 직책 / 소속
+   (이름 = 세리프, 직책·소속 = 고딕)
 ========================= */
 
 .name {
   position:absolute;
   left:22px;
   top:20px;
-  font-family:'Nanum Myeongjo',serif;
-  font-size:clamp(25px,5vw,42px);
-  font-weight:800;
   z-index:2;
-  text-shadow:0 1px 9px #f8f8f3;
+
+  font-family:'Nanum Myeongjo',serif;
+  font-weight:800;
+  font-size:clamp(25px,5vw,42px);
+
+  color:#30342a;
+  -webkit-text-stroke:2px #ffffff;
+  paint-order:stroke fill;
+  text-shadow:none;
 }
 
 .role,
@@ -359,18 +367,47 @@ main {
   bottom:19px;
   z-index:2;
 
-  font-family:'Nanum Myeongjo',serif;
-  font-size:16px;
+  font-family:'Noto Sans KR',sans-serif;
 
-  text-shadow:0 1px 8px #f8f8f3;
+  color:#30342a;
+  -webkit-text-stroke:1px #ffffff;
+  paint-order:stroke fill;
+  text-shadow:none;
 }
 
 .role {
   left:22px;
+  font-weight:500;
+  font-size:14px;
 }
 
 .tag {
   right:22px;
+  font-weight:600;
+  font-size:20px;
+}
+
+
+/* =========================
+   이미지 오른쪽 상단 빨간 문구
+========================= */
+
+.extra {
+  position:absolute;
+  top:27px;
+  right:22px;
+  z-index:3;
+
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:13px;
+  font-weight:700;
+  color:#c62828;
+
+  text-align:right;
+  white-space:nowrap;
+
+  -webkit-text-stroke:0.5px #ffffff;
+  paint-order:stroke fill;
 }
 
 
@@ -384,6 +421,7 @@ main {
 
   border:1px solid #c9cebd;
   background:var(--surface);
+  border-radius:0;
 
   text-align:center;
   min-height:108px;
@@ -473,6 +511,36 @@ footer p {
 
 
 /* =========================
+   그룹별 카드 배경색 (채도 낮춤)
+========================= */
+
+/* 주요 인물 - 아이보리 */
+.section-0 .card {
+  background:#fffefa;
+}
+
+/* 교단 인물 - 옅은 회색 */
+.section-1 .card {
+  background:#e9e9e6;
+}
+
+/* 편의점 - 채도 낮춘 초록 */
+.section-2 .card {
+  background:#4e6554;
+}
+
+/* 신도 - 채도 낮춘 갈색 */
+.section-3 .card {
+  background:#8a755e;
+}
+
+/* 파출소 - 채도 낮춘 파랑 */
+.section-4 .card {
+  background:#607a8d;
+}
+
+
+/* =========================
    PC 화면
 ========================= */
 
@@ -557,194 +625,6 @@ footer p {
   }
 }
 
-
-/* =========================
-   프로필 디자인 수정
-========================= */
-
-/* 이름, 직책, 소속, 분류 제목 글꼴 통일 */
-
-.section h2,
-.name,
-.role,
-.tag {
-  font-family:'Noto Sans KR',sans-serif;
-}
-
-/* 분류 제목 */
-
-.section h2 {
-  font-weight:600;
-}
-
-/* 캐릭터 이름 */
-
-.name {
-  font-weight:700;
-}
-
-/* 직책 및 소속 */
-
-.role,
-.tag {
-  font-weight:500;
-  font-size:14px;
-}
-
-
-/* =========================
-   프로필 모서리
-========================= */
-
-/* 프로필 전체 바깥 테두리 */
-
-.card {
-  border-radius:12px;
-  overflow:hidden;
-}
-
-/* 이미지 칸 */
-
-.portrait {
-  border-radius:7px;
-}
-
-/* 대사 + 소개 칸은 각진 모서리 유지 */
-
-.details {
-  border-radius:0;
-}
-
-
-
-
-/* 주요 인물 - 기존 아이보리 */
-.section-0 .card {
-  background:#fffefa;
-}
-
-/* 교단 인물 - 옅은 회색 */
-.section-1 .card {
-  background:#e9e9e6;
-}
-
-/* 편의점 - 채도 낮춘 초록 */
-.section-2 .card {
-  background:#4e6554;
-}
-
-/* 신도 - 채도 낮춘 갈색 */
-.section-3 .card {
-  background:#8a755e;
-}
-
-/* 파출소 - 채도 낮춘 파랑 */
-.section-4 .card {
-  background:#607a8d;
-}
-
-/* 프로필 오른쪽 아래 소속 글씨 크기 */
-
-.tag {
-  font-size:20px;
-  font-weight:600;
-}
-
-   
-/* =========================
-   프로필 이미지 속 글씨 외곽선
-========================= */
-
-/* 이름, 직책, 소속 공통 */
-
-.name,
-.role,
-.tag {
-  color:#30342a;
-  -webkit-text-stroke:1px #ffffff;
-
-  paint-order:stroke fill;
-  text-shadow:none;
-}
-
-/* 이름은 조금 더 두꺼운 외곽선 */
-
-.name {
-  -webkit-text-stroke:2px #ffffff;
-}
-
-
-/* 프로필 이미지 속 글씨 - 흰색 외곽선 통일 */
-
-.name,
-.role,
-.tag {
-  color:#30342a;
-  -webkit-text-stroke:1px #ffffff;
-  paint-order:stroke fill;
-  text-shadow:none;
-}
-
-/* 이름만 외곽선을 조금 더 두껍게 */
-
-.name {
-  -webkit-text-stroke:2px #ffffff;
-}
-
-   
-/* 대사와 이름·직책 글씨체 교환 */
-
-/* 대사 → 기존 이름·직책 글씨체 */
-.quote {
-  font-family:'Noto Sans KR',sans-serif;
-  font-weight:600;
-}
-
-/* 캐릭터 이름 → 기존 대사 글씨체 */
-.name {
-  font-family:'Nanum Myeongjo',serif;
-  font-weight:800;
-}
-
-/* 천사, 교주 등 직책 → 기존 대사 글씨체 */
-.role {
-  font-family:'Nanum Myeongjo',serif;
-  font-weight:700;
-}
-
-   
-
-/* 이미지 오른쪽 상단 빨간 문구 */
-
-.extra {
-  position:absolute;
-  top:27px;
-  right:22px;
-  z-index:3;
-
-  font-family:'Noto Sans KR',sans-serif;
-  font-size:13px;
-  font-weight:700;
-  color:#c62828;
-
-  text-align:right;
-  white-space:nowrap;
-
-  -webkit-text-stroke:0.5px #ffffff;
-  paint-order:stroke fill;
-}
-
-   
-/* 이름과 직책 글씨체 통일 */
-
-.name,
-.role {
-  font-family:'Noto Sans KR',sans-serif;
-  font-weight:700;
-}
-
-
-   
 </style>
 </head>
 
@@ -821,8 +701,6 @@ footer p {
 ========================= -->
 
 <main>
-
-  <!-- 기존 등장인물 제목 디자인 -->
 
   <div class="page-header">
 
@@ -914,10 +792,6 @@ navigation.querySelectorAll("a").forEach(function (link) {
    image: 'https://i.ibb.co/이미지주소.png'
 ===================================== */
 
-
-/* =====================================
-   캐릭터 정보 수정 구역
-===================================== */
 
 const groups = [
 
@@ -1260,24 +1134,20 @@ groups.forEach((group, groupIndex) => {
 
     );
 
-     
-/* 이미지 오른쪽 위에 추가 문구 표시 */
 
-if (person.extra) {
-  portrait.append(
-    el('div', 'extra', person.extra)
-  );
-}
+    if (person.extra) {
+      portrait.append(
+        el('div', 'extra', person.extra)
+      );
+    }
 
 
+    const details = el('div', 'details');
 
-
-const details = el('div', 'details');
-
-details.append(
-  el('div', 'quote', person.quote),
-  el('div', 'intro', person.intro)
-);
+    details.append(
+      el('div', 'quote', person.quote),
+      el('div', 'intro', person.intro)
+    );
 
 
 
