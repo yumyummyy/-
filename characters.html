@@ -282,9 +282,9 @@ main {
 
   transition:opacity .3s, transform .3s;
 
-  border:1px solid #c9cebd;
+  border:1px solid #cbb97a;
   padding:8px;
-  background:var(--surface);
+  background:#f5f6ec;
 
   border-radius:12px;
   overflow:hidden;
@@ -307,6 +307,8 @@ main {
   background:linear-gradient(135deg,#f0f2e9,#dce3d4);
   border:1px solid #c9cebd;
   border-radius:7px;
+  border-bottom-left-radius:0;
+  border-bottom-right-radius:0;
 
   overflow:hidden;
 }
@@ -314,9 +316,18 @@ main {
 .portrait::after {
   content:"";
   position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at center, transparent 40%, #f5f6ec 100%);
+  pointer-events:none;
+}
+
+.portrait::before {
+  content:"";
+  position:absolute;
   inset:7px;
   border:1px solid #ffffffa6;
   pointer-events:none;
+  z-index:1;
 }
 
 .portrait img {
@@ -389,6 +400,33 @@ main {
 
 
 /* =========================
+   그룹 구분 아이콘 (색 대신 아이콘으로 구분)
+========================= */
+
+.group-icon {
+  position:absolute;
+  top:16px;
+  right:16px;
+  z-index:3;
+
+  width:34px;
+  height:34px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid #cbb97a;
+  border-radius:50%;
+  background:#f5f6ecd9;
+
+  color:#9a8536;
+  font-size:16px;
+  line-height:1;
+}
+
+
+/* =========================
    이미지 오른쪽 상단 빨간 문구
 ========================= */
 
@@ -416,10 +454,11 @@ main {
 ========================= */
 
 .details {
-  margin-top:8px;
-  padding:22px 20px;
+  margin-top:0;
+  padding:26px 20px 22px;
 
   border:1px solid #c9cebd;
+  border-top:none;
   background:var(--surface);
   border-radius:0;
 
@@ -511,46 +550,11 @@ footer p {
 
 
 /* =========================
-   그룹별 카드 배경색
-   (--accent 올리브 그린 기준 명도 단계로 통일)
+   카드 통일 (그룹 구분은 색이 아닌 아이콘으로)
 ========================= */
 
-/* 주요 인물 - 가장 밝은 올리브 */
-.section-0 .card {
-  background:#f5f6ec;
-}
-
-/* 교단 인물 - 연한 올리브 */
-.section-1 .card {
-  background:#d8ddbd;
-}
-
-/* 편의점 - 중간 올리브 (accent에 가까움) */
-.section-2 .card {
-  background:#b7c085;
-}
-
-/* 신도 - 진한 올리브 */
-.section-3 .card {
-  background:#8c9860;
-}
-
-/* 파출소 - 가장 어두운 올리브 */
-.section-4 .card {
-  background:#5c6640;
-}
-
-/* 가장 어두운 카드는 기본 어두운 글씨+얇은 흰 테두리로는
-   대비가 약해서 이름/직책/소속 텍스트를 밝게, 테두리를 두껍게 조정 */
-.section-4 .name,
-.section-4 .role,
-.section-4 .tag {
-  color:#f5f6ec;
-  -webkit-text-stroke:1px #30342a;
-}
-
-.section-4 .name {
-  -webkit-text-stroke:1.5px #30342a;
+.details {
+  background:#eef0e4;
 }
 
 
@@ -815,6 +819,7 @@ const groups = [
 
   {
     title: '주요 인물',
+    icon: '✦',
 
     people: [
 
@@ -856,6 +861,7 @@ const groups = [
 
   {
     title: '교단 인물',
+    icon: '印',
 
     people: [
 
@@ -917,6 +923,7 @@ const groups = [
 
   {
     title: '교회 근처 편의점',
+    icon: '▥',
 
     people: [
 
@@ -947,6 +954,7 @@ const groups = [
 
   {
     title: '주요 신도',
+    icon: '🕯',
 
     people: [
 
@@ -1028,6 +1036,7 @@ const groups = [
 
   {
     title: '파출소',
+    icon: '★',
 
     people: [
 
@@ -1142,6 +1151,7 @@ groups.forEach((group, groupIndex) => {
 
     portrait.append(
 
+      el('div', 'group-icon', group.icon),
       el('div', 'name', person.name),
       el('div', 'role', person.role),
       el('div', person.tag === '루아엘' ? 'tag luahel' : 'tag', person.tag)
