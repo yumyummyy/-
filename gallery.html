@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -340,6 +341,38 @@ footer p {
   }
 }
 
+
+/* =========================
+   유튜브 영상
+========================= */
+
+.video-section {
+  max-width:900px;
+  margin:0 auto 60px;
+}
+
+.video-container {
+  position:relative;
+  width:100%;
+  aspect-ratio:16 / 9;
+
+  overflow:hidden;
+  background:#202020;
+  border:1px solid var(--line);
+}
+
+.video-container iframe {
+  position:absolute;
+  top:0;
+  left:0;
+
+  width:100%;
+  height:100%;
+
+  border:0;
+}
+
+   
 </style>
 </head>
 
@@ -430,6 +463,31 @@ footer p {
     <div class="page-line"></div>
 
   </section>
+
+   
+
+<!-- 유튜브 영상 -->
+
+<section class="video-section">
+
+  <div class="video-container">
+
+    <iframe
+      src="https://www.youtube.com/embed/영상ID?cc_load_policy=1&amp;cc_lang_pref=ko&amp;hl=ko"
+      title="비공식 화보 영상"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+</section>
+
+
+  </div>
+
+</section>
 
 
   <!-- =========================
