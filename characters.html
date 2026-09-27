@@ -713,15 +713,27 @@ footer p {
 }
 
    
-/* 세 신도의 빨간색 추가 소개 */
+
+/* 이미지 오른쪽 상단 빨간 문구 */
 
 .extra {
+  position:absolute;
+  top:27px;
+  right:22px;
+  z-index:3;
+
   font-family:'Noto Sans KR',sans-serif;
-  font-size:12px;
-  font-weight:600;
+  font-size:13px;
+  font-weight:700;
   color:#c62828;
-  text-align:center;
+
+  text-align:right;
+  white-space:nowrap;
+
+  -webkit-text-stroke:0.5px #ffffff;
+  paint-order:stroke fill;
 }
+
 
    
 </style>
@@ -1097,7 +1109,7 @@ const groups = [
   tag: '형제님',
   quote: '“한 번만, 딱 한 번만요.”',
   intro: '휴학생',
-  extra: '♥♥♥♥천상합일♥♥♥♥',
+  extra: '♥천상합일♥',
   image: ''
 },
 
@@ -1230,6 +1242,16 @@ groups.forEach((group, groupIndex) => {
 
     );
 
+     
+/* 이미지 오른쪽 위에 추가 문구 표시 */
+
+if (person.extra) {
+  portrait.append(
+    el('div', 'extra', person.extra)
+  );
+}
+
+
 
 
 const details = el('div', 'details');
@@ -1238,14 +1260,6 @@ details.append(
   el('div', 'quote', person.quote),
   el('div', 'intro', person.intro)
 );
-
-/* 추가 소개가 있는 캐릭터에게만 표시 */
-
-if (person.extra) {
-  details.append(
-    el('div', 'extra', person.extra)
-  );
-}
 
 
 
