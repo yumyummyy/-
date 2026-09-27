@@ -372,6 +372,104 @@ footer p {
   border:0;
 }
 
+
+/* =========================
+   유튜브 + 그라데이션 배경
+========================= */
+
+/* 기존 main의 여백 조정 */
+main {
+  max-width:none;
+  margin:0;
+  padding:70px 0 0;
+}
+
+/* 기존 제목 영역 유지 */
+.page-header {
+  padding:0 24px;
+  margin-bottom:60px;
+}
+
+/* 영상부터 화보까지 이어지는 배경 */
+.gallery-background {
+  width:100%;
+
+  background:linear-gradient(
+    to bottom,
+    #080808 0%,
+    #111111 12%,
+    #292929 25%,
+    #55554f 40%,
+    #96968c 55%,
+    #d5d5ca 72%,
+    #f8f7f1 88%,
+    #f8f7f1 100%
+  );
+
+  padding:65px 24px 100px;
+}
+
+/* 유튜브 영상 */
+.video-section {
+  max-width:900px;
+  margin:0 auto 110px;
+}
+
+.video-container {
+  position:relative;
+  width:100%;
+  aspect-ratio:16 / 9;
+
+  overflow:hidden;
+  background:#000;
+}
+
+.video-container iframe {
+  position:absolute;
+  top:0;
+  left:0;
+
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* 기존 화보 너비 유지 */
+.gallery-grid {
+  max-width:1052px;
+  margin:0 auto;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+/* 모바일 */
+@media (max-width:650px) {
+
+  main {
+    padding:50px 0 0;
+  }
+
+  .page-header {
+    padding:0 16px;
+    margin-bottom:45px;
+  }
+
+  .gallery-background {
+    padding:35px 16px 75px;
+  }
+
+  .video-section {
+    margin-bottom:75px;
+  }
+
+  .gallery-grid {
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+  }
+}
+
    
 </style>
 </head>
@@ -450,7 +548,10 @@ footer p {
      본문
 ========================= -->
 
+
 <main>
+
+  <!-- 제목 -->
 
   <section class="page-header">
 
@@ -464,32 +565,39 @@ footer p {
 
   </section>
 
-   
 
-<!-- 유튜브 영상 -->
+  <!-- =========================
+       그라데이션 배경 시작
+  ========================= -->
 
-<section class="video-section">
-
-  <div class="video-container">
-
-    <iframe
-      src="https://www.youtube.com/embed/영상ID?cc_load_policy=1&amp;cc_lang_pref=ko&amp;hl=ko"
-      title="비공식 화보 영상"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
-
-  </div>
-
-</section>
+  <div class="gallery-background">
 
 
-  </div>
+    <!-- 유튜브 영상 -->
 
-</section>
+    <section class="video-section">
+
+      <div class="video-container">
+
+        <iframe
+          src="https://www.youtube.com/embed/EHBFKhLUVig?cc_load_policy=1&amp;cc_lang_pref=ko&amp;hl=ko"
+          title="루아엘교회 비공식 화보"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+    </section>
 
 
+    <!-- =========================
+         화보 이미지 20장
+    ========================= -->
+
+    <!-- 기존 gallery-grid 전체를 이 자리에 넣기 -->
 
 <!-- =========================
      화보 이미지
@@ -599,6 +707,7 @@ footer p {
 
 </section>
 
+</div>
 
 </main>
 
