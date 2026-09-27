@@ -231,61 +231,6 @@ main {
 }
 
 
-/* =========================
-   캐릭터 카드
-========================= */
-
-.character-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-}
-
-.character-card {
-  overflow:hidden;
-
-  background:var(--surface);
-  border:1px solid var(--line);
-}
-
-.character-image {
-  width:100%;
-  aspect-ratio:3 / 4;
-
-  background:#efefe7;
-}
-
-.character-image img {
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-  display:block;
-}
-
-.character-info {
-  padding:22px;
-}
-
-.character-info h2 {
-  min-height:29px;
-  margin:0 0 10px;
-
-  font-family:'Nanum Myeongjo',serif;
-  font-size:21px;
-  font-weight:800;
-}
-
-.character-info p {
-  min-height:45px;
-  margin:0;
-
-  font-size:13px;
-  line-height:1.8;
-
-  color:var(--muted);
-}
-
 
 /* =========================
    하단
@@ -452,90 +397,592 @@ footer p {
 </header>
 
 
-<!-- =========================
-     본문
-========================= -->
 
-<main>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>등장인물 | 루아엘교회</title>
 
-  <section class="character-grid">
+<style>
+* {
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  background: #f8f8f3;
+  color: #343a30;
+  font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+}
 
-    <article class="character-card">
+button {
+  font: inherit;
+}
 
-      <div class="character-image"></div>
+.page {
+  max-width: 1100px;
+  margin: auto;
+  padding: 48px 0 70px;
+}
 
-      <div class="character-info">
-        <h2></h2>
-        <p></p>
-      </div>
+.page-title {
+  text-align: center;
+  font-family: serif;
+  font-size: 32px;
+  font-weight: normal;
+  margin: 0 0 48px;
+}
 
-    </article>
+.section {
+  margin-bottom: 64px;
+}
 
+.section h2 {
+  font-family: serif;
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0 0 20px;
+  padding: 0 max(24px, 8%);
+}
 
-    <article class="character-card">
+/* 슬라이드 */
 
-      <div class="character-image"></div>
+.stage {
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+}
 
-      <div class="character-info">
-        <h2></h2>
-        <p></p>
-      </div>
+.stage.dragging {
+  cursor: grabbing;
+}
 
-    </article>
+.track {
+  display: flex;
+  gap: 16px;
+  padding: 5px 9% 15px;
+  will-change: transform;
+}
 
+.card {
+  flex: 0 0 82%;
+  min-width: 0;
+  opacity: .43;
+  transform: scale(.975);
+  transition: opacity .3s, transform .3s;
+}
 
-    <article class="character-card">
+.card.active {
+  opacity: 1;
+  transform: scale(1);
+}
 
-      <div class="character-image"></div>
+/* 캐릭터 이미지 - 1:1 */
 
-      <div class="character-info">
-        <h2></h2>
-        <p></p>
-      </div>
+.portrait {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #f0f2e9, #dce3d4);
+  border: 1px solid #c9cebd;
+  overflow: hidden;
+}
 
-    </article>
+.portrait::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid #ffffffa6;
+  pointer-events: none;
+}
 
+.portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    <article class="character-card">
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #a0ae95;
+}
 
-      <div class="character-image"></div>
+.placeholder svg {
+  width: 45%;
+  height: 45%;
+}
 
-      <div class="character-info">
-        <h2></h2>
-        <p></p>
-      </div>
+/* 이름 및 소속 */
 
-    </article>
+.name {
+  position: absolute;
+  left: 22px;
+  top: 20px;
+  font: normal clamp(25px, 5vw, 42px) serif;
+  z-index: 2;
+  text-shadow: 0 1px 9px #f8f8f3;
+}
 
+.role,
+.tag {
+  position: absolute;
+  bottom: 19px;
+  z-index: 2;
+  font: 16px serif;
+  text-shadow: 0 1px 8px #f8f8f3;
+}
 
-    <article class="character-card">
+.role {
+  left: 22px;
+}
 
-      <div class="character-image"></div>
+.tag {
+  right: 22px;
+}
 
-      <div class="character-info">
-        <h2></h2>
-        <p></p>
-      </div>
+/* 대사 + 한 줄 소개 */
 
-    </article>
+.details {
+  margin-top: 8px;
+  padding: 22px 20px;
+  border: 1px solid #c9cebd;
+  background: #fffefa;
+  text-align: center;
+  min-height: 108px;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+}
 
-    <article class="character-card">
+.quote {
+  font: normal clamp(17px, 3vw, 23px) serif;
+}
 
-      <div class="character-image"></div>
+.intro {
+  font-size: 12px;
+  color: #68715f;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-      <div class="character-info">
-        <h2></h2>
-        <p></p>
-      </div>
+/* 양옆 화살표 */
 
-    </article>
+.arrow {
+  position: absolute;
+  z-index: 5;
+  top: 42%;
+  transform: translateY(-50%);
 
+  width: 42px;
+  height: 60px;
 
-  </section>
+  background: #f8f8f3ee;
+  border: 1px solid #bdc5b2;
+  color: #68795d;
+  font-size: 30px;
+  cursor: pointer;
+}
 
+.arrow.prev {
+  left: 0;
+  border-radius: 0 5px 5px 0;
+}
+
+.arrow.next {
+  right: 0;
+  border-radius: 5px 0 0 5px;
+}
+
+.arrow:disabled {
+  opacity: .2;
+  cursor: default;
+}
+
+.divider {
+  height: 1px;
+  background: #dfe3d8;
+  margin: 0 8% 55px;
+}
+
+/* 반응형 */
+
+@media (min-width: 700px) {
+  .track {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+
+  .card {
+    flex-basis: 70%;
+  }
+
+  .section h2 {
+    padding: 0 15%;
+  }
+
+  .arrow {
+    width: 48px;
+    height: 66px;
+  }
+}
+
+@media (max-width: 430px) {
+  .page {
+    padding-top: 34px;
+  }
+
+  .page-title {
+    margin-bottom: 38px;
+  }
+
+  .section {
+    margin-bottom: 45px;
+  }
+
+  .track {
+    gap: 10px;
+  }
+
+  .details {
+    padding: 18px 10px;
+  }
+
+  .intro {
+    font-size: 11px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+  <h1 class="page-title">등장인물</h1>
+  <div id="sections"></div>
 </main>
+
+<script>
+
+/* =====================================
+   캐릭터 정보 수정 구역
+
+   name  : 이름
+   role  : 직책
+   tag   : 오른쪽 아래 표시
+   quote : 캐릭터 대사
+   intro : 한 줄 소개
+   image : 이미지 주소
+
+   이미지 예시:
+   image: 'https://i.ibb.co/이미지주소.png'
+===================================== */
+
+const groups = [
+
+  /* 주요 인물 - 3명 */
+  {
+    title: '주요 인물',
+    people: [
+      {
+        name: '교주',
+        role: '교주',
+        tag: '루아엘',
+        quote: '“당신에게도 구원이 필요하겠지요.”',
+        intro: '루아엘교회를 이끄는 인물.',
+        image: ''
+      },
+      {
+        name: '이현',
+        role: '천사',
+        tag: '루아엘',
+        quote: '“오늘도 저를 보러 오셨나요?”',
+        intro: '교회에서 천사라 불리는 인물.',
+        image: ''
+      },
+      {
+        name: '이윤',
+        role: '천사',
+        tag: '루아엘',
+        quote: '“그렇게까지 믿고 싶어요?”',
+        intro: '사람들의 기대를 잘 알고 있는 인물.',
+        image: ''
+      }
+    ]
+  },
+
+  /* 교단 인물 - 5명 */
+  {
+    title: '교단 인물',
+    people: Array.from({length: 5}, (_, i) => ({
+      name: `교단 인물 ${i + 1}`,
+      role: '교단 관계자',
+      tag: '루아엘',
+      quote: '“대사를 입력하세요.”',
+      intro: '한 줄 소개를 입력하세요.',
+      image: ''
+    }))
+  },
+
+  /* 편의점 - 2명 */
+  {
+    title: '편의점',
+    people: Array.from({length: 2}, (_, i) => ({
+      name: `편의점 인물 ${i + 1}`,
+      role: '편의점 직원',
+      tag: '외부 인물',
+      quote: '“대사를 입력하세요.”',
+      intro: '한 줄 소개를 입력하세요.',
+      image: ''
+    }))
+  },
+
+  /* 신도 - 7명 */
+  {
+    title: '신도',
+    people: Array.from({length: 7}, (_, i) => ({
+      name: `신도 ${i + 1}`,
+      role: '신도',
+      tag: '루아엘',
+      quote: '“대사를 입력하세요.”',
+      intro: '한 줄 소개를 입력하세요.',
+      image: ''
+    }))
+  },
+
+  /* 파출소 - 3명 */
+  {
+    title: '파출소',
+    people: Array.from({length: 3}, (_, i) => ({
+      name: `파출소 인물 ${i + 1}`,
+      role: '경찰',
+      tag: '파출소',
+      quote: '“대사를 입력하세요.”',
+      intro: '한 줄 소개를 입력하세요.',
+      image: ''
+    }))
+  }
+
+];
+
+
+/* =====================================
+   아래는 슬라이드 작동 코드
+===================================== */
+
+const silhouette = `
+<div class="placeholder" aria-label="이미지 준비 중">
+  <svg viewBox="0 0 180 240" fill="none"
+       xmlns="http://www.w3.org/2000/svg">
+    <circle cx="90" cy="76" r="36" fill="#bac8b2"/>
+    <path d="M18 224c2-65 24-106 72-106s70 41 72 106"
+          fill="#bac8b2"/>
+  </svg>
+</div>`;
+
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+const mount = document.getElementById('sections');
+
+groups.forEach((group, groupIndex) => {
+
+  const section = el('section', 'section');
+  section.append(el('h2', '', group.title));
+
+  const stage = el('div', 'stage');
+  const track = el('div', 'track');
+
+  group.people.forEach(person => {
+
+    const card = el('article', 'card');
+    const portrait = el('div', 'portrait');
+
+    if (person.image) {
+      const img = el('img');
+
+      img.src = person.image;
+      img.alt = person.name;
+      img.draggable = false;
+
+      img.onerror = () => {
+        const temp = el('div');
+        temp.innerHTML = silhouette;
+        img.replaceWith(temp.firstChild);
+      };
+
+      portrait.append(img);
+    } else {
+      portrait.innerHTML = silhouette;
+    }
+
+    portrait.append(
+      el('div', 'name', person.name),
+      el('div', 'role', person.role),
+      el('div', 'tag', person.tag)
+    );
+
+    const details = el('div', 'details');
+
+    details.append(
+      el('div', 'quote', person.quote),
+      el('div', 'intro', person.intro)
+    );
+
+    card.append(portrait, details);
+    track.append(card);
+
+  });
+
+  const prev = el('button', 'arrow prev', '‹');
+  const next = el('button', 'arrow next', '›');
+
+  prev.type = 'button';
+  next.type = 'button';
+
+  prev.setAttribute('aria-label', `${group.title} 이전 인물`);
+  next.setAttribute('aria-label', `${group.title} 다음 인물`);
+
+  stage.append(track, prev, next);
+  section.append(stage);
+  mount.append(section);
+
+  if (groupIndex < groups.length - 1) {
+    mount.append(el('div', 'divider'));
+  }
+
+  const cards = [...track.children];
+
+  let index = 0;
+  let active = false;
+  let pointerId = null;
+  let startX = 0;
+  let startY = 0;
+  let delta = 0;
+  let axis = null;
+
+  const step = () =>
+    cards[0].getBoundingClientRect().width +
+    (parseFloat(getComputedStyle(track).gap) || 0);
+
+  function paint(extra = 0, animate = true) {
+
+    track.style.transition = animate
+      ? 'transform .38s cubic-bezier(.22,.75,.22,1)'
+      : 'none';
+
+    track.style.transform =
+      `translate3d(${-index * step() + extra}px,0,0)`;
+
+    cards.forEach((card, i) => {
+      card.classList.toggle('active', i === index);
+    });
+
+    prev.disabled = index === 0;
+    next.disabled = index === cards.length - 1;
+  }
+
+  function go(n) {
+    index = Math.max(0, Math.min(cards.length - 1, n));
+    paint();
+  }
+
+  prev.addEventListener('click', () => go(index - 1));
+  next.addEventListener('click', () => go(index + 1));
+
+  /* 마우스 드래그 및 모바일 스와이프 */
+
+  stage.addEventListener('pointerdown', e => {
+
+    if (e.target.closest('button')) return;
+
+    active = true;
+    pointerId = e.pointerId;
+
+    startX = e.clientX;
+    startY = e.clientY;
+
+    delta = 0;
+    axis = null;
+
+    stage.classList.add('dragging');
+  });
+
+  stage.addEventListener('pointermove', e => {
+
+    if (!active || e.pointerId !== pointerId) return;
+
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    if (axis === null && Math.hypot(dx, dy) > 7) {
+      axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+    }
+
+    if (axis !== 'x') return;
+
+    delta = dx;
+
+    if (
+      (index === 0 && delta > 0) ||
+      (index === cards.length - 1 && delta < 0)
+    ) {
+      delta *= .23;
+    }
+
+    paint(delta, false);
+  });
+
+  function finish(e) {
+
+    if (!active || e.pointerId !== pointerId) return;
+
+    active = false;
+    stage.classList.remove('dragging');
+
+    if (
+      axis === 'x' &&
+      Math.abs(delta) > Math.min(75, step() * .17)
+    ) {
+      index = Math.max(
+        0,
+        Math.min(cards.length - 1, index + (delta < 0 ? 1 : -1))
+      );
+    }
+
+    delta = 0;
+    axis = null;
+    pointerId = null;
+
+    paint();
+  }
+
+  stage.addEventListener('pointerup', finish);
+  stage.addEventListener('pointercancel', finish);
+
+  window.addEventListener('resize', () => paint(0, false));
+
+  paint(0, false);
+
+});
+
+</script>
+</body>
+</html>
 
 
 <!-- =========================
