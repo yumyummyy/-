@@ -713,6 +713,17 @@ footer p {
 }
 
    
+/* 세 신도의 빨간색 추가 소개 */
+
+.extra {
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:12px;
+  font-weight:600;
+  color:#c62828;
+  text-align:center;
+}
+
+   
 </style>
 </head>
 
@@ -1043,23 +1054,25 @@ const groups = [
         image: ''
       },
 
-      {
-        name: '윤태오',
-        role: '신도',
-        tag: '형제님',
-        quote: '“성아님 말씀은 백 번도 듣죠.”',
-        intro: '재벌 4세',
-        image: ''
-      },
+{
+  name: '윤태오',
+  role: '신도',
+  tag: '형제님',
+  quote: '“성아님 말씀은 백 번도 듣죠.”',
+  intro: '재벌 4세',
+  extra: '♥여자 버전 신도',
+  image: ''
+},
 
-      {
-        name: '유나리',
-        role: '신도',
-        tag: '자매님',
-        quote: '“성아님 생각하면 숨이 쉬어져요.”',
-        intro: '멘헤라',
-        image: ''
-      },
+{
+  name: '유나리',
+  role: '신도',
+  tag: '자매님',
+  quote: '“성아님 생각하면 숨이 쉬어져요.”',
+  intro: '멘헤라',
+  extra: '♥남자 버전 신도',
+  image: ''
+},
 
       {
         name: '오세림',
@@ -1078,14 +1091,15 @@ const groups = [
         image: ''
       },
 
-      {
-        name: '이도윤',
-        role: '신도',
-        tag: '형제님',
-        quote: '“한 번만, 딱 한 번만요.”',
-        intro: '',
-        image: ''
-      }
+{
+  name: '이도윤',
+  role: '신도',
+  tag: '형제님',
+  quote: '“한 번만, 딱 한 번만요.”',
+  intro: '휴학생',
+  extra: '♥♥♥♥천상합일♥♥♥♥',
+  image: ''
+},
 
     ]
   },
@@ -1217,14 +1231,22 @@ groups.forEach((group, groupIndex) => {
     );
 
 
-    const details = el('div', 'details');
 
-    details.append(
+const details = el('div', 'details');
 
-      el('div', 'quote', person.quote),
-      el('div', 'intro', person.intro)
+details.append(
+  el('div', 'quote', person.quote),
+  el('div', 'intro', person.intro)
+);
 
-    );
+/* 추가 소개가 있는 캐릭터에게만 표시 */
+
+if (person.extra) {
+  details.append(
+    el('div', 'extra', person.extra)
+  );
+}
+
 
 
     card.append(portrait, details);
