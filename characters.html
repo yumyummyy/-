@@ -643,8 +643,9 @@ footer p {
   background:#52799c;
 }
 
-/* 루아엘 글씨만 크게 */
-.tag.luahel {
+/* 프로필 오른쪽 아래 소속 글씨 크기 */
+
+.tag {
   font-size:20px;
   font-weight:600;
 }
@@ -1009,7 +1010,7 @@ groups.forEach((group, groupIndex) => {
 
       el('div', 'name', person.name),
       el('div', 'role', person.role),
-      el('div', person.tag === '루아엘' ? 'tag luahel' : 'tag', person.tag)
+      el('div', 'tag', person.tag)
 
     );
 
