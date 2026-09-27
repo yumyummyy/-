@@ -488,27 +488,30 @@ main {
   position:absolute;
   z-index:5;
 
-  top:42%;
+  top:50%;
   transform:translateY(-50%);
 
-  width:42px;
-  height:60px;
+  width:40px;
+  height:40px;
 
-  background:#f8f8f3ee;
-  border:1px solid #bdc5b2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-  color:#68795d;
-  font-size:30px;
+  border-radius:50%;
+  background:#f5f6ecdd;
+  border:1px solid #cbb97a;
+  box-shadow:0 2px 8px rgba(48,52,42,.12);
+
+  color:#8c9860;
 }
 
 .arrow.prev {
-  left:0;
-  border-radius:0 5px 5px 0;
+  left:10px;
 }
 
 .arrow.next {
-  right:0;
-  border-radius:5px 0 0 5px;
+  right:10px;
 }
 
 .arrow:disabled {
@@ -569,8 +572,8 @@ footer p {
   }
 
   .arrow {
-    width:48px;
-    height:66px;
+    width:46px;
+    height:46px;
   }
 }
 
@@ -879,7 +882,7 @@ const groups = [
         name: '구태건',
         role: '마약 유통책',
         tag: '전도국장',
-        quote: '“씨발, 한국어로 말해.”',
+        quote: '“씨발. 한국어로 말해.”',
         intro: '영어 잘 못함',
         image: 'https://i.ibb.co/jPWtSd3g/best-quality-2-artist-collaboration-very-aesthetic-masterpiece-no-text-s-3990696009.png'
 
@@ -963,7 +966,7 @@ const groups = [
         name: '정우진',
         role: '신도',
         tag: '형제님',
-        quote: '“...그래서 안락사 언제 되냐고.”',
+        quote: '“그래서 안락사 언제 되냐고.”',
         intro: '가장 오래된 신도',
         image: 'https://i.ibb.co/3ykmsWtd/best-quality-2-artist-collaboration-very-aesthetic-masterpiece-no-text-s-2421758.png'
       },
@@ -1054,7 +1057,7 @@ const groups = [
         name: '유시준',
         role: '경찰',
         tag: '경사',
-        quote: '“나도 마약이나 하고 싶다.”',
+        quote: '“나도 마약이나 하고 싶다~”',
         intro: 'MZ 경찰',
         image: 'https://i.ibb.co/prvhNdh6/best-quality-2-artist-collaboration-very-aesthetic-masterpiece-no-text-s-2325341421.png'
       }
@@ -1175,8 +1178,11 @@ groups.forEach((group, groupIndex) => {
 
   /* 좌우 화살표 */
 
-  const prev = el('button', 'arrow prev', '‹');
-  const next = el('button', 'arrow next', '›');
+  const prev = el('button', 'arrow prev');
+  const next = el('button', 'arrow next');
+
+  prev.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"></polyline></svg>';
+  next.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"></polyline></svg>';
 
   prev.type = 'button';
   next.type = 'button';
