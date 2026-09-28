@@ -13,32 +13,16 @@
 
 <style>
 
-/* 기본 설정 */
-
-:root {
-  --paper:#f8f7f1;
-  --surface:#fffefa;
-  --ink:#30342a;
-  --muted:#77796b;
-  --line:#e5e5d8;
-  --accent:#9aaa51;
-  --accent-dark:#5f6d2a;
-  --accent-light:#f0f3df;
-  --divider:#b9c49b;
-}
+/* 기본 */
 
 * {
   box-sizing:border-box;
 }
 
-html {
-  scroll-behavior:smooth;
-}
-
 body {
   margin:0;
-  background:var(--paper);
-  color:var(--ink);
+  background:#fffefa;
+  color:#30342a;
   font-family:'Noto Sans KR',sans-serif;
 }
 
@@ -52,11 +36,6 @@ button {
   cursor:pointer;
 }
 
-:focus-visible {
-  outline:2px solid var(--accent-dark);
-  outline-offset:3px;
-}
-
 
 /* 헤더 */
 
@@ -64,8 +43,8 @@ header {
   position:sticky;
   top:0;
   z-index:100;
-  background:var(--surface);
-  border-bottom:1px solid var(--line);
+  background:#fffefa;
+  border-bottom:1px solid #e8e8e1;
 }
 
 .header-inner {
@@ -88,7 +67,6 @@ header {
   width:48px;
   height:48px;
   object-fit:contain;
-  border-radius:14px;
 }
 
 .brand-text {
@@ -108,11 +86,11 @@ header {
   font-family:Georgia,serif;
   font-size:10px;
   letter-spacing:2px;
-  color:var(--accent);
+  color:#9aaa51;
 }
 
 
-/* 햄버거 버튼 */
+/* 메뉴 버튼 */
 
 .menu-button {
   display:flex;
@@ -121,7 +99,7 @@ header {
   padding:8px;
   border:none;
   background:transparent;
-  color:var(--ink);
+  color:#30342a;
 }
 
 .icon {
@@ -139,8 +117,8 @@ header {
 
 .navigation {
   display:none;
-  background:var(--surface);
-  border-top:1px solid var(--line);
+  background:#fffefa;
+  border-top:1px solid #e8e8e1;
 }
 
 .navigation.open {
@@ -161,15 +139,14 @@ header {
   font-size:15px;
 }
 
-.navigation a:hover,
-.navigation a:focus-visible {
-  color:var(--accent-dark);
+.navigation a:hover {
+  color:#5f6d2a;
 }
 
 .menu-divider {
   height:1px;
   margin:12px 4px;
-  background:var(--line);
+  background:#e8e8e1;
 }
 
 .menu-label {
@@ -177,132 +154,61 @@ header {
   font-family:Georgia,serif;
   font-size:11px;
   letter-spacing:2px;
-  color:var(--muted);
+  color:#77796b;
 }
 
 
-/* 페이지 상단 */
+/* 본문 */
 
 main {
   width:100%;
-  max-width:900px;
+  max-width:850px;
   margin:0 auto;
-  padding:65px 24px 100px;
+  padding:65px 24px 110px;
 }
 
-.page-heading {
-  text-align:center;
-  margin-bottom:42px;
-}
-
-.page-symbol {
-  width:35px;
-  height:35px;
-  margin:0 auto 15px;
-  fill:none;
-  stroke:var(--accent);
-  stroke-width:1.3;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-.page-heading h1 {
-  margin:0;
+.page-title {
+  margin:0 0 42px;
   font-family:'Nanum Myeongjo',serif;
-  font-size:29px;
+  font-size:27px;
   font-weight:800;
-  color:var(--accent-dark);
-}
-
-.page-heading p {
-  margin:13px 0 0;
-  font-family:Georgia,serif;
-  font-size:10px;
-  letter-spacing:2.5px;
-  color:var(--muted);
+  text-align:center;
 }
 
 
-/* 유튜브 영상 */
+/* 유튜브 */
 
-.video-section {
-  max-width:800px;
-  margin:0 auto 75px;
-}
-
-.video-frame {
-  position:relative;
+.video {
   width:100%;
   aspect-ratio:16 / 9;
-  background:#171914;
-  overflow:hidden;
+  background:#111;
 }
 
-.video-frame iframe {
-  position:absolute;
-  inset:0;
+.video iframe {
+  display:block;
   width:100%;
   height:100%;
   border:0;
-}
-
-.video-caption {
-  margin-top:13px;
-  text-align:center;
-  font-size:12px;
-  color:var(--muted);
 }
 
 
 /* 설교문 */
 
 .sermon {
-  max-width:620px;
-  margin:0 auto;
-}
-
-.sermon-header {
-  margin-bottom:65px;
-  text-align:center;
-}
-
-.sermon-header .eyebrow {
-  margin:0 0 14px;
-  font-family:Georgia,serif;
-  font-size:11px;
-  letter-spacing:2px;
-  color:var(--accent-dark);
-}
-
-.sermon-header h2 {
-  margin:0;
-  font-family:'Nanum Myeongjo',serif;
-  font-size:25px;
-  font-weight:800;
-  line-height:1.6;
-  color:var(--ink);
-}
-
-.sermon-header::after {
-  content:"";
-  display:block;
-  width:35px;
-  height:1px;
-  margin:25px auto 0;
-  background:var(--divider);
+  max-width:650px;
+  margin:75px auto 0;
 }
 
 .sermon-section {
-  margin-bottom:70px;
+  margin-bottom:65px;
 }
 
-.sermon-section h3 {
-  margin:0 0 30px;
+.sermon-section h2 {
+  margin:0 0 28px;
   font-family:'Nanum Myeongjo',serif;
   font-size:21px;
   font-weight:800;
   line-height:1.6;
-  color:var(--accent-dark);
 }
 
 .sermon-section p {
@@ -321,54 +227,16 @@ main {
   font-weight:700;
 }
 
-.sermon-section .key-message {
-  margin:35px 0 0;
-  padding:21px 15px;
-  background:var(--accent-light);
-  text-align:center;
-  font-family:'Nanum Myeongjo',serif;
-  font-size:18px;
-  font-weight:800;
-  line-height:1.9;
-  color:var(--accent-dark);
-}
-
 
 /* 마지막 문장 */
 
-.closing {
-  margin-top:65px;
-  padding-top:35px;
-  border-top:1px solid var(--divider);
-  text-align:center;
-}
-
-.closing p {
-  margin:0;
-  font-family:'Nanum Myeongjo',serif;
-  font-size:24px;
-  font-weight:800;
-  line-height:1.9;
-  color:var(--accent-dark);
-}
-
-.signature {
-  margin-top:48px;
-  text-align:center;
-}
-
-.signature p {
-  margin:0 0 7px;
-  font-size:12px;
-  color:var(--muted);
-}
-
-.signature strong {
-  display:block;
+.sermon-ending {
+  margin-top:45px;
   font-family:'Nanum Myeongjo',serif;
   font-size:19px;
   font-weight:800;
-  color:var(--ink);
+  line-height:1.9;
+  text-align:center;
 }
 
 
@@ -376,8 +244,7 @@ main {
 
 footer {
   padding:45px 24px;
-  background:var(--paper);
-  border-top:1px solid var(--line);
+  border-top:1px solid #e8e8e1;
   text-align:center;
 }
 
@@ -390,7 +257,7 @@ footer p {
   margin:10px 0 0;
   font-size:12px;
   line-height:1.8;
-  color:var(--muted);
+  color:#77796b;
 }
 
 
@@ -425,36 +292,25 @@ footer p {
 @media(max-width:650px) {
 
   main {
-    padding:42px 20px 75px;
+    padding:40px 20px 75px;
   }
 
-  .page-heading {
+  .page-title {
     margin-bottom:32px;
+    font-size:23px;
   }
 
-  .page-heading h1 {
-    font-size:25px;
-  }
-
-  .video-section {
-    margin-bottom:60px;
-  }
-
-  .sermon-header {
-    margin-bottom:52px;
-  }
-
-  .sermon-header h2 {
-    font-size:22px;
+  .sermon {
+    margin-top:55px;
   }
 
   .sermon-section {
-    margin-bottom:55px;
+    margin-bottom:52px;
   }
 
-  .sermon-section h3 {
+  .sermon-section h2 {
     font-size:19px;
-    margin-bottom:25px;
+    margin-bottom:24px;
   }
 
   .sermon-section p {
@@ -463,18 +319,8 @@ footer p {
     margin-bottom:18px;
   }
 
-  .sermon-section .key-message {
-    margin-top:28px;
-    padding:19px 12px;
-    font-size:16px;
-  }
-
-  .closing {
-    margin-top:50px;
-  }
-
-  .closing p {
-    font-size:20px;
+  .sermon-ending {
+    font-size:17px;
   }
 
 }
@@ -549,66 +395,33 @@ footer p {
 
 <main>
 
-
-  <!-- 페이지 제목 -->
-
-  <div class="page-heading">
-
-    <svg class="page-symbol" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 2v19"/>
-      <path d="M7 7h10"/>
-      <path d="M4 21h16"/>
-    </svg>
-
-    <h1>교주님 말씀</h1>
-
-    <p>LUHAEL CHURCH</p>
-
-  </div>
+  <h1 class="page-title">교주님 말씀</h1>
 
 
   <!-- 유튜브 영상 -->
 
-  <section class="video-section" aria-label="교주님 말씀 영상">
+  <div class="video">
 
-    <div class="video-frame">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/8aJz2Fj8ti4"
+      title="교주님 말씀"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
 
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/8aJz2Fj8ti4"
-        title="루아엘교회 교주님 말씀"
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-
-    </div>
-
-    <div class="video-caption">
-      영상을 재생하여 말씀을 감상하실 수 있습니다.
-    </div>
-
-  </section>
+  </div>
 
 
   <!-- 설교문 -->
 
   <article class="sermon">
 
-    <div class="sermon-header">
-
-      <p class="eyebrow">THE WORD</p>
-
-      <h2>천상합일</h2>
-
-    </div>
-
-
-    <!-- 하나에서 태어난 우리 -->
 
     <section class="sermon-section">
 
-      <h3>하나에서 태어난 우리</h3>
+      <h2>하나에서 태어난 우리</h2>
 
       <p>루아엘의 가족 여러분.</p>
 
@@ -639,18 +452,14 @@ footer p {
         너무나 당연한 일이니까요.
       </p>
 
-      <p class="key-message">
-        태어남은 하나에서 둘이 되는 것입니다.
-      </p>
+      <p><strong>태어남은 하나에서 둘이 되는 것입니다.</strong></p>
 
     </section>
 
 
-    <!-- 다시 하나가 되는 날 -->
-
     <section class="sermon-section">
 
-      <h3>다시 하나가 되는 날</h3>
+      <h2>다시 하나가 되는 날</h2>
 
       <p>죽음을 두려워하는 이들이 있습니다.</p>
 
@@ -704,18 +513,14 @@ footer p {
         그 사랑은 완전해질 것입니다.
       </p>
 
-      <p class="key-message">
-        죽음은 둘에서 하나로 돌아가는 것입니다.
-      </p>
+      <p><strong>죽음은 둘에서 하나로 돌아가는 것입니다.</strong></p>
 
     </section>
 
 
-    <!-- 돌아가지 못한 자 -->
-
     <section class="sermon-section">
 
-      <h3>돌아가지 못한 자</h3>
+      <h2>돌아가지 못한 자</h2>
 
       <p>그렇다면 모든 영혼이 천상으로 돌아갈 수 있을까요.</p>
 
@@ -761,11 +566,9 @@ footer p {
     </section>
 
 
-    <!-- 돌아가야 할 때 -->
-
     <section class="sermon-section">
 
-      <h3>돌아가야 할 때</h3>
+      <h2>돌아가야 할 때</h2>
 
       <p>그러니 죽음을 서두르지 마십시오.</p>
 
@@ -815,19 +618,8 @@ footer p {
     </section>
 
 
-    <!-- 마지막 말씀 -->
-
-    <div class="closing">
-
-      <p>여러분이 돌아갈 길은 제가 알고 있습니다.</p>
-
-    </div>
-
-    <div class="signature">
-
-      <p>루아엘의 가족 여러분께</p>
-      <strong>루아엘교회 교주</strong>
-
+    <div class="sermon-ending">
+      여러분이 돌아갈 길은 제가 알고 있습니다.
     </div>
 
   </article>
@@ -839,9 +631,7 @@ footer p {
 
 <footer>
 
-  <div class="footer-name">
-    루아엘교회
-  </div>
+  <div class="footer-name">루아엘교회</div>
 
   <p>LUHAEL CHURCH</p>
 
