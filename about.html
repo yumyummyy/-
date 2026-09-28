@@ -62,7 +62,6 @@ header {
   position:sticky;
   top:0;
   z-index:100;
-
   background:var(--surface);
   border-bottom:1px solid var(--line);
 }
@@ -72,7 +71,6 @@ header {
   height:76px;
   margin:auto;
   padding:0 24px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -120,11 +118,9 @@ header {
   display:flex;
   align-items:center;
   justify-content:center;
-
   padding:8px;
   border:none;
   border-radius:0;
-
   background:transparent;
   color:var(--ink);
 }
@@ -139,7 +135,6 @@ header {
 .icon {
   width:28px;
   height:28px;
-
   fill:none;
   stroke:currentColor;
   stroke-width:1.7;
@@ -166,7 +161,6 @@ header {
   max-width:1200px;
   margin:auto;
   padding:12px 20px 20px;
-
   display:flex;
   flex-direction:column;
   gap:4px;
@@ -194,7 +188,6 @@ header {
 
 .menu-label {
   padding:10px 18px 6px;
-
   font-family:Georgia,serif;
   font-size:11px;
   letter-spacing:2px;
@@ -226,11 +219,9 @@ main {
 
 .church-photo img {
   display:block;
-
   width:auto;
   max-width:100%;
   height:auto;
-
   margin:0 auto;
 }
 
@@ -254,10 +245,8 @@ main {
 
 .article p {
   margin:0 0 18px;
-
   font-size:14px;
   line-height:2.15;
-
   word-break:keep-all;
   overflow-wrap:break-word;
 }
@@ -273,36 +262,33 @@ main {
 
 
 /* =========================
-   소제목 + 구분선
+   소제목 + 양옆 구분선
 ========================= */
 
 .section-heading {
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:15px;
-
   margin:0 0 25px;
+}
+
+.section-heading::before,
+.section-heading::after {
+  content:"";
+  flex:1;
+  height:1px;
+  background:#b9c49b;
 }
 
 .section-heading h2 {
   flex-shrink:0;
-
   margin:0;
-
   font-family:'Nanum Myeongjo',serif;
   font-size:20px;
   font-weight:800;
-
   color:var(--accent-dark);
-}
-
-.section-heading::after {
-  content:"";
-
-  flex:1;
-  height:1px;
-
-  background:#b9c49b;
+  text-align:center;
 }
 
 
@@ -313,20 +299,16 @@ main {
 .doctrine-quote {
   margin:30px 0;
   padding:25px 22px;
-
   background:#ebeedb;
-
   text-align:center;
 }
 
 .doctrine-quote p {
   margin:0;
-
   font-family:'Nanum Myeongjo',serif;
   font-size:16px;
   font-weight:700;
   line-height:2;
-
   color:var(--ink);
 }
 
@@ -346,23 +328,16 @@ main {
 
 
 /* =========================
-   중요 단어
+   천사 부분
 ========================= */
 
-.emphasis-word {
-  margin:28px 0;
-
-  font-family:'Nanum Myeongjo',serif;
-  font-size:21px;
-  font-weight:800;
-
-  color:var(--accent-dark);
+.angel-section {
+  text-align:center;
 }
 
-
-/* =========================
-   천사의 정체
-========================= */
+.angel-section p {
+  text-align:center;
+}
 
 .angel-reveal {
   margin:32px 0 26px;
@@ -370,7 +345,6 @@ main {
 
 .angel-reveal p {
   margin-bottom:9px;
-
   font-family:'Nanum Myeongjo',serif;
   font-size:17px;
   font-weight:800;
@@ -393,7 +367,6 @@ main {
 
 .final-reveal p {
   margin:0;
-
   font-family:'Nanum Myeongjo',serif;
   font-size:24px;
   font-weight:800;
@@ -413,9 +386,10 @@ main {
   margin-bottom:18px;
 }
 
-.dialogue {
 
-/* 마지막 대사 */
+/* =========================
+   마지막 대사
+========================= */
 
 .dialogue {
   margin-top:42px;
@@ -450,24 +424,6 @@ main {
   color:var(--muted);
 }
 
-/* 모바일 */
-@media(max-width:650px) {
-
-  .dialogue .dialogue-first {
-    font-size:13px;
-  }
-
-  .dialogue .dialogue-main {
-    font-size:24px;
-  }
-
-  .dialogue .dialogue-last {
-    font-size:12px;
-  }
-
-}
-
-
 
 /* =========================
    푸터
@@ -475,10 +431,8 @@ main {
 
 footer {
   padding:45px 24px;
-
   background:var(--paper);
   border-top:1px solid var(--line);
-
   text-align:center;
 }
 
@@ -489,10 +443,8 @@ footer {
 
 footer p {
   margin:10px 0 0;
-
   font-size:12px;
   line-height:1.8;
-
   color:var(--muted);
 }
 
@@ -565,10 +517,6 @@ footer p {
     font-size:14px;
   }
 
-  .emphasis-word {
-    font-size:19px;
-  }
-
   .angel-reveal p {
     font-size:16px;
   }
@@ -585,24 +533,21 @@ footer p {
     margin-top:30px;
   }
 
-  .dialogue p {
-    font-size:16px;
-    margin-bottom:10px;
+  .dialogue .dialogue-first {
+    font-size:13px;
+    margin-bottom:30px;
+  }
+
+  .dialogue .dialogue-main {
+    font-size:24px;
+    margin-bottom:8px;
+  }
+
+  .dialogue .dialogue-last {
+    font-size:12px;
   }
 
 }
-
-   
-<div class="dialogue">
-
-  <p class="dialogue-first">너</p>
-
-  <p class="dialogue-main">우리가 이직시켜 줄게</p>
-
-  <p class="dialogue-last">여기가 웬만한 대기업보다 나을걸?</p>
-
-</div>
-
 
 </style>
 </head>
@@ -838,7 +783,7 @@ footer p {
 
     <!-- 05. 천사 -->
 
-    <section class="article-section">
+    <section class="article-section angel-section">
 
       <div class="section-heading">
         <h2>천사</h2>
@@ -905,16 +850,15 @@ footer p {
       </p>
 
 
-   
-<div class="dialogue">
+      <div class="dialogue">
 
-  <p class="dialogue-first">너</p>
+        <p class="dialogue-first">너</p>
 
-  <p class="dialogue-main">우리가 이직시켜 줄게</p>
+        <p class="dialogue-main">우리가 이직시켜 줄게</p>
 
-  <p class="dialogue-last">여기가 웬만한 대기업보다 나을걸?</p>
+        <p class="dialogue-last">여기가 웬만한 대기업보다 나을걸?</p>
 
-</div>
+      </div>
 
     </section>
 
