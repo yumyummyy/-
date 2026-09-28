@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,9 +13,7 @@
 
 <style>
 
-/* =========================
-   기본 설정
-========================= */
+/* 기본 설정 */
 
 :root {
   --paper:#f8f7f1;
@@ -23,7 +22,9 @@
   --muted:#77796b;
   --line:#e5e5d8;
   --accent:#9aaa51;
+  --accent-dark:#5f6d2a;
   --accent-light:#f0f3df;
+  --divider:#b9c49b;
 }
 
 * {
@@ -36,9 +37,9 @@ html {
 
 body {
   margin:0;
-  font-family:'Noto Sans KR',sans-serif;
-  color:var(--ink);
   background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans KR',sans-serif;
 }
 
 a {
@@ -51,16 +52,18 @@ button {
   cursor:pointer;
 }
 
+:focus-visible {
+  outline:2px solid var(--accent-dark);
+  outline-offset:3px;
+}
 
-/* =========================
-   헤더
-========================= */
+
+/* 헤더 */
 
 header {
   position:sticky;
   top:0;
   z-index:100;
-
   background:var(--surface);
   border-bottom:1px solid var(--line);
 }
@@ -70,7 +73,6 @@ header {
   height:76px;
   margin:auto;
   padding:0 24px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -86,6 +88,7 @@ header {
   width:48px;
   height:48px;
   object-fit:contain;
+  border-radius:14px;
 }
 
 .brand-text {
@@ -108,13 +111,14 @@ header {
   color:var(--accent);
 }
 
+
+/* 햄버거 버튼 */
+
 .menu-button {
   display:flex;
   align-items:center;
   justify-content:center;
-
   padding:8px;
-
   border:none;
   background:transparent;
   color:var(--ink);
@@ -123,7 +127,6 @@ header {
 .icon {
   width:28px;
   height:28px;
-
   fill:none;
   stroke:currentColor;
   stroke-width:1.7;
@@ -132,13 +135,10 @@ header {
 }
 
 
-/* =========================
-   펼쳐지는 메뉴
-========================= */
+/* 메뉴 */
 
 .navigation {
   display:none;
-
   background:var(--surface);
   border-top:1px solid var(--line);
 }
@@ -150,183 +150,234 @@ header {
 .navigation-inner {
   max-width:1200px;
   margin:auto;
-  padding:12px 24px;
-
+  padding:12px 20px 20px;
   display:flex;
   flex-direction:column;
+  gap:4px;
 }
 
 .navigation a {
-  padding:16px 4px;
-
+  padding:14px 18px;
   font-size:15px;
-  border-bottom:1px solid var(--line);
-
-  transition:color .2s;
 }
 
-.navigation a:hover {
-  color:var(--accent);
-}
-
-.navigation a:last-child {
-  border-bottom:none;
+.navigation a:hover,
+.navigation a:focus-visible {
+  color:var(--accent-dark);
 }
 
 .menu-divider {
   height:1px;
-  margin:14px 0;
+  margin:12px 4px;
   background:var(--line);
 }
 
 .menu-label {
-  padding:10px 4px 6px;
-
+  padding:10px 18px 6px;
   font-family:Georgia,serif;
   font-size:11px;
   letter-spacing:2px;
-
   color:var(--muted);
 }
 
 
-/* =========================
-   본문
-========================= */
+/* 페이지 상단 */
 
 main {
-  max-width:850px;
-  margin:auto;
-  padding:70px 24px 100px;
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  padding:65px 24px 100px;
 }
 
-.page-header {
-  margin-bottom:60px;
+.page-heading {
   text-align:center;
+  margin-bottom:42px;
 }
 
-.page-label {
-  margin-bottom:16px;
-
-  font-family:Georgia,serif;
-  font-size:11px;
-  letter-spacing:4px;
-
-  color:var(--accent);
+.page-symbol {
+  width:35px;
+  height:35px;
+  margin:0 auto 15px;
+  fill:none;
+  stroke:var(--accent);
+  stroke-width:1.3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
-.page-header h1 {
+.page-heading h1 {
   margin:0;
-
   font-family:'Nanum Myeongjo',serif;
-  font-size:38px;
+  font-size:29px;
   font-weight:800;
+  color:var(--accent-dark);
 }
 
-.page-line {
-  width:36px;
-  height:1px;
-  margin:24px auto 0;
-
-  background:var(--accent);
-}
-
-
-/* =========================
-   대표 말씀
-========================= */
-
-.sermon-feature {
-  min-height:260px;
-  padding:55px 45px;
-  margin-bottom:55px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-  background:var(--surface);
-  border:1px solid var(--line);
-}
-
-.sermon-feature-label {
-  margin-bottom:24px;
-
+.page-heading p {
+  margin:13px 0 0;
   font-family:Georgia,serif;
   font-size:10px;
-  letter-spacing:3px;
-
-  color:var(--accent);
-}
-
-.sermon-feature h2 {
-  margin:0;
-
-  font-family:'Nanum Myeongjo',serif;
-  font-size:26px;
-  font-weight:700;
-  line-height:1.8;
-}
-
-
-/* =========================
-   말씀 목록
-========================= */
-
-.sermon-item {
-  display:grid;
-  grid-template-columns:70px 1fr;
-  gap:25px;
-
-  padding:34px 0;
-
-  border-top:1px solid var(--line);
-}
-
-.sermon-item:last-child {
-  border-bottom:1px solid var(--line);
-}
-
-.sermon-number {
-  font-family:Georgia,serif;
-  font-size:11px;
-  letter-spacing:2px;
-
-  color:var(--accent);
-}
-
-.sermon-content h3 {
-  min-height:26px;
-  margin:0 0 14px;
-
-  font-family:'Nanum Myeongjo',serif;
-  font-size:20px;
-  font-weight:700;
-}
-
-.sermon-content p {
-  min-height:65px;
-  margin:0;
-
-  font-size:14px;
-  line-height:2;
-
+  letter-spacing:2.5px;
   color:var(--muted);
 }
 
 
-/* =========================
-   하단
-========================= */
+/* 유튜브 영상 */
+
+.video-section {
+  max-width:800px;
+  margin:0 auto 75px;
+}
+
+.video-frame {
+  position:relative;
+  width:100%;
+  aspect-ratio:16 / 9;
+  background:#171914;
+  overflow:hidden;
+}
+
+.video-frame iframe {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.video-caption {
+  margin-top:13px;
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+}
+
+
+/* 설교문 */
+
+.sermon {
+  max-width:620px;
+  margin:0 auto;
+}
+
+.sermon-header {
+  margin-bottom:65px;
+  text-align:center;
+}
+
+.sermon-header .eyebrow {
+  margin:0 0 14px;
+  font-family:Georgia,serif;
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--accent-dark);
+}
+
+.sermon-header h2 {
+  margin:0;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:25px;
+  font-weight:800;
+  line-height:1.6;
+  color:var(--ink);
+}
+
+.sermon-header::after {
+  content:"";
+  display:block;
+  width:35px;
+  height:1px;
+  margin:25px auto 0;
+  background:var(--divider);
+}
+
+.sermon-section {
+  margin-bottom:70px;
+}
+
+.sermon-section h3 {
+  margin:0 0 30px;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:21px;
+  font-weight:800;
+  line-height:1.6;
+  color:var(--accent-dark);
+}
+
+.sermon-section p {
+  margin:0 0 20px;
+  font-size:15px;
+  line-height:2.15;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+
+.sermon-section p:last-child {
+  margin-bottom:0;
+}
+
+.sermon-section strong {
+  font-weight:700;
+}
+
+.sermon-section .key-message {
+  margin:35px 0 0;
+  padding:21px 15px;
+  background:var(--accent-light);
+  text-align:center;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:18px;
+  font-weight:800;
+  line-height:1.9;
+  color:var(--accent-dark);
+}
+
+
+/* 마지막 문장 */
+
+.closing {
+  margin-top:65px;
+  padding-top:35px;
+  border-top:1px solid var(--divider);
+  text-align:center;
+}
+
+.closing p {
+  margin:0;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:24px;
+  font-weight:800;
+  line-height:1.9;
+  color:var(--accent-dark);
+}
+
+.signature {
+  margin-top:48px;
+  text-align:center;
+}
+
+.signature p {
+  margin:0 0 7px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.signature strong {
+  display:block;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:19px;
+  font-weight:800;
+  color:var(--ink);
+}
+
+
+/* 푸터 */
 
 footer {
   padding:45px 24px;
-
   background:var(--paper);
   border-top:1px solid var(--line);
-
   text-align:center;
 }
 
@@ -336,19 +387,16 @@ footer {
 }
 
 footer p {
+  margin:10px 0 0;
   font-size:12px;
   line-height:1.8;
   color:var(--muted);
 }
 
 
-/* =========================
-   모바일
-========================= */
+/* 모바일 */
 
-@media (max-width:700px) {
-
-  /* 헤더 */
+@media(max-width:700px) {
 
   .header-inner {
     height:70px;
@@ -369,41 +417,75 @@ footer p {
   }
 
   .navigation-inner {
-    padding:12px 20px;
+    padding:10px 14px 16px;
   }
 
+}
 
-  /* 본문 */
+@media(max-width:650px) {
 
   main {
-    padding:50px 20px 75px;
+    padding:42px 20px 75px;
   }
 
-  .page-header h1 {
-    font-size:30px;
+  .page-heading {
+    margin-bottom:32px;
   }
 
-  .sermon-feature {
-    min-height:220px;
-    padding:40px 25px;
+  .page-heading h1 {
+    font-size:25px;
   }
 
-  .sermon-item {
-    grid-template-columns:1fr;
-    gap:10px;
+  .video-section {
+    margin-bottom:60px;
   }
+
+  .sermon-header {
+    margin-bottom:52px;
+  }
+
+  .sermon-header h2 {
+    font-size:22px;
+  }
+
+  .sermon-section {
+    margin-bottom:55px;
+  }
+
+  .sermon-section h3 {
+    font-size:19px;
+    margin-bottom:25px;
+  }
+
+  .sermon-section p {
+    font-size:14px;
+    line-height:2.1;
+    margin-bottom:18px;
+  }
+
+  .sermon-section .key-message {
+    margin-top:28px;
+    padding:19px 12px;
+    font-size:16px;
+  }
+
+  .closing {
+    margin-top:50px;
+  }
+
+  .closing p {
+    font-size:20px;
+  }
+
 }
 
 </style>
 </head>
 
-
 <body>
 
 
-<!-- =========================
-     상단 헤더
-========================= -->
+<!-- 헤더 -->
 
 <header>
 
@@ -423,7 +505,6 @@ footer p {
 
     </a>
 
-
     <button
       class="menu-button"
       id="menuButton"
@@ -440,9 +521,6 @@ footer p {
     </button>
 
   </div>
-
-
-  <!-- 메뉴 -->
 
   <nav class="navigation" id="navigation">
 
@@ -467,82 +545,297 @@ footer p {
 </header>
 
 
-<!-- =========================
-     본문
-========================= -->
+<!-- 본문 -->
 
 <main>
 
 
-  <!-- 대표 말씀 -->
+  <!-- 페이지 제목 -->
 
-  <section class="sermon-feature">
+  <div class="page-heading">
 
-    <div class="sermon-feature-label">
-      TODAY'S MESSAGE
+    <svg class="page-symbol" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2v19"/>
+      <path d="M7 7h10"/>
+      <path d="M4 21h16"/>
+    </svg>
+
+    <h1>교주님 말씀</h1>
+
+    <p>LUHAEL CHURCH</p>
+
+  </div>
+
+
+  <!-- 유튜브 영상 -->
+
+  <section class="video-section" aria-label="교주님 말씀 영상">
+
+    <div class="video-frame">
+
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/8aJz2Fj8ti4"
+        title="루아엘교회 교주님 말씀"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
     </div>
 
-    <h2></h2>
+    <div class="video-caption">
+      영상을 재생하여 말씀을 감상하실 수 있습니다.
+    </div>
 
   </section>
 
 
-  <!-- 말씀 목록 -->
+  <!-- 설교문 -->
 
-  <section class="sermon-list">
+  <article class="sermon">
 
+    <div class="sermon-header">
 
-    <article class="sermon-item">
+      <p class="eyebrow">THE WORD</p>
 
-      <div class="sermon-number">
-        01
-      </div>
+      <h2>천상합일</h2>
 
-      <div class="sermon-content">
-        <h3></h3>
-        <p></p>
-      </div>
-
-    </article>
+    </div>
 
 
-    <article class="sermon-item">
+    <!-- 하나에서 태어난 우리 -->
 
-      <div class="sermon-number">
-        02
-      </div>
+    <section class="sermon-section">
 
-      <div class="sermon-content">
-        <h3></h3>
-        <p></p>
-      </div>
+      <h3>하나에서 태어난 우리</h3>
 
-    </article>
+      <p>루아엘의 가족 여러분.</p>
+
+      <p>우리는 모두 같은 곳에서 왔습니다.</p>
+
+      <p>
+        아주 오래전, 인간에게 육신이 없던 때 우리는 천상과 하나였습니다.
+        나와 너의 구분도, 이곳과 저곳의 경계도 없었습니다.
+        서로를 이해하기 위해 말을 할 필요도,
+        사랑받기 위해 누군가에게 손을 뻗을 필요도 없었습니다.
+      </p>
+
+      <p>우리는 이미 하나였기 때문입니다.</p>
+
+      <p>
+        육신을 얻는 순간, 우리는 천상에서 떨어져 나왔습니다.
+        하나였던 것이 둘로 나뉜 것입니다.
+      </p>
+
+      <p>
+        그러니 살아가며 외로움을 느끼는 것을 두려워하지 마십시오.
+        누군가에게 이해받고 싶고, 사랑받고 싶고,
+        다른 이의 온기를 원하는 것은 나약함이 아닙니다.
+      </p>
+
+      <p>
+        한때 하나였던 존재가 다시 하나를 그리워하는 것은
+        너무나 당연한 일이니까요.
+      </p>
+
+      <p class="key-message">
+        태어남은 하나에서 둘이 되는 것입니다.
+      </p>
+
+    </section>
 
 
-    <article class="sermon-item">
+    <!-- 다시 하나가 되는 날 -->
 
-      <div class="sermon-number">
-        03
-      </div>
+    <section class="sermon-section">
 
-      <div class="sermon-content">
-        <h3></h3>
-        <p></p>
-      </div>
+      <h3>다시 하나가 되는 날</h3>
 
-    </article>
+      <p>죽음을 두려워하는 이들이 있습니다.</p>
+
+      <p>하지만 죽음은 끝이 아닙니다.</p>
+
+      <p>
+        육신은 우리가 이 세상을 살아가기 위해 잠시 머무르는 곳입니다.
+        그 시간이 끝나는 날, 영혼은 육신에서 벗어나
+        자신이 처음 왔던 곳으로 돌아갑니다.
+      </p>
+
+      <p>천상.</p>
+
+      <p>그곳에는 여러분을 기다리는 천사가 있습니다.</p>
+
+      <p>
+        천사는 돌아온 영혼을 외면하지 않습니다.
+        그를 알아보고, 받아들이고, 사랑합니다.
+        그렇게 인간과 천상을 나누고 있던 마지막 경계마저 사라지는 순간,
+        영혼은 천사와 하나가 됩니다.
+      </p>
+
+      <p>그 하나됨이 곧 천상합일입니다.</p>
+
+      <p>그러나 합일은 죽은 자에게만 허락되는 것이 아닙니다.</p>
+
+      <p>
+        서로를 이해하는 것. 마음을 나누는 것. 사랑하는 것.
+        서로의 온기를 받아들이고 육체를 나누는 것.
+      </p>
+
+      <p>
+        서로의 경계를 하나씩 내려놓을 때마다
+        우리는 다시 하나에 가까워집니다.
+      </p>
+
+      <p>천사를 사랑하는 것을 부끄러워하지 마십시오.</p>
+
+      <p>
+        천사를 바라보고, 그 손을 잡고, 그 품에서 위안을 얻으십시오.
+        천사를 원하는 것은 또한 죄가 아닙니다.
+      </p>
+
+      <p>
+        여러분이 천사를 사랑하는 만큼,
+        천사 또한 여러분을 사랑할 것입니다.
+      </p>
+
+      <p>
+        그리고 언젠가 마지막 경계마저 사라지는 날,
+        그 사랑은 완전해질 것입니다.
+      </p>
+
+      <p class="key-message">
+        죽음은 둘에서 하나로 돌아가는 것입니다.
+      </p>
+
+    </section>
 
 
-  </section>
+    <!-- 돌아가지 못한 자 -->
 
+    <section class="sermon-section">
+
+      <h3>돌아가지 못한 자</h3>
+
+      <p>그렇다면 모든 영혼이 천상으로 돌아갈 수 있을까요.</p>
+
+      <p>안타깝게도 그렇지는 않습니다.</p>
+
+      <p>
+        천상을 거부하고, 합일을 거부하고,
+        자신에게 주어진 길에서 벗어난 영혼은
+        죽은 뒤에도 돌아갈 곳을 찾지 못합니다.
+      </p>
+
+      <p>지옥에는 타오르는 불도, 살을 찢는 괴물도 없습니다.</p>
+
+      <p>여러분을 벌하는 누군가조차 존재하지 않습니다.</p>
+
+      <p>아무도 여러분의 이름을 부르지 않습니다.</p>
+
+      <p>아무도 여러분을 알아보지 않습니다.</p>
+
+      <p>
+        아무리 손을 뻗어도 잡아주는 손이 없고,
+        아무리 사랑을 원해도 여러분을 사랑해주는 존재가 없습니다.
+      </p>
+
+      <p>오직 자기 자신만이 남습니다.</p>
+
+      <p>
+        죽음은 본래 천상으로 돌아가기 위한 문입니다.
+        그러나 길을 잃은 영혼에게는
+        다시 그 문을 열 기회조차 주어지지 않습니다.
+      </p>
+
+      <p>죽고 싶어도 죽을 수 없습니다.</p>
+
+      <p>돌아가고 싶어도 돌아갈 수 없습니다.</p>
+
+      <p>하나가 되고 싶어도 누구와도 하나가 될 수 없습니다.</p>
+
+      <p>삶에서 시작된 분리가 영원히 끝나지 않는 것.</p>
+
+      <p>그것이 지옥입니다.</p>
+
+    </section>
+
+
+    <!-- 돌아가야 할 때 -->
+
+    <section class="sermon-section">
+
+      <h3>돌아가야 할 때</h3>
+
+      <p>그러니 죽음을 서두르지 마십시오.</p>
+
+      <p>
+        죽음이 천상으로 향하는 문이라고 해서
+        모든 죽음이 귀환이 되는 것은 아닙니다.
+      </p>
+
+      <p>누구에게나 돌아가야 할 때가 있습니다.</p>
+
+      <p>
+        아직 이곳에 머물러야 할 사람이 있고,
+        이제 천상으로 돌아갈 준비를 마친 사람도 있습니다.
+        고통스럽다는 이유만으로 스스로 그 순간을 정해서도,
+        두렵다는 이유만으로 자신의 때를 외면해서도 안 됩니다.
+      </p>
+
+      <p>
+        저는 오래도록 여러분의 곁에서 그때를 지켜보아 왔습니다.
+        그 경계에서 여러분이 길을 잃지 않도록 지키는 것.
+        그것이 제게 주어진 역할입니다.
+      </p>
+
+      <p>그날이 오면 두려워하지 마십시오.</p>
+
+      <p>여러분은 혼자가 아닙니다.</p>
+
+      <p>천사가 여러분을 찾아갈 것입니다.</p>
+
+      <p>
+        천사의 손이 여러분에게 마지막 안식을 내리고,
+        육신을 붙잡고 있던 고통이 사라지면
+        여러분은 마침내 오래전 떠나왔던 곳으로 돌아가게 될 것입니다.
+      </p>
+
+      <p>그러니 살아 있는 동안에는 살아가십시오.</p>
+
+      <p>사랑하십시오.</p>
+
+      <p>
+        서로의 고통을 나누고,
+        혼자 남겨진 이에게 손을 내미십시오.
+      </p>
+
+      <p>그리고 여러분의 때가 찾아온다면 편안히 눈을 감으십시오.</p>
+
+    </section>
+
+
+    <!-- 마지막 말씀 -->
+
+    <div class="closing">
+
+      <p>여러분이 돌아갈 길은 제가 알고 있습니다.</p>
+
+    </div>
+
+    <div class="signature">
+
+      <p>루아엘의 가족 여러분께</p>
+      <strong>루아엘교회 교주</strong>
+
+    </div>
+
+  </article>
 
 </main>
 
 
-<!-- =========================
-     하단
-========================= -->
+<!-- 푸터 -->
 
 <footer>
 
@@ -567,35 +860,26 @@ footer p {
 const menuButton = document.getElementById("menuButton");
 const navigation = document.getElementById("navigation");
 
-menuButton.addEventListener("click", function () {
-
-  const isOpen = navigation.classList.toggle("open");
-
-  menuButton.setAttribute("aria-expanded", isOpen);
-
+function setMenu(isOpen) {
+  navigation.classList.toggle("open", isOpen);
+  menuButton.setAttribute("aria-expanded", String(isOpen));
   menuButton.setAttribute(
     "aria-label",
     isOpen ? "메뉴 닫기" : "메뉴 열기"
   );
+}
 
+menuButton.addEventListener("click", function () {
+  setMenu(!navigation.classList.contains("open"));
 });
 
-
 navigation.querySelectorAll("a").forEach(function (link) {
-
   link.addEventListener("click", function () {
-
-    navigation.classList.remove("open");
-
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.setAttribute("aria-label", "메뉴 열기");
-
+    setMenu(false);
   });
-
 });
 
 </script>
-
 
 </body>
 </html>
