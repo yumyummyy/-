@@ -1,1 +1,1057 @@
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>비밀 기록 | 루아엘교회</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   기본 설정
+========================= */
+
+:root {
+  --paper:#f8f7f1;
+  --surface:#fffefa;
+  --ink:#30342a;
+  --muted:#77796b;
+  --line:#e5e5d8;
+  --accent:#9aaa51;
+  --accent-light:#f0f3df;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans KR',sans-serif;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+button {
+  font:inherit;
+  cursor:pointer;
+}
+
+
+/* =========================
+   헤더
+========================= */
+
+header {
+  position:sticky;
+  top:0;
+  z-index:100;
+
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+}
+
+.header-inner {
+  max-width:1200px;
+  height:76px;
+  margin:auto;
+  padding:0 24px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand img {
+  width:48px;
+  height:48px;
+  object-fit:contain;
+}
+
+.brand-text {
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+
+.brand-name {
+  font-family:'Nanum Myeongjo',serif;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.brand-eng {
+  font-family:Georgia,serif;
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--accent);
+}
+
+.menu-button {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:8px;
+
+  border:none;
+  background:transparent;
+  color:var(--ink);
+}
+
+.icon {
+  width:28px;
+  height:28px;
+
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+
+/* =========================
+   펼쳐지는 메뉴
+========================= */
+
+.navigation {
+  display:none;
+
+  background:var(--surface);
+  border-top:1px solid var(--line);
+}
+
+.navigation.open {
+  display:block;
+}
+
+.navigation-inner {
+  max-width:1200px;
+  margin:auto;
+  padding:12px 24px;
+
+  display:flex;
+  flex-direction:column;
+}
+
+.navigation a {
+  padding:16px 4px;
+
+  font-size:15px;
+  border-bottom:1px solid var(--line);
+
+  transition:color .2s;
+}
+
+.navigation a:hover {
+  color:var(--accent);
+}
+
+.navigation a:last-child {
+  border-bottom:none;
+}
+
+.menu-divider {
+  height:1px;
+  margin:14px 0;
+  background:var(--line);
+}
+
+.menu-label {
+  padding:10px 4px 6px;
+
+  font-family:Georgia,serif;
+  font-size:11px;
+  letter-spacing:2px;
+
+  color:var(--muted);
+}
+
+
+/* =========================
+   본문
+========================= */
+
+main {
+  max-width:900px;
+  margin:auto;
+  padding:70px 24px 100px;
+}
+
+.page-header {
+  margin-bottom:55px;
+  text-align:center;
+}
+
+.page-label {
+  margin-bottom:16px;
+
+  font-family:Georgia,serif;
+  font-size:11px;
+  letter-spacing:4px;
+
+  color:var(--accent);
+}
+
+.page-header h1 {
+  margin:0;
+
+  font-family:'Nanum Myeongjo',serif;
+  font-size:38px;
+  font-weight:800;
+}
+
+.page-line {
+  width:36px;
+  height:1px;
+  margin:24px auto 0;
+
+  background:var(--accent);
+}
+
+
+/* =========================
+   스포일러 경고
+========================= */
+
+.warning-screen {
+  max-width:650px;
+  margin:0 auto;
+
+  padding:55px 35px;
+
+  background:var(--surface);
+  border:1px solid var(--line);
+
+  text-align:center;
+}
+
+.warning-symbol {
+  margin-bottom:20px;
+
+  font-family:Georgia,serif;
+  font-size:32px;
+
+  color:var(--accent);
+}
+
+.warning-label {
+  margin-bottom:20px;
+
+  font-family:Georgia,serif;
+  font-size:11px;
+  letter-spacing:4px;
+
+  color:var(--accent);
+}
+
+.warning-screen h2 {
+  margin:0;
+
+  font-family:'Nanum Myeongjo',serif;
+  font-size:27px;
+  font-weight:800;
+}
+
+.warning-line {
+  width:30px;
+  height:1px;
+
+  margin:25px auto;
+
+  background:var(--accent);
+}
+
+.warning-screen p {
+  margin:0;
+
+  font-size:14px;
+  line-height:2.1;
+
+  color:var(--muted);
+}
+
+.enter-button {
+  display:block;
+  width:100%;
+
+  margin-top:40px;
+  padding:17px 20px;
+
+  border:1px solid var(--accent);
+  background:var(--accent);
+
+  color:white;
+  font-size:14px;
+  font-weight:600;
+
+  transition:background .2s;
+}
+
+.enter-button:hover {
+  background:#879747;
+}
+
+.back-link {
+  display:inline-block;
+
+  margin-top:25px;
+
+  font-size:12px;
+  color:var(--muted);
+
+  transition:color .2s;
+}
+
+.back-link:hover {
+  color:var(--accent);
+}
+
+
+/* =========================
+   비밀 기록
+========================= */
+
+.secret-content {
+  display:none;
+}
+
+.secret-content.visible {
+  display:block;
+  animation:fadeIn .5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.archive-intro {
+  margin-bottom:35px;
+  padding:30px;
+
+  background:var(--accent-light);
+  border:1px solid var(--line);
+}
+
+.archive-intro-label {
+  margin-bottom:15px;
+
+  font-family:Georgia,serif;
+  font-size:10px;
+  letter-spacing:3px;
+
+  color:var(--accent);
+}
+
+.archive-intro p {
+  margin:0;
+
+  font-size:13px;
+  line-height:2;
+
+  color:var(--muted);
+}
+
+
+/* =========================
+   접기 / 펼치기
+========================= */
+
+.archive-list {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.archive-item {
+  background:var(--surface);
+  border:1px solid var(--line);
+}
+
+.archive-item summary {
+  display:flex;
+  align-items:center;
+
+  gap:20px;
+
+  padding:25px 28px;
+
+  cursor:pointer;
+  list-style:none;
+
+  transition:background .2s;
+}
+
+.archive-item summary::-webkit-details-marker {
+  display:none;
+}
+
+.archive-item summary:hover {
+  background:var(--accent-light);
+}
+
+.archive-number {
+  flex-shrink:0;
+
+  font-family:Georgia,serif;
+  font-size:12px;
+  letter-spacing:2px;
+
+  color:var(--accent);
+}
+
+.archive-title {
+  flex:1;
+
+  font-family:'Nanum Myeongjo',serif;
+  font-size:18px;
+  font-weight:700;
+}
+
+.archive-arrow {
+  width:9px;
+  height:9px;
+
+  border-right:1.5px solid var(--accent);
+  border-bottom:1.5px solid var(--accent);
+
+  transform:rotate(45deg);
+  transition:transform .2s;
+}
+
+.archive-item[open] .archive-arrow {
+  transform:rotate(225deg);
+}
+
+.archive-body {
+  padding:25px 28px 32px;
+
+  border-top:1px solid var(--line);
+
+  font-size:13px;
+  line-height:2;
+
+  color:var(--muted);
+
+  overflow-wrap:break-word;
+}
+
+.archive-body p {
+  margin:0 0 18px;
+}
+
+.archive-body p:last-child {
+  margin-bottom:0;
+}
+
+.archive-body h3 {
+  margin:20px 0 12px;
+
+  font-family:'Nanum Myeongjo',serif;
+  font-size:16px;
+  font-weight:700;
+
+  color:var(--ink);
+}
+
+.archive-body h3:first-child {
+  margin-top:0;
+}
+
+.archive-body img {
+  display:block;
+  max-width:100%;
+  height:auto;
+
+  margin:20px auto;
+}
+
+.archive-divider {
+  height:1px;
+  margin:25px 0;
+  background:var(--line);
+}
+
+.empty-note {
+  font-size:12px;
+  color:#aaa99d;
+}
+
+
+/* =========================
+   페이지 하단 안내
+========================= */
+
+.archive-end {
+  margin-top:55px;
+  text-align:center;
+}
+
+.archive-end p {
+  font-size:12px;
+  line-height:2;
+  color:var(--muted);
+}
+
+.archive-end a {
+  display:inline-block;
+
+  margin-top:15px;
+  padding-bottom:5px;
+
+  font-size:12px;
+  font-weight:600;
+
+  color:var(--accent);
+  border-bottom:1px solid var(--accent);
+}
+
+
+/* =========================
+   푸터
+========================= */
+
+footer {
+  padding:45px 24px;
+
+  background:var(--paper);
+  border-top:1px solid var(--line);
+
+  text-align:center;
+}
+
+.footer-name {
+  font-family:'Nanum Myeongjo',serif;
+  font-size:20px;
+}
+
+footer p {
+  font-size:12px;
+  line-height:1.8;
+  color:var(--muted);
+}
+
+
+/* =========================
+   모바일
+========================= */
+
+@media (max-width:700px) {
+
+  .header-inner {
+    height:70px;
+    padding:0 18px;
+  }
+
+  .brand img {
+    width:42px;
+    height:42px;
+  }
+
+  .brand-name {
+    font-size:19px;
+  }
+
+  .brand-eng {
+    font-size:9px;
+  }
+
+  .navigation-inner {
+    padding:12px 20px;
+  }
+}
+
+@media (max-width:650px) {
+
+  main {
+    padding:50px 20px 75px;
+  }
+
+  .page-header h1 {
+    font-size:30px;
+  }
+
+  .warning-screen {
+    padding:40px 25px;
+  }
+
+  .warning-screen h2 {
+    font-size:23px;
+  }
+
+  .warning-screen p {
+    font-size:13px;
+  }
+
+  .archive-intro {
+    padding:25px;
+  }
+
+  .archive-item summary {
+    padding:22px 20px;
+    gap:14px;
+  }
+
+  .archive-title {
+    font-size:16px;
+  }
+
+  .archive-body {
+    padding:22px 20px 28px;
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     헤더
+========================= -->
+
+<header>
+
+  <div class="header-inner">
+
+    <a class="brand" href="index.html">
+
+      <img
+        src="https://i.ibb.co/60kWKKZY/file-000000003940822fb276a79aa6bc4e32.png"
+        alt="루아엘교회 로고"
+      >
+
+      <div class="brand-text">
+        <span class="brand-name">루아엘교회</span>
+        <span class="brand-eng">LUHAEL CHURCH</span>
+      </div>
+
+    </a>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="메뉴 열기"
+      aria-expanded="false"
+      aria-controls="navigation"
+    >
+
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+
+    </button>
+
+  </div>
+
+
+  <!-- 펼쳐지는 메뉴 -->
+
+  <nav class="navigation" id="navigation">
+
+    <div class="navigation-inner">
+
+      <a href="about.html">교회 소개</a>
+      <a href="faith.html">교주님 말씀</a>
+      <a href="characters.html">등장인물</a>
+      <a href="news.html">교회 소식</a>
+
+      <div class="menu-divider"></div>
+
+      <span class="menu-label">EXTRA</span>
+
+      <a href="gallery.html">비공식 화보</a>
+      <a href="creator.html">제작자 TMI</a>
+
+    </div>
+
+  </nav>
+
+</header>
+
+
+<!-- =========================
+     본문
+========================= -->
+
+<main>
+
+
+  <!-- 페이지 제목 -->
+
+  <section class="page-header">
+
+    <div class="page-label">
+      CONFIDENTIAL ARCHIVE
+    </div>
+
+    <h1>비밀 기록</h1>
+
+    <div class="page-line"></div>
+
+  </section>
+
+
+  <!-- =========================
+       스포일러 경고 화면
+  ========================= -->
+
+  <section class="warning-screen" id="warningScreen">
+
+    <div class="warning-symbol">
+      ✳
+    </div>
+
+    <div class="warning-label">
+      CONFIDENTIAL
+    </div>
+
+    <h2>열람하시겠습니까?</h2>
+
+    <div class="warning-line"></div>
+
+    <p>
+      이곳에는 루아엘교회의 비공개 설정과<br>
+      등장인물들의 과거, 주요 스포일러가 포함되어 있습니다.
+      <br><br>
+
+      아직 플레이 전이라면 채팅을 먼저 경험하신 후<br>
+      열람하시는 것을 권장합니다.
+    </p>
+
+    <button
+      class="enter-button"
+      type="button"
+      id="enterButton"
+    >
+      그래도 열람하기 →
+    </button>
+
+    <a href="creator.html" class="back-link">
+      돌아가기
+    </a>
+
+  </section>
+
+
+  <!-- =========================
+       비밀 기록 본문
+  ========================= -->
+
+  <div class="secret-content" id="secretContent">
+
+
+    <!-- 안내문 -->
+
+    <section class="archive-intro">
+
+      <div class="archive-intro-label">
+        ARCHIVE NOTE
+      </div>
+
+      <p>
+        루아엘교회의 비공개 설정을 정리한 페이지입니다.
+        <br><br>
+
+        각 항목을 클릭하면 해당 내용이 펼쳐집니다.
+        일부 설정에는 작품의 핵심 스포일러가 포함되어 있으니 열람에 주의해 주세요.
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         비설 목록
+    ========================= -->
+
+    <section class="archive-list">
+
+
+      <!-- 01. 루아엘교회 -->
+
+      <details class="archive-item">
+
+        <summary>
+          <span class="archive-number">01</span>
+          <span class="archive-title">루아엘교회</span>
+          <span class="archive-arrow"></span>
+        </summary>
+
+        <div class="archive-body">
+
+          <!-- 여기에 교단 설정 작성 -->
+
+          <p class="empty-note">
+            교단의 설립 배경, 실제 운영 목적, 재정 구조 등.
+          </p>
+
+        </div>
+
+      </details>
+
+
+      <!-- 02. 천상합일 -->
+
+      <details class="archive-item">
+
+        <summary>
+          <span class="archive-number">02</span>
+          <span class="archive-title">천상합일</span>
+          <span class="archive-arrow"></span>
+        </summary>
+
+        <div class="archive-body">
+
+          <!-- 여기에 천상합일 설정 작성 -->
+
+          <p class="empty-note">
+            천상합일의 실제 의미와 의식에 관한 설정.
+          </p>
+
+        </div>
+
+      </details>
+
+
+      <!-- 03. 교주와 간부진 -->
+
+      <details class="archive-item">
+
+        <summary>
+          <span class="archive-number">03</span>
+          <span class="archive-title">교주와 간부진</span>
+          <span class="archive-arrow"></span>
+        </summary>
+
+        <div class="archive-body">
+
+          <!-- 여기에 교주 및 간부 설정 작성 -->
+
+          <p class="empty-note">
+            교주와 주요 간부들의 과거, 관계 및 비밀 설정.
+          </p>
+
+        </div>
+
+      </details>
+
+
+      <!-- 04. 천사와 쌍둥이 -->
+
+      <details class="archive-item">
+
+        <summary>
+          <span class="archive-number">04</span>
+          <span class="archive-title">천사와 쌍둥이</span>
+          <span class="archive-arrow"></span>
+        </summary>
+
+        <div class="archive-body">
+
+          <!-- 여기에 쌍둥이 설정 작성 -->
+
+          <p class="empty-note">
+            쌍둥이들의 과거, 천사 역할과 날개 장치에 관한 설정.
+          </p>
+
+        </div>
+
+      </details>
+
+
+      <!-- 05. 등장인물 -->
+
+      <details class="archive-item">
+
+        <summary>
+          <span class="archive-number">05</span>
+          <span class="archive-title">등장인물</span>
+          <span class="archive-arrow"></span>
+        </summary>
+
+        <div class="archive-body">
+
+          <!--
+            캐릭터별로 내용을 추가할 수 있습니다.
+
+            예시:
+
+            <h3>캐릭터 이름</h3>
+            <p>비공개 설정 내용</p>
+
+            <div class="archive-divider"></div>
+          -->
+
+          <p class="empty-note">
+            등장인물별 비공개 프로필과 과거, 숨겨진 관계.
+          </p>
+
+        </div>
+
+      </details>
+
+
+      <!-- 06. 기타 설정 -->
+
+      <details class="archive-item">
+
+        <summary>
+          <span class="archive-number">06</span>
+          <span class="archive-title">기타 미공개 설정</span>
+          <span class="archive-arrow"></span>
+        </summary>
+
+        <div class="archive-body">
+
+          <!-- 여기에 기타 설정 작성 -->
+
+          <p class="empty-note">
+            그 외의 세계관 설정과 소소한 뒷이야기.
+          </p>
+
+        </div>
+
+      </details>
+
+
+    </section>
+
+
+    <!-- 마지막 안내 -->
+
+    <section class="archive-end">
+
+      <p>
+        여기까지 읽어주셔서 감사합니다.<br>
+        부디 루아엘교회에서 즐거운 시간 보내시길!
+      </p>
+
+      <a href="creator.html">
+        제작자 TMI로 돌아가기 →
+      </a>
+
+    </section>
+
+
+  </div>
+
+</main>
+
+
+<!-- =========================
+     하단
+========================= -->
+
+<footer>
+
+  <div class="footer-name">
+    루아엘교회
+  </div>
+
+  <p>LUHAEL CHURCH</p>
+
+  <p>
+    © 2026 LUHAEL CHURCH.<br>
+    All Rights Reserved.
+  </p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   햄버거 메뉴
+========================= */
+
+const menuButton = document.getElementById("menuButton");
+const navigation = document.getElementById("navigation");
+
+menuButton.addEventListener("click", function () {
+
+  const isOpen = navigation.classList.toggle("open");
+
+  menuButton.setAttribute("aria-expanded", isOpen);
+
+  menuButton.setAttribute(
+    "aria-label",
+    isOpen ? "메뉴 닫기" : "메뉴 열기"
+  );
+
+});
+
+navigation.querySelectorAll("a").forEach(function (link) {
+
+  link.addEventListener("click", function () {
+
+    navigation.classList.remove("open");
+
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "메뉴 열기");
+
+  });
+
+});
+
+
+/* =========================
+   스포일러 경고 해제
+========================= */
+
+const enterButton = document.getElementById("enterButton");
+const warningScreen = document.getElementById("warningScreen");
+const secretContent = document.getElementById("secretContent");
+
+enterButton.addEventListener("click", function () {
+
+  warningScreen.style.display = "none";
+
+  secretContent.classList.add("visible");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+});
+
+</script>
+
+</body>
+</html>
+
