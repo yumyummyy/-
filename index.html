@@ -7,13 +7,13 @@
 <title>루아엘교회</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
-  
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500;700;900&family=Cormorant+Garamond:wght@500;600&display=swap');
-  
+
 :root {
   --paper: #f8f7f1;
   --surface: #fffefa;
@@ -190,7 +190,7 @@ main {
   aspect-ratio: 2 / 3;
   transition: transform .45s ease;
 }
-  
+
 .slide {
   position: relative;
   flex: 0 0 100%;
@@ -281,6 +281,7 @@ main {
 }
 
 /* 슬라이드 점 위치 */
+
 .slide-dots {
   position: absolute;
   bottom: 20px;
@@ -294,6 +295,7 @@ main {
 }
 
 /* 기본 동그라미 */
+
 .slide-dot {
   width: 10px;
   height: 10px;
@@ -306,12 +308,13 @@ main {
 }
 
 /* 선택된 동그라미만 길게 */
+
 .slide-dot.active {
   width: 28px;
   background: #ffffff;
   border-color: #ffffff;
 }
-  
+
 /* 환영 안내 */
 
 .welcome {
@@ -459,6 +462,7 @@ footer p {
 }
 
 /* 팝업 이미지 */
+
 .notice-image {
   display: block;
   width: 100%;
@@ -468,6 +472,7 @@ footer p {
 }
 
 /* 닫기 버튼 */
+
 #noticeClose {
   width: 100%;
   height: 46px;
@@ -548,7 +553,7 @@ footer p {
   .notice-content h2 { font-size: 19px; }
 }
 
-  /* 환영 박스 + 주일 말씀 박스 크기 축소 */
+/* 환영 박스 + 주일 말씀 박스 크기 축소 */
 
 .welcome,
 .worship {
@@ -605,28 +610,31 @@ footer p {
   }
 }
 
-  .welcome h2 {
+.welcome h2 {
   font-size: 15px;
-  }
+}
 
-  /* 창립 25주년 · 헌혈 봉사 슬라이드 글씨 숨기기 */
+/* 창립 25주년 · 헌혈 봉사 슬라이드 글씨 숨기기 */
+
 .slide-content {
   display: none;
 }
 
-  /* 슬라이드 이미지 위의 어두운 막 제거 */
+/* 슬라이드 이미지 위의 어두운 막 제거 */
+
 .slide.has-image::before {
   display: none;
 }
 
-  /* 포스터 이미지 전체 표시 */
+/* 포스터 이미지 전체 표시 */
+
 .slide {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-  /* 나눔명조 폰트 적용 */
+/* 나눔명조 폰트 적용 */
 
 .brand-name,
 .slide h1,
@@ -664,6 +672,7 @@ footer p {
 }
 
 /* 공지 타이틀 전체 */
+
 .notice-text {
   position: absolute;
   inset: 0;
@@ -673,8 +682,9 @@ footer p {
   font-family: 'Noto Serif KR', serif;
   pointer-events: none;
 }
-  
+
 /* 천사 되기 시뮬레이션 영역 */
+
 .notice-title-area {
   position: absolute;
   top: 50%;
@@ -687,8 +697,9 @@ footer p {
   justify-content: center;
   align-items: center;
 }
-  
+
 /* 글씨 뒤 투명 이미지 */
+
 .notice-title-bg {
   position: absolute;
   left: 50%;
@@ -704,6 +715,7 @@ footer p {
 }
 
 /* 천사 되기 시뮬레이션 */
+
 .notice-main-title {
   position: relative;
   z-index: 1;
@@ -716,15 +728,16 @@ footer p {
 
   color: #fffdf6;
 
-text-shadow:
-  0 0 3px rgba(255, 244, 205, 0.95),
-  0 0 7px rgba(238, 210, 151, 0.90),
-  0 0 14px rgba(218, 181, 112, 0.75),
-  0 0 25px rgba(190, 145, 73, 0.55),
-  0 0 42px rgba(155, 108, 48, 0.32);
+  text-shadow:
+    0 0 3px rgba(255, 244, 205, 0.95),
+    0 0 7px rgba(238, 210, 151, 0.90),
+    0 0 14px rgba(218, 181, 112, 0.75),
+    0 0 25px rgba(190, 145, 73, 0.55),
+    0 0 42px rgba(155, 108, 48, 0.32);
 }
 
 /* 천사 시뮬레이션 도입부 선택 */
+
 .notice-intro-links {
   position: absolute;
   left: 0;
@@ -745,7 +758,7 @@ text-shadow:
   color: #ffffff;
   white-space: nowrap;
 }
-  
+
 </style>
 </head>
 
@@ -761,32 +774,34 @@ text-shadow:
 
     <div class="notice-poster">
 
+      <!-- 변경된 공지 이미지 -->
+
       <img
         class="notice-image"
-        src="https://i.ibb.co/4wsW7Str/file-00000000f42c81fa9f669aab9cf44c71.png"
+        src="https://i.ibb.co/RpSnrxzV/file-00000000b38082068719af5eb1bf56ed.png"
         alt=""
       >
 
       <div class="notice-text">
 
-<div class="notice-title-area">
+        <div class="notice-title-area">
 
-  <img
-    class="notice-title-bg"
-    src="https://i.ibb.co/392yLNR8/file-0000000051f082099f26b0e5dacac06d.png"
-    alt=""
-  >
+          <img
+            class="notice-title-bg"
+            src="https://i.ibb.co/392yLNR8/file-0000000051f082099f26b0e5dacac06d.png"
+            alt=""
+          >
 
-  <div class="notice-main-title">
-    천사 되기<br>시뮬레이션
-  </div>
+          <div class="notice-main-title">
+            천사 되기<br>시뮬레이션
+          </div>
 
-</div>
+        </div>
 
-<div class="notice-intro-links">
-  <span>도입부1 · 천사</span>
-  <span>도입부2 · 신도</span>
-</div>
+        <div class="notice-intro-links">
+          <span>도입부1 · 천사</span>
+          <span>도입부2 · 신도</span>
+        </div>
 
       </div>
 
@@ -797,8 +812,7 @@ text-shadow:
   </div>
 </div>
 
-<!-- 상단 헤더 -->
-  
+
 <!-- 상단 헤더 -->
 
 <header>
@@ -850,6 +864,7 @@ text-shadow:
     </div>
   </nav>
 </header>
+
 
 <main id="home">
 
@@ -956,6 +971,7 @@ text-shadow:
 
   </section>
 
+
   <!-- 환영 문구 -->
 
   <section class="welcome" id="welcome">
@@ -969,6 +985,7 @@ text-shadow:
     </p>
 
   </section>
+
 
   <!-- 주일 말씀 -->
 
@@ -995,6 +1012,7 @@ text-shadow:
     </div>
 
   </section>
+
 
   <!-- 바로가기 메뉴 -->
 
@@ -1033,6 +1051,7 @@ text-shadow:
 
 </main>
 
+
 <!-- 하단 -->
 
 <footer>
@@ -1043,6 +1062,7 @@ text-shadow:
     All Rights Reserved.
   </p>
 </footer>
+
 
 <script>
 
@@ -1068,6 +1088,7 @@ navigation.querySelectorAll("a").forEach(function (link) {
     menuButton.setAttribute("aria-label", "메뉴 열기");
   });
 });
+
 
 /* 슬라이드 기능 */
 
@@ -1122,6 +1143,7 @@ dots.forEach(function (dot) {
   });
 });
 
+
 /* 모바일 좌우 스와이프 */
 
 let touchStartX = 0;
@@ -1151,17 +1173,21 @@ slider.addEventListener("touchend", function (event) {
   }
 }, { passive: true });
 
+
 /* 첫 슬라이드 초기화 */
 
 showSlide(0);
 
+
 /* 배너 배경 이미지 주소 입력 */
 
+/* 변경된 창립 25주년 · 헌혈 봉사 이미지 */
+
 const bannerImages = [
-  "https://i.ibb.co/JwwDmdxJ/file-00000000f89c81fd8d14c2a496c25963.png",
-  "https://i.ibb.co/cGzfV9m/file-0000000067748206a626281aae1622fe.png"
+  "https://i.ibb.co/rRb78zhM/file-00000000984c8206895e33e5227e0fcf.png",
+  "https://i.ibb.co/4gMDC7RR/file-000000007c6c8206b9a1960a8858a236.png"
 ];
-  
+
 bannerImages.forEach(function (imageUrl, index) {
   if (!imageUrl) return;
 
@@ -1170,6 +1196,7 @@ bannerImages.forEach(function (imageUrl, index) {
 
   slideElements[index].classList.add("has-image");
 });
+
 
 /* 공지사항 팝업 */
 
