@@ -375,25 +375,19 @@ main {
 
 
 /* =========================
-   마지막 장면
-========================= */
 
-.prologue {
-  padding-top:12px;
+/* 마지막 장면 */
+
+.shoulder-line {
+  margin-top:30px !important;
+  margin-bottom:14px !important;
+  text-align:center;
 }
 
-.prologue p {
-  margin-bottom:18px;
-}
-
-
-
-/* =========================
-   마지막 대사
-========================= */
+/* 마지막 대사 */
 
 .dialogue {
-  margin-top:30px;
+  margin-top:0;
   text-align:center;
 }
 
@@ -402,12 +396,6 @@ main {
   font-family:'Nanum Myeongjo',serif;
   line-height:1.6;
   text-align:center;
-}
-
-.dialogue .dialogue-first {
-  margin-bottom:15px;
-  font-size:14px;
-  font-weight:700;
 }
 
 .dialogue .dialogue-main {
@@ -421,6 +409,7 @@ main {
   font-weight:700;
   color:var(--muted);
 }
+
 
 
 
@@ -529,13 +518,14 @@ footer p {
   }
 
 
-  .dialogue {
-    margin-top:24px;
+  
+  .shoulder-line {
+    margin-top:25px !important;
+    margin-bottom:12px !important;
   }
 
-  .dialogue .dialogue-first {
-    margin-bottom:12px;
-    font-size:13px;
+  .dialogue {
+    margin-top:0;
   }
 
   .dialogue .dialogue-main {
@@ -841,23 +831,22 @@ footer p {
       <p>
         손발이 단단히 묶여 있었다.
         두꺼운 천으로 재갈이 물려 있었고,
-        당신의 입에는 미처 삼키지 못한 침이 고이기 시작했다.
+        당신의 입에는 미처 삼키지 못한 침이 고이기 시작했다. 여자가
       </p>
 
-      <p>
-        여자가 당신의 어깨를 툭 쳤다.
-      </p>
+  <p class="shoulder-line">
+    여자가 당신의 어깨를 툭툭 쳤다.
+  </p>
 
+  <div class="dialogue">
 
-      <div class="dialogue">
+    <p class="dialogue-main">우리가 이직시켜 줄게</p>
 
-        <p class="dialogue-first">너</p>
+    <p class="dialogue-last">여기가 웬만한 대기업보다 나을걸?</p>
 
-        <p class="dialogue-main">우리가 이직시켜 줄게</p>
+  </div>
 
-        <p class="dialogue-last">여기가 웬만한 대기업보다 나을걸?</p>
-
-      </div>
+</section>
 
     </section>
 
