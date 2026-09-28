@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,44 +13,30 @@
 
 <style>
 
-/* =========================
-   기본 설정
-========================= */
-
 :root {
-  --paper: #f8f7f1;
-  --surface: #fffefa;
-  --ink: #30342a;
-  --muted: #77796b;
-  --line: #e5e5d8;
-  --accent: #9aaa51;
-  --accent-light: #f0f3df;
+  --paper:#f8f7f1;
+  --surface:#fffefa;
+  --ink:#30342a;
+  --muted:#77796b;
+  --line:#e5e5d8;
+  --accent:#9aaa51;
+  --accent-dark:#5f6d2a;
+  --accent-light:#f0f3df;
 }
 
-* {
-  box-sizing: border-box;
-}
+* {box-sizing:border-box}
 
-html {
-  scroll-behavior: smooth;
-}
+html {scroll-behavior:smooth}
 
 body {
-  margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
-  color: var(--ink);
-  background: var(--paper);
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans KR',sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font: inherit;
-  cursor: pointer;
-}
+a {color:inherit;text-decoration:none}
+button {font:inherit;cursor:pointer}
 
 
 /* =========================
@@ -57,290 +44,408 @@ button {
 ========================= */
 
 header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-
-  background: var(--surface);
-  border-bottom: 1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
 }
 
 .header-inner {
-  max-width: 1200px;
-  height: 76px;
-  margin: auto;
-  padding: 0 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  max-width:1200px;
+  height:76px;
+  margin:auto;
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .brand img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
+  width:48px;
+  height:48px;
+  object-fit:contain;
+  border-radius:14px;
 }
 
 .brand-text {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
 }
 
 .brand-name {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:1px;
 }
 
 .brand-eng {
-  font-family: Georgia, serif;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--accent);
+  font-family:Georgia,serif;
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--accent);
 }
 
 .menu-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px;
+  border:none;
+  border-radius:50%;
+  background:transparent;
+  color:var(--ink);
+}
 
-  padding: 8px;
-
-  border: none;
-  background: transparent;
-  color: var(--ink);
+.menu-button:hover {
+  background:var(--accent-light);
 }
 
 .icon {
-  width: 28px;
-  height: 28px;
-
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  width:28px;
+  height:28px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
 
 /* =========================
-   펼쳐지는 메뉴
+   메뉴
 ========================= */
 
 .navigation {
-  display: none;
-
-  background: var(--surface);
-  border-top: 1px solid var(--line);
+  display:none;
+  background:var(--surface);
+  border-top:1px solid var(--line);
 }
 
-.navigation.open {
-  display: block;
-}
+.navigation.open {display:block}
 
 .navigation-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 12px 24px;
-
-  display: flex;
-  flex-direction: column;
+  max-width:1200px;
+  margin:auto;
+  padding:12px 20px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
 }
 
 .navigation a {
-  padding: 16px 4px;
-
-  font-size: 15px;
-  border-bottom: 1px solid var(--line);
-
-  transition: color .2s;
+  padding:14px 18px;
+  font-size:15px;
+  border-radius:16px;
+  transition:background .2s,color .2s;
 }
 
 .navigation a:hover {
-  color: var(--accent);
-}
-
-.navigation a:last-child {
-  border-bottom: none;
+  background:var(--accent-light);
+  color:var(--accent-dark);
 }
 
 .menu-divider {
-  height: 1px;
-  margin: 14px 0;
-  background: var(--line);
+  height:1px;
+  margin:12px 4px;
+  background:var(--line);
 }
 
 .menu-label {
-  padding: 10px 4px 6px;
-
-  font-family: Georgia, serif;
-  font-size: 11px;
-  letter-spacing: 2px;
-
-  color: var(--muted);
+  padding:10px 18px 6px;
+  font-family:Georgia,serif;
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--muted);
 }
 
 
 /* =========================
-   교회 소개
+   페이지 본문
 ========================= */
 
 main {
-  max-width: 850px;
-  margin: auto;
-  padding: 70px 24px 100px;
+  max-width:900px;
+  margin:auto;
+  padding:70px 24px 100px;
 }
 
-
-/* 상단 제목 */
-
-.about-header {
-  margin-bottom: 70px;
-  text-align: center;
+.page-header {
+  text-align:center;
+  margin-bottom:50px;
 }
 
-.about-label {
-  margin-bottom: 16px;
-
-  font-family: Georgia, serif;
-  font-size: 11px;
-  letter-spacing: 4px;
-
-  color: var(--accent);
+.page-label {
+  margin-bottom:16px;
+  font-family:Georgia,serif;
+  font-size:11px;
+  letter-spacing:4px;
+  color:var(--accent);
 }
 
-.about-header h1 {
-  margin: 0;
-
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 38px;
-  font-weight: 800;
-  letter-spacing: 1px;
+.page-header h1 {
+  margin:0;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:38px;
+  font-weight:800;
 }
 
-.about-line {
-  width: 36px;
-  height: 1px;
-
-  margin: 24px auto 0;
-
-  background: var(--accent);
-}
-
-
-/* 소개 항목 */
-
-.about-section {
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: 30px;
-
-  padding: 38px 0;
-
-  border-top: 1px solid var(--line);
-}
-
-.about-section:last-of-type {
-  border-bottom: 1px solid var(--line);
-}
-
-.section-number {
-  padding-top: 4px;
-
-  font-family: Georgia, serif;
-  font-size: 11px;
-  letter-spacing: 2px;
-
-  color: var(--accent);
-}
-
-.section-content h2 {
-  margin: 0 0 14px;
-
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 21px;
-  font-weight: 800;
-}
-
-.section-content p {
-  margin: 0;
-
-  font-size: 14px;
-  line-height: 2;
-  color: var(--muted);
-
-  word-break: keep-all;
-}
-
-
-/* 마지막 키워드 */
-
-.about-keywords {
-  padding-top: 65px;
-  text-align: center;
-}
-
-.keyword-label {
-  margin-bottom: 22px;
-
-  font-family: Georgia, serif;
-  font-size: 10px;
-  letter-spacing: 3px;
-
-  color: var(--muted);
-}
-
-.keyword-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.keyword {
-  padding: 9px 16px;
-
-  border: 1px solid var(--line);
-  border-radius: 30px;
-
-  background: var(--surface);
-
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 13px;
+.page-line {
+  width:36px;
+  height:4px;
+  margin:24px auto 0;
+  border-radius:99px;
+  background:var(--accent);
 }
 
 
 /* =========================
-   하단
+   교회 이미지
+========================= */
+
+.church-image {
+  width:100%;
+  margin:0 0 24px;
+  overflow:hidden;
+  border-radius:24px;
+  background:var(--accent-light);
+}
+
+.church-image img {
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+
+/* =========================
+   일반 본문 카드
+========================= */
+
+.story-card {
+  margin-bottom:24px;
+  padding:38px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:24px;
+}
+
+.story-card p {
+  margin:0 0 22px;
+  font-size:14px;
+  line-height:2.15;
+  color:var(--muted);
+  overflow-wrap:break-word;
+}
+
+.story-card p:last-child {margin-bottom:0}
+
+.story-card strong {
+  color:var(--ink);
+  font-weight:700;
+}
+
+
+/* =========================
+   교리 인용
+========================= */
+
+.doctrine-quote {
+  margin:30px 0;
+  padding:25px 26px;
+  background:var(--accent-light);
+  border-left:4px solid var(--accent);
+  border-radius:0 16px 16px 0;
+}
+
+.doctrine-quote p {
+  margin:0;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:16px;
+  font-weight:700;
+  line-height:2;
+  color:var(--accent-dark);
+}
+
+
+/* =========================
+   강조 제목
+========================= */
+
+.section-heading {
+  margin:0 0 23px;
+  text-align:center;
+}
+
+.section-heading .english {
+  display:block;
+  margin-bottom:9px;
+  font-family:Georgia,serif;
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--accent);
+}
+
+.section-heading h2 {
+  margin:0;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:27px;
+  font-weight:800;
+}
+
+.section-heading .line {
+  width:30px;
+  height:2px;
+  margin:18px auto 0;
+  background:var(--accent);
+}
+
+.definition {
+  padding:25px;
+  margin:25px 0;
+  border-radius:16px;
+  background:var(--accent-light);
+}
+
+.definition p {
+  margin:0;
+  color:var(--accent-dark);
+  font-size:14px;
+  line-height:2;
+}
+
+
+/* =========================
+   죽음 강조
+========================= */
+
+.death-word {
+  margin:32px 0;
+  text-align:center;
+}
+
+.death-word span {
+  display:inline-block;
+  padding:0 8px 9px;
+  border-bottom:2px solid var(--accent);
+  font-family:'Nanum Myeongjo',serif;
+  font-size:28px;
+  font-weight:800;
+  color:var(--ink);
+}
+
+
+/* =========================
+   천사 반전
+========================= */
+
+.reveal {
+  margin:32px 0;
+  padding:30px 22px;
+  text-align:center;
+  border-radius:18px;
+  background:var(--accent-light);
+}
+
+.reveal p {
+  margin:0 0 15px;
+  color:var(--ink);
+  font-family:'Nanum Myeongjo',serif;
+  font-size:17px;
+  font-weight:700;
+  line-height:2;
+}
+
+.reveal p:last-child {margin-bottom:0}
+
+.reveal .highlight {
+  font-size:23px;
+  color:var(--accent-dark);
+}
+
+
+/* =========================
+   마지막 장면
+========================= */
+
+.scene-card {
+  margin-top:24px;
+  padding:42px 38px;
+  background:#30342a;
+  border-radius:24px;
+  color:#fff;
+}
+
+.scene-card p {
+  margin:0 0 22px;
+  font-size:14px;
+  line-height:2.15;
+  color:#dedfd5;
+}
+
+.scene-card p:last-child {margin-bottom:0}
+
+.scene-label {
+  margin-bottom:28px;
+  font-family:Georgia,serif;
+  font-size:10px;
+  letter-spacing:3px;
+  color:#b8c77d;
+}
+
+.scene-dialogue {
+  margin-top:30px;
+  padding:26px;
+  border-radius:16px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.scene-dialogue .speaker {
+  display:block;
+  margin-bottom:15px;
+  font-size:12px;
+  font-weight:600;
+  color:#b8c77d;
+}
+
+.scene-dialogue p {
+  margin:0;
+  font-size:17px;
+  line-height:2;
+  font-weight:600;
+  color:#fff;
+}
+
+
+/* =========================
+   푸터
 ========================= */
 
 footer {
-  padding: 45px 24px;
-
-  background: var(--paper);
-  border-top: 1px solid var(--line);
-
-  text-align: center;
+  padding:45px 24px;
+  background:var(--paper);
+  border-top:1px solid var(--line);
+  text-align:center;
 }
 
 .footer-name {
-  font-family: 'Nanum Myeongjo', serif;
-  font-size: 20px;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:20px;
 }
 
 footer p {
-  font-size: 12px;
-  line-height: 1.8;
-  color: var(--muted);
+  font-size:12px;
+  line-height:1.8;
+  color:var(--muted);
 }
 
 
@@ -348,80 +453,61 @@ footer p {
    모바일
 ========================= */
 
-@media (max-width: 700px) {
+@media(max-width:700px) {
+  .header-inner {height:70px;padding:0 18px}
+  .brand img {width:42px;height:42px}
+  .brand-name {font-size:19px}
+  .brand-eng {font-size:9px}
+  .navigation-inner {padding:10px 14px 16px}
+}
 
-  .header-inner {
-    height: 70px;
-    padding: 0 18px;
+@media(max-width:650px) {
+  main {padding:50px 16px 75px}
+  .page-header {margin-bottom:35px}
+  .page-header h1 {font-size:30px}
+
+  .church-image {border-radius:18px}
+
+  .story-card {
+    padding:27px 23px;
+    border-radius:20px;
   }
 
-  .brand img {
-    width: 42px;
-    height: 42px;
+  .story-card p {font-size:13px}
+
+  .doctrine-quote {padding:22px 18px}
+  .doctrine-quote p {font-size:14px}
+
+  .section-heading h2 {font-size:24px}
+  .definition {padding:21px}
+  .definition p {font-size:13px}
+
+  .reveal p {font-size:15px}
+  .reveal .highlight {font-size:20px}
+
+  .scene-card {
+    padding:32px 24px;
+    border-radius:20px;
   }
 
-  .brand-name {
-    font-size: 19px;
-  }
-
-  .brand-eng {
-    font-size: 9px;
-  }
-
-  .navigation-inner {
-    padding: 12px 20px;
-  }
-
-  main {
-    padding: 50px 20px 75px;
-  }
-
-  .about-header {
-    margin-bottom: 50px;
-  }
-
-  .about-header h1 {
-    font-size: 30px;
-  }
-
-  .about-section {
-    grid-template-columns: 1fr;
-    gap: 12px;
-
-    padding: 30px 0;
-  }
-
-  .section-content h2 {
-    font-size: 19px;
-  }
-
-  .section-content p {
-    font-size: 13px;
-    line-height: 1.9;
-  }
-
-  .about-keywords {
-    padding-top: 50px;
-  }
+  .scene-card p {font-size:13px}
+  .scene-dialogue {padding:22px}
+  .scene-dialogue p {font-size:16px}
 }
 
 </style>
 </head>
 
-
 <body>
 
-
 <!-- =========================
-     상단 헤더
+     헤더
 ========================= -->
 
 <header>
-
   <div class="header-inner">
 
     <a class="brand" href="index.html">
-
       <img
         src="https://i.ibb.co/60kWKKZY/file-000000003940822fb276a79aa6bc4e32.png"
         alt="루아엘교회 로고"
@@ -431,9 +517,7 @@ footer p {
         <span class="brand-name">루아엘교회</span>
         <span class="brand-eng">LUHAEL CHURCH</span>
       </div>
-
     </a>
-
 
     <button
       class="menu-button"
@@ -443,20 +527,14 @@ footer p {
       aria-expanded="false"
       aria-controls="navigation"
     >
-
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
-
     </button>
 
   </div>
 
-
-  <!-- 메뉴 -->
-
   <nav class="navigation" id="navigation">
-
     <div class="navigation-inner">
 
       <a href="about.html">교회 소개</a>
@@ -465,165 +543,271 @@ footer p {
       <a href="news.html">교회 소식</a>
 
       <div class="menu-divider"></div>
-
       <span class="menu-label">EXTRA</span>
 
       <a href="gallery.html">비공식 화보</a>
       <a href="creator.html">제작자 TMI</a>
 
     </div>
-
   </nav>
-
 </header>
 
 
 <main>
-   
-  <!-- 01 -->
 
-  <section class="about-section">
+  <!-- 페이지 제목 -->
 
-    <div class="section-number">
-      01
+  <section class="page-header">
+    <div class="page-label">ABOUT LUHAEL</div>
+    <h1>교회 소개</h1>
+    <div class="page-line"></div>
+  </section>
+
+
+  <!-- 교회 사진: 원본 가로세로 비율 자동 유지 -->
+
+  <figure class="church-image">
+    <img
+      src="여기에_교회_사진_URL"
+      alt="루아엘교회 전경"
+    >
+  </figure>
+
+
+  <!-- 교단의 시작 -->
+
+  <section class="story-card">
+
+    <p>
+      루아엘교회가 처음부터 이렇게 거대했던 것은 아니었다.
+    </p>
+
+    <p>
+      마약 거래로 자금을 모으고 세력을 넓히던 작은 교회.
+    </p>
+
+    <p>
+      교회는 <strong>안락사 약물</strong>과
+      <strong>새로운 마약</strong> 개발에 성공했고
+      약물을 이용하여 사람들에게 죽음의 방식을 제안하기 시작했다.
+    </p>
+
+    <div class="doctrine-quote">
+      <p>
+        고통 없이 죽음을 맞이하고,<br>
+        천사의 인도를 받아 천상으로 돌아간다.
+      </p>
     </div>
 
-    <div class="section-content">
+    <p>
+      루아엘교회가 말하는 <strong>평온한 죽음</strong>은
+      그렇게 하나의 교리가 되었고,
+      교회는 점차 거대한 교단으로 성장했다.
+    </p>
 
-      <h2>.</h2>
+    <p>
+      그리고 그 중심에는 신의 아이, 천사가 있었다.
+    </p>
 
+  </section>
+
+
+  <!-- 천상합일 -->
+
+  <section class="story-card">
+
+    <div class="section-heading">
+      <span class="english">HEAVENLY UNION</span>
+      <h2>천상합일</h2>
+      <div class="line"></div>
+    </div>
+
+    <p>
+      인간은 죽은 뒤 천상으로 돌아가며
+      그곳에서 천사의 사랑을 받아 <strong>하나</strong>가 된다.
+    </p>
+
+    <div class="definition">
       <p>
-        .
+        <strong>천상합일</strong><br>
+        육신과 영혼, 인간과 천상의 존재 사이에 놓인
+        모든 경계가 사라지는 것.
       </p>
+    </div>
 
+    <p>
+      그러나 합일은 죽음 이후에만 이루어지는 것이 아니다.
+      서로의 감정을 나누고, 사랑하고, 육체를 맞대는 것 또한
+      서로를 구분하던 경계를 허무는 행위로 여겨진다.
+    </p>
+
+    <p>
+      루아엘교회에서 천사는 숭배의 대상인 동시에
+      인간에게 사랑을 베푸는 존재다.
+    </p>
+
+    <p>
+      천사를 향한 욕망과 성적인 관계 역시 불경한 것으로 여기지 않으며,
+      신도들은 살아 있는 동안에도 천사와의 사랑을 통해
+      부분적인 <strong>천상합일</strong>을 경험할 수 있다고 믿는다.
+    </p>
+
+  </section>
+
+
+  <!-- 고통과 죽음 -->
+
+  <section class="story-card">
+
+    <p>
+      루아엘교회가 파고든 것은
+      <strong>고통받고 싶지 않다</strong>는 인간의 욕망이었다.
+    </p>
+
+    <p>
+      약물은 불안과 괴로움을 잠시 잊게 만들었다.
+      교회는 그 순간의 평온을 신이 인간에게 허락한 안식이라고 설명했다.
+    </p>
+
+    <p>
+      그러나 약효가 끝나면 고통은 다시 돌아왔다.
+    </p>
+
+    <p>
+      아무리 편안한 순간을 반복해도 결국 인간에게는
+      피할 수 없는 마지막 두려움이 남아 있었다.
+    </p>
+
+    <div class="death-word">
+      <span>죽음</span>
+    </div>
+
+    <p>
+      교회는 죽음마저 두려워할 필요가 없다고 말했다.
+    </p>
+
+    <p>
+      죽음은 고통의 끝이며, 천상으로 돌아가는 과정이고,
+      그곳에는 인간을 받아줄 천사가 기다리고 있다고.
+    </p>
+
+  </section>
+
+
+  <!-- 천사의 정체 -->
+
+  <section class="story-card">
+
+    <div class="section-heading">
+      <span class="english">THE ANGEL</span>
+      <h2>천사</h2>
+      <div class="line"></div>
+    </div>
+
+    <p>
+      금발과 푸른 눈을 가진 아름다운 존재.
+    </p>
+
+    <p>
+      남자의 모습으로 나타나기도 하고,
+      여자의 모습으로 나타나기도 했다.
+    </p>
+
+    <p>
+      신도들은 그것이 하나의 천사라 믿었다.
+    </p>
+
+    <div class="reveal">
+      <p>하지만 천사는 처음부터 둘이었다.</p>
+      <p class="highlight">한 남자와 한 여자.</p>
+    </div>
+
+    <p>
+      아버지인 교주 밑에서 쌍둥이는
+      평생 한 명의 천사인 척 살아왔다.
+    </p>
+
+    <p>
+      그리고 스물세 살이 되던 날,
+      그들은 그 역할을 그만두기로 했다.
+    </p>
+
+    <p>
+      자신들을 대신할 새로운 천사를 찾은 것이다.
+    </p>
+
+    <div class="reveal">
+      <p class="highlight">바로 당신을.</p>
     </div>
 
   </section>
 
 
+  <!-- 도입 장면 -->
 
-  <!-- 02 -->
+  <section class="scene-card">
 
-  <section class="about-section">
+    <div class="scene-label">PROLOGUE</div>
 
-    <div class="section-number">
-      02
-    </div>
+    <p>
+      손발이 단단히 묶여 있었다.
+      두꺼운 천으로 재갈이 물려 있었고,
+      당신의 입에는 미처 삼키지 못한 침이 고이기 시작했다.
+    </p>
 
-    <div class="section-content">
+    <p>
+      여자가 당신의 어깨를 툭 쳤다.
+    </p>
 
-      <h2>.</h2>
-
+    <div class="scene-dialogue">
+      <span class="speaker">여자</span>
       <p>
-        .
+        너.
+        <br><br>
+        우리가 이직시켜 줄게.
+        <br><br>
+        여기가 웬만한 대기업보다 나을걸?
       </p>
-
     </div>
 
   </section>
 
+</main>
 
 
-  <!-- 03 -->
-
-  <section class="about-section">
-
-    <div class="section-number">
-      03
-    </div>
-
-    <div class="section-content">
-
-      <h2>.</h2>
-
-      <p>
-        .
-      </p>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- 04 -->
-
-  <section class="about-section">
-
-    <div class="section-number">
-      04
-    </div>
-
-    <div class="section-content">
-
-      <h2>.</h2>
-
-      <p>
-        .
-      </p>
-
-    </div>
-
-  </section>
-
-   
-<!-- =========================
-     하단
-========================= -->
+<!-- 푸터 -->
 
 <footer>
-
-  <div class="footer-name">
-    루아엘교회
-  </div>
-
+  <div class="footer-name">루아엘교회</div>
   <p>LUHAEL CHURCH</p>
-
-  <p>
-    © 2026 LUHAEL CHURCH.<br>
-    All Rights Reserved.
-  </p>
-
+  <p>© 2026 LUHAEL CHURCH.<br>All Rights Reserved.</p>
 </footer>
 
 
-
 <script>
-
-/* 햄버거 메뉴 */
 
 const menuButton = document.getElementById("menuButton");
 const navigation = document.getElementById("navigation");
 
 menuButton.addEventListener("click", function () {
-
   const isOpen = navigation.classList.toggle("open");
 
   menuButton.setAttribute("aria-expanded", isOpen);
-
   menuButton.setAttribute(
     "aria-label",
     isOpen ? "메뉴 닫기" : "메뉴 열기"
   );
-
 });
 
-
 navigation.querySelectorAll("a").forEach(function (link) {
-
   link.addEventListener("click", function () {
-
     navigation.classList.remove("open");
-
     menuButton.setAttribute("aria-expanded", "false");
     menuButton.setAttribute("aria-label", "메뉴 열기");
-
   });
-
 });
 
 </script>
-
 
 </body>
 </html>
