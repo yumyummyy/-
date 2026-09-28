@@ -414,23 +414,59 @@ main {
 }
 
 .dialogue {
-  margin-top:36px;
+
+/* 마지막 대사 */
+
+.dialogue {
+  margin-top:42px;
   text-align:center;
 }
 
 .dialogue p {
-  margin:0 0 12px;
-
-  font-size:17px;
-  font-weight:600;
-  line-height:1.9;
-
-  color:var(--ink);
+  margin:0;
+  line-height:1.8;
+  text-align:center;
 }
 
-.dialogue p:last-child {
-  margin-bottom:0;
+.dialogue .dialogue-first {
+  margin-bottom:35px;
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:14px;
+  font-weight:400;
 }
+
+.dialogue .dialogue-main {
+  margin-bottom:8px;
+  font-family:'Nanum Myeongjo',serif;
+  font-size:30px;
+  font-weight:800;
+  line-height:1.6;
+}
+
+.dialogue .dialogue-last {
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:13px;
+  font-weight:400;
+  color:var(--muted);
+}
+
+/* 모바일 */
+@media(max-width:650px) {
+
+  .dialogue .dialogue-first {
+    font-size:13px;
+  }
+
+  .dialogue .dialogue-main {
+    font-size:24px;
+  }
+
+  .dialogue .dialogue-last {
+    font-size:12px;
+  }
+
+}
+
 
 
 /* =========================
@@ -744,7 +780,7 @@ footer p {
       <p>
         천사를 향한 욕망과 성적인 관계 역시 불경한 것으로 여기지 않으며,
         신도들은 살아 있는 동안에도 천사와의 사랑을 통해
-        부분적인 <strong>천상합일</strong>을 경험할 수 있다고 믿는다.
+        부분적인 천상합일을 경험할 수 있다고 믿는다.
       </p>
 
     </section>
@@ -818,7 +854,7 @@ footer p {
       </p>
 
       <p>
-        신도들은 그것이 하나의 천사라 믿었다.
+        신도들은 그것이 <strong>하나의 천사</strong>라 믿었다.
       </p>
 
 
