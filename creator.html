@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -200,40 +201,12 @@ main {
   padding:70px 24px 100px;
 }
 
-.page-header {
-  margin-bottom:60px;
-  text-align:center;
-}
-
-.page-label {
-  margin-bottom:16px;
-  font-family:Georgia,serif;
-  font-size:11px;
-  letter-spacing:4px;
-  color:var(--accent);
-}
-
-.page-header h1 {
-  margin:0;
-  font-family:'Nanum Myeongjo',serif;
-  font-size:38px;
-  font-weight:800;
-}
-
-.page-line {
-  width:36px;
-  height:1px;
-  margin:24px auto 0;
-  background:var(--accent);
-}
-
 
 /* =========================
    제작자 메모
 ========================= */
 
 .creator-note {
-  min-height:180px;
   margin-bottom:24px;
   padding:36px;
 
@@ -242,7 +215,7 @@ main {
 }
 
 .creator-note-label {
-  margin-bottom:18px;
+  margin-bottom:22px;
 
   font-family:Georgia,serif;
   font-size:10px;
@@ -251,71 +224,66 @@ main {
   color:var(--accent);
 }
 
-.creator-note h2 {
-  min-height:30px;
-  margin:0 0 14px;
-
-  font-family:'Nanum Myeongjo',serif;
-  font-size:23px;
-  font-weight:800;
-}
-
 .creator-note p {
-  min-height:50px;
   margin:0;
 
   font-size:14px;
-  line-height:1.9;
+  line-height:2;
 
   color:var(--muted);
+  overflow-wrap:break-word;
 }
 
 
 /* =========================
-   TMI 카드
+   흰색 메모 박스
 ========================= */
 
 .tmi-grid {
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:1fr;
   gap:16px;
 }
 
 .tmi-card {
-  min-height:190px;
-  padding:30px;
+  padding:36px;
 
   background:var(--surface);
   border:1px solid var(--line);
 }
 
-.tmi-number {
-  margin-bottom:25px;
-
-  font-family:Georgia,serif;
-  font-size:10px;
-  letter-spacing:2px;
-
-  color:var(--accent);
-}
-
-.tmi-card h2 {
-  min-height:27px;
-  margin:0 0 12px;
-
-  font-family:'Nanum Myeongjo',serif;
-  font-size:19px;
-  font-weight:700;
-}
-
 .tmi-card p {
-  min-height:45px;
   margin:0;
 
   font-size:13px;
-  line-height:1.8;
+  line-height:2;
 
   color:var(--muted);
+  overflow-wrap:break-word;
+}
+
+
+/* =========================
+   비밀 설정 링크
+========================= */
+
+.secret-link {
+  display:inline-block;
+
+  margin-top:25px;
+  padding-bottom:5px;
+
+  font-size:13px;
+  font-weight:600;
+
+  color:var(--accent);
+  border-bottom:1px solid var(--accent);
+
+  transition:opacity .2s;
+}
+
+.secret-link:hover {
+  opacity:.65;
 }
 
 
@@ -346,7 +314,6 @@ footer p {
 
 /* =========================
    헤더 모바일
-   about.html과 동일
 ========================= */
 
 @media (max-width:700px) {
@@ -385,17 +352,17 @@ footer p {
     padding:50px 20px 75px;
   }
 
-  .page-header h1 {
-    font-size:30px;
-  }
-
-  .tmi-grid {
-    grid-template-columns:1fr;
-  }
-
   .creator-note,
   .tmi-card {
     padding:25px;
+  }
+
+  .creator-note p {
+    font-size:13px;
+  }
+
+  .tmi-card p {
+    font-size:13px;
   }
 }
 
@@ -479,61 +446,66 @@ footer p {
 <main>
 
 
+  <!-- =========================
+       제작자 메모
+  ========================= -->
+
   <section class="creator-note">
 
     <div class="creator-note-label">
       CREATOR'S NOTE
     </div>
 
-    <h2></h2>
+    <p>
+      안녕하세요... 어느 날 갑자기 사이비물이 먹고 싶다!!!는 생각이 들어 만들었는데... 여기까지 왔네요...
+      <br><br>
 
-    <p></p>
+      신은 존재하지 않는 사이비가 먹고 싶었어요...
+      <br><br>
+
+      근데 만들 때 찾아보니까 이 사이비 녀석들이 진짜;;;<br>
+      진짜 너~~~~무~~~~ 그뭔씹이라 못 버티겠어서 고증은 버렸습니다ㅎㅎ
+      <br><br><br>
+
+      말씀 페이지에 있는 드림코어 플레이리스트를 들으며 제작했습니다.
+      드림코어의 기이하면서도 차분해지는 느낌이 이 교회와 많이 닮아있는 것 같아요.
+      <br><br>
+
+      특히 첫 곡의 영상 화면이 정말 천상합일에 딱 맞는 이미지인 것 같아서 사이비 상징(로고)색을 연두색으로 잡았습니다.
+      녹색 계열이 독을 표현할 때 자주 쓰이기도 해서 겸사겸사~
+    </p>
 
   </section>
 
+
+  <!-- =========================
+       비밀 설정 안내
+  ========================= -->
 
   <section class="tmi-grid">
 
     <article class="tmi-card">
 
-      <div class="tmi-number">01</div>
+      <p>
+        여기까지 읽어주셔서 감사합니다!<br>
+        당신에게 비설을 알려드릴게요👍
+        <br><br>
 
-      <h2></h2>
+        채팅하면서 알게 된 내용도 있고 아직 모르시는 내용도 있을 거라 생각이 듭니다.
+        <br><br>
 
-      <p></p>
+        정말 많은 내용의 프롬을 그대로 옮겨놨기에 아직 플레이 전이라면 플레이 후 열람을 추천드려요~
+        <br><br>
 
-    </article>
+        너무 다 알면 재미없고 부담되잖아요?ㅎㅎ
+        <br><br>
 
+        그래도 괜찮으시다면
+      </p>
 
-    <article class="tmi-card">
-
-      <div class="tmi-number">02</div>
-
-      <h2></h2>
-
-      <p></p>
-
-    </article>
-
-
-    <article class="tmi-card">
-
-      <div class="tmi-number">03</div>
-
-      <h2></h2>
-
-      <p></p>
-
-    </article>
-
-
-    <article class="tmi-card">
-
-      <div class="tmi-number">04</div>
-
-      <h2></h2>
-
-      <p></p>
+      <a href="secret.html" class="secret-link">
+        자세한 설정 보러가기 &rarr;
+      </a>
 
     </article>
 
@@ -565,7 +537,9 @@ footer p {
 
 <script>
 
-/* 햄버거 메뉴 */
+/* =========================
+   햄버거 메뉴
+========================= */
 
 const menuButton = document.getElementById("menuButton");
 const navigation = document.getElementById("navigation");
