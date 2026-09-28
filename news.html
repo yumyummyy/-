@@ -384,6 +384,131 @@ footer p {
     padding:26px 24px;
   }
 }
+
+/* 둥근 행사 안내 박스 */
+.events {
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+}
+
+.event {
+  padding:32px;
+  border-bottom:1px solid var(--line);
+}
+
+/* 작은 분류 태그 */
+.event-category {
+  display:inline-block;
+  margin-bottom:14px;
+  padding:5px 12px;
+  border-radius:999px;
+  background:#eeeee8;
+  color:#55594b;
+  font-size:12px;
+  font-weight:600;
+  line-height:1.5;
+  letter-spacing:0;
+}
+
+.event:first-child .event-category {
+  background:#e7edd7;
+  color:#617238;
+}
+
+/* 행사명 */
+.event h2 {
+  margin:0 0 12px;
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:26px;
+  font-weight:700;
+  line-height:1.4;
+}
+
+.event-meta {
+  margin:0 0 18px;
+  font-size:13px;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+.event-description {
+  margin:0;
+  font-size:15px;
+  line-height:1.9;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+}
+
+/* 시간 및 참여 대상 */
+.event-detail {
+  margin-top:24px;
+  padding:20px 0 0;
+  border-top:1px solid var(--line);
+  background:transparent;
+  font-size:14px;
+  line-height:1.9;
+}
+
+.event-detail p + p {
+  margin-top:7px;
+}
+
+.event-detail strong {
+  margin-bottom:8px;
+}
+
+.event-note {
+  margin-top:18px;
+  font-size:12px;
+  line-height:1.8;
+}
+
+/* 특별 안내 */
+.special-notice {
+  margin-top:24px;
+  padding:28px 32px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:22px;
+}
+
+.special-notice h2 {
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:18px;
+  font-weight:700;
+}
+
+.special-notice p {
+  color:var(--muted);
+  line-height:1.9;
+}
+
+/* 모바일 */
+@media (max-width:600px) {
+  .events,
+  .special-notice {
+    border-radius:18px;
+  }
+
+  .event {
+    padding:26px 22px;
+  }
+
+  .event h2 {
+    font-size:23px;
+  }
+
+  .event-description {
+    font-size:14px;
+  }
+
+  .special-notice {
+    padding:24px 22px;
+  }
+}
+  
 </style>
 </head>
 
