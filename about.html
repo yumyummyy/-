@@ -9,7 +9,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -27,7 +26,6 @@
   --accent:#9aaa51;
   --accent-dark:#5f6d2a;
   --accent-light:#f0f3df;
-  --night:#080a07;
 }
 
 * {
@@ -40,7 +38,7 @@ html {
 
 body {
   margin:0;
-  background:var(--night);
+  background:var(--paper);
   color:var(--ink);
   font-family:'Noto Sans KR',sans-serif;
 }
@@ -113,6 +111,11 @@ header {
   color:var(--accent);
 }
 
+
+/* =========================
+   햄버거 버튼
+========================= */
+
 .menu-button {
   display:flex;
   align-items:center;
@@ -120,14 +123,17 @@ header {
 
   padding:8px;
   border:none;
-  border-radius:50%;
+  border-radius:0;
 
   background:transparent;
   color:var(--ink);
 }
 
-.menu-button:hover {
-  background:var(--accent-light);
+.menu-button:hover,
+.menu-button:focus,
+.menu-button:active {
+  background:transparent;
+  box-shadow:none;
 }
 
 .icon {
@@ -169,13 +175,14 @@ header {
 .navigation a {
   padding:14px 18px;
   font-size:15px;
-  border-radius:16px;
-
-  transition:background .2s,color .2s;
+  border-radius:0;
+  background:transparent;
 }
 
-.navigation a:hover {
-  background:var(--accent-light);
+.navigation a:hover,
+.navigation a:focus,
+.navigation a:active {
+  background:transparent;
   color:var(--accent-dark);
 }
 
@@ -196,121 +203,14 @@ header {
 
 
 /* =========================
-   전체 배경 그라데이션
+   소개 페이지
 ========================= */
 
-.story-background {
+main {
   width:100%;
-
-  background:linear-gradient(
-    to bottom,
-
-    #f8f7f1 0%,
-    #f8f7f1 13%,
-
-    #f0f3df 24%,
-    #dce5b8 35%,
-
-    #aabf75 47%,
-    #7f9854 57%,
-
-    #465b35 68%,
-    #253321 78%,
-
-    #111a10 88%,
-    #080a07 96%,
-    #080a07 100%
-  );
-}
-
-.story-container {
-  width:100%;
-  max-width:1100px;
+  max-width:900px;
   margin:0 auto;
-}
-
-
-/* =========================
-   공통 본문
-========================= */
-
-.story-section {
-  position:relative;
-  width:100%;
-  padding:110px 28px;
-}
-
-.story-inner {
-  max-width:690px;
-  margin:0 auto;
-}
-
-.story-text {
-  font-size:15px;
-  line-height:2.4;
-  word-break:keep-all;
-  overflow-wrap:break-word;
-}
-
-.story-text p {
-  margin:0 0 38px;
-}
-
-.story-text p:last-child {
-  margin-bottom:0;
-}
-
-.story-text strong {
-  font-weight:700;
-}
-
-.center {
-  text-align:center;
-}
-
-.story-space {
-  height:100px;
-}
-
-.story-space.large {
-  height:180px;
-}
-
-
-/* =========================
-   첫 화면
-========================= */
-
-.intro-section {
-  padding-top:75px;
-  padding-bottom:110px;
-}
-
-.intro-label {
-  margin-bottom:16px;
-
-  font-family:Georgia,serif;
-  font-size:11px;
-  letter-spacing:4px;
-
-  color:var(--accent);
-  text-align:center;
-}
-
-.intro-title {
-  margin:0 0 45px;
-
-  font-family:'Nanum Myeongjo',serif;
-  font-size:38px;
-  font-weight:800;
-  text-align:center;
-}
-
-.intro-line {
-  width:36px;
-  height:3px;
-  margin:0 auto 55px;
-  background:var(--accent);
+  padding:48px 24px 105px;
 }
 
 
@@ -318,299 +218,214 @@ header {
    교회 사진
 ========================= */
 
-
 .church-photo {
   width:100%;
-  max-width:1000px;
-  margin:0 auto 65px;
+  margin:0 auto 55px;
   text-align:center;
-
-  -webkit-mask-image:linear-gradient(
-    to bottom,
-    black 0%,
-    black 78%,
-    transparent 100%
-  );
-
-  mask-image:linear-gradient(
-    to bottom,
-    black 0%,
-    black 78%,
-    transparent 100%
-  );
 }
 
 .church-photo img {
   display:block;
+
   width:auto;
   max-width:100%;
   height:auto;
+
   margin:0 auto;
 }
 
 
-/* 사진 아래쪽이 배경에 녹아드는 효과 */
+/* =========================
+   본문 공통
+========================= */
 
-.church-photo {
-  -webkit-mask-image:linear-gradient(
-    to bottom,
-    black 0%,
-    black 78%,
-    transparent 100%
-  );
+.article {
+  max-width:740px;
+  margin:0 auto;
+}
 
-  mask-image:linear-gradient(
-    to bottom,
-    black 0%,
-    black 78%,
-    transparent 100%
-  );
+.article-section {
+  margin-bottom:55px;
+}
+
+.article-section:last-child {
+  margin-bottom:0;
+}
+
+.article p {
+  margin:0 0 18px;
+
+  font-size:14px;
+  line-height:2.15;
+
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+
+.article p:last-child {
+  margin-bottom:0;
+}
+
+.article strong {
+  font-weight:700;
+  color:var(--ink);
 }
 
 
 /* =========================
-   초반 이야기
+   소제목 + 구분선
 ========================= */
 
-.origin-section {
-  color:#30342a;
+.section-heading {
+  display:flex;
+  align-items:center;
+  gap:15px;
+
+  margin:0 0 25px;
 }
 
-.origin-section .story-inner {
-  max-width:690px;
-}
+.section-heading h2 {
+  flex-shrink:0;
 
-.origin-emphasis {
-  margin:95px 0;
-
-  font-family:'Nanum Myeongjo',serif;
-  font-size:25px;
-  font-weight:700;
-  line-height:2;
-
-  text-align:center;
-}
-
-.doctrine-line {
-  margin:90px auto;
-  max-width:650px;
-
-  font-family:'Nanum Myeongjo',serif;
-  font-size:23px;
-  font-weight:700;
-  line-height:2.1;
-
-  text-align:center;
-  color:#4e602b;
-}
-
-
-/* =========================
-   천상합일
-========================= */
-
-.union-section {
-  padding-top:150px;
-  padding-bottom:170px;
-
-  color:#303a24;
-}
-
-.chapter-label {
-  margin-bottom:18px;
-
-  font-family:Georgia,serif;
-  font-size:11px;
-  letter-spacing:5px;
-
-  text-align:center;
-}
-
-.chapter-title {
   margin:0;
 
   font-family:'Nanum Myeongjo',serif;
-  font-size:clamp(40px,8vw,75px);
+  font-size:20px;
   font-weight:800;
-  line-height:1.4;
+
+  color:var(--accent-dark);
+}
+
+.section-heading::after {
+  content:"";
+
+  flex:1;
+  height:1px;
+
+  background:#b9c49b;
+}
+
+
+/* =========================
+   교리 인용문
+========================= */
+
+.doctrine-quote {
+  margin:30px 0;
+  padding:25px 22px;
+
+  background:#ebeedb;
 
   text-align:center;
 }
 
-.chapter-line {
-  width:35px;
-  height:2px;
-  margin:35px auto 75px;
-  background:currentColor;
-  opacity:.5;
+.doctrine-quote p {
+  margin:0;
+
+  font-family:'Nanum Myeongjo',serif;
+  font-size:16px;
+  font-weight:700;
+  line-height:2;
+
+  color:var(--ink);
 }
 
-.union-definition {
-  max-width:650px;
-  margin:100px auto;
+
+/* =========================
+   천상합일 정의
+========================= */
+
+.definition {
+  margin:24px 0;
+}
+
+.definition p {
+  margin:0;
+  line-height:2.15;
+}
+
+
+/* =========================
+   중요 단어
+========================= */
+
+.emphasis-word {
+  margin:28px 0;
 
   font-family:'Nanum Myeongjo',serif;
   font-size:21px;
-  font-weight:700;
-  line-height:2.2;
-
-  text-align:center;
-}
-
-
-/* =========================
-   고통과 죽음
-========================= */
-
-.suffering-section {
-  padding-top:150px;
-  padding-bottom:170px;
-
-  color:#f5f5e9;
-}
-
-.suffering-section .story-text {
-  color:#f5f5e9;
-}
-
-.death-title {
-  margin:150px 0;
-
-  font-family:'Nanum Myeongjo',serif;
-  font-size:clamp(65px,15vw,125px);
   font-weight:800;
-  letter-spacing:8px;
 
-  text-align:center;
-  color:#fff;
+  color:var(--accent-dark);
 }
 
 
 /* =========================
-   천사
+   천사의 정체
 ========================= */
 
-.angel-section {
-  padding-top:150px;
-  padding-bottom:180px;
-
-  color:#f5f5e9;
+.angel-reveal {
+  margin:32px 0 26px;
 }
 
-.angel-section .chapter-label {
-  color:#b8c77d;
-}
-
-.angel-section .story-text {
-  color:#e2e7d9;
-}
-
-.reveal-text {
-  margin:130px auto;
+.angel-reveal p {
+  margin-bottom:9px;
 
   font-family:'Nanum Myeongjo',serif;
-  font-size:clamp(23px,5vw,38px);
+  font-size:17px;
   font-weight:800;
-  line-height:2;
-
-  text-align:center;
-  color:#fff;
+  line-height:1.9;
 }
 
-.reveal-sub {
-  margin:65px auto 0;
-
-  font-family:'Nanum Myeongjo',serif;
-  font-size:clamp(20px,4vw,29px);
-  font-weight:700;
-
-  text-align:center;
-  color:#c4d399;
+.angel-reveal p:last-child {
+  margin-bottom:0;
 }
 
 
 /* =========================
-   바로 당신을
+   마지막 반전
 ========================= */
 
-.you-section {
-  min-height:70vh;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:150px 24px;
-
-  color:white;
+.final-reveal {
+  margin:42px 0 48px;
+  text-align:center;
 }
 
-.you-text {
+.final-reveal p {
   margin:0;
 
   font-family:'Nanum Myeongjo',serif;
-  font-size:clamp(35px,8vw,70px);
+  font-size:24px;
   font-weight:800;
-
-  text-align:center;
-  line-height:1.6;
-}
-
-.you-text span {
-  color:#b8c77d;
+  color:var(--accent-dark);
 }
 
 
 /* =========================
-   마지막 납치 장면
+   마지막 장면
 ========================= */
 
-.prologue-section {
-  padding-top:170px;
-  padding-bottom:230px;
-
-  color:#f5f5e9;
+.prologue {
+  padding-top:12px;
 }
 
-.prologue-label {
-  margin-bottom:100px;
-
-  font-family:Georgia,serif;
-  font-size:11px;
-  letter-spacing:5px;
-
-  text-align:center;
-  color:#9aaa51;
-}
-
-.prologue-section .story-text {
-  color:#d5d9d0;
+.prologue p {
+  margin-bottom:18px;
 }
 
 .dialogue {
-  margin-top:130px;
-  padding-left:20px;
-
-  border-left:2px solid #9aaa51;
-}
-
-.dialogue-speaker {
-  display:block;
-  margin-bottom:30px;
-
-  font-size:12px;
-  font-weight:600;
-  color:#b8c77d;
+  margin-top:36px;
+  text-align:center;
 }
 
 .dialogue p {
-  margin:0 0 35px;
+  margin:0 0 12px;
 
-  font-size:clamp(19px,4vw,27px);
+  font-size:17px;
   font-weight:600;
   line-height:1.9;
 
-  color:white;
+  color:var(--ink);
 }
 
 .dialogue p:last-child {
@@ -619,38 +434,14 @@ header {
 
 
 /* =========================
-   스크롤 등장 효과
-========================= */
-
-.reveal {
-  opacity:1;
-  transform:none;
-}
-
-.js-enabled .reveal {
-  opacity:0;
-  transform:translateY(35px);
-
-  transition:
-    opacity 1.1s ease,
-    transform 1.1s ease;
-}
-
-.js-enabled .reveal.visible {
-  opacity:1;
-  transform:translateY(0);
-}
-
-
-/* =========================
-   검은색 푸터
+   푸터
 ========================= */
 
 footer {
-  padding:65px 24px 55px;
+  padding:45px 24px;
 
-  background:#080a07;
-  color:#e5e5d8;
+  background:var(--paper);
+  border-top:1px solid var(--line);
 
   text-align:center;
 }
@@ -661,12 +452,12 @@ footer {
 }
 
 footer p {
-  margin:12px 0 0;
+  margin:10px 0 0;
 
   font-size:12px;
-  line-height:1.9;
+  line-height:1.8;
 
-  color:#888f80;
+  color:var(--muted);
 }
 
 
@@ -697,341 +488,75 @@ footer p {
   .navigation-inner {
     padding:10px 14px 16px;
   }
+
 }
 
 @media(max-width:650px) {
 
-  .story-section {
-    padding:90px 24px;
-  }
-
-  .intro-section {
-    padding-top:50px;
-    padding-bottom:65px;
-  }
-
-  .intro-title {
-    font-size:30px;
+  main {
+    padding:28px 20px 75px;
   }
 
   .church-photo {
-    margin-bottom:65px;
+    margin-bottom:38px;
   }
 
-  .story-text {
+  .article-section {
+    margin-bottom:43px;
+  }
+
+  .article p {
     font-size:13px;
-    line-height:2.3;
+    line-height:2.1;
+    margin-bottom:16px;
   }
 
-  .story-text p {
-    margin-bottom:30px;
+  .section-heading {
+    gap:12px;
+    margin-bottom:20px;
   }
 
-  .origin-emphasis {
-    margin:75px 0;
-    font-size:21px;
-  }
-
-  .doctrine-line {
-    margin:75px auto;
+  .section-heading h2 {
     font-size:18px;
   }
 
-  .union-section {
-    padding-top:110px;
-    padding-bottom:120px;
+  .doctrine-quote {
+    margin:24px 0;
+    padding:22px 14px;
   }
 
-  .union-definition {
-    margin:80px auto;
-    font-size:17px;
+  .doctrine-quote p {
+    font-size:14px;
   }
 
-  .suffering-section {
-    padding-top:110px;
-    padding-bottom:120px;
+  .emphasis-word {
+    font-size:19px;
   }
 
-  .death-title {
-    margin:120px 0;
-  }
-
-  .angel-section {
-    padding-top:110px;
-    padding-bottom:130px;
-  }
-
-  .reveal-text {
-    margin:100px auto;
-  }
-
-  .you-section {
-    min-height:60vh;
-    padding:110px 24px;
-  }
-
-  .prologue-section {
-    padding-top:100px;
-    padding-bottom:150px;
-  }
-
-  .prologue-label {
-    margin-bottom:75px;
-  }
-
-  .dialogue {
-    margin-top:100px;
-  }
-
-  .dialogue p {
-    font-size:20px;
-  }
-
-  .story-space {
-    height:65px;
-  }
-
-  .story-space.large {
-    height:110px;
-  }
-
-  footer {
-    padding:55px 20px;
-  }
-}
-
-@media(prefers-reduced-motion:reduce) {
-
-  html {
-    scroll-behavior:auto;
-  }
-
-  .js-enabled .reveal {
-    opacity:1;
-    transform:none;
-    transition:none;
-  }
-}
-
-   
-/* =========================
-   디자인 간소화 및 간격 조정
-========================= */
-
-/* 햄버거 버튼의 둥근 배경 제거 */
-.menu-button,
-.menu-button:hover,
-.menu-button:focus,
-.menu-button:active {
-  background:transparent;
-  border-radius:0;
-  box-shadow:none;
-}
-
-/* 메뉴 목록의 연두색 박스 효과 제거 */
-.navigation a,
-.navigation a:hover,
-.navigation a:focus,
-.navigation a:active {
-  background:transparent;
-  border-radius:0;
-}
-
-.navigation a:hover {
-  color:var(--accent-dark);
-}
-
-/* 본문 문단 사이 간격 축소 */
-.story-text p {
-  margin-bottom:18px;
-}
-
-/* 각 구간의 상하 여백 축소 */
-.story-section {
-  padding-top:75px;
-  padding-bottom:75px;
-}
-
-.story-space {
-  height:35px;
-}
-
-.story-space.large {
-  height:65px;
-}
-
-/* 주요 강조 문장의 여백 축소 */
-.origin-emphasis {
-  margin:55px 0;
-  font-size:21px;
-}
-
-.doctrine-line {
-  margin:55px auto;
-  font-size:19px;
-}
-
-/* 영어 소제목 및 아래 장식 바 제거 */
-.chapter-label,
-.chapter-line {
-  display:none;
-}
-
-/* 천상합일, 천사 제목 축소 */
-.chapter-title {
-  font-size:clamp(28px,5vw,43px);
-  margin-bottom:48px;
-}
-
-/* 천상합일 정의 축소 */
-.union-definition {
-  margin:55px auto;
-  font-size:18px;
-}
-
-/* 죽음 제목 축소 */
-.death-title {
-  margin:75px 0;
-  font-size:clamp(38px,7vw,60px);
-  letter-spacing:3px;
-}
-
-/* 천사의 정체 강조 부분 축소 */
-.reveal-text {
-  margin:75px auto;
-  font-size:clamp(21px,4vw,30px);
-}
-
-.reveal-sub {
-  margin:28px auto 0;
-  font-size:clamp(18px,3vw,24px);
-}
-
-/* 구간별 여백 재설정 */
-.intro-section {
-  padding-top:50px;
-  padding-bottom:65px;
-}
-
-.union-section,
-.suffering-section,
-.angel-section {
-  padding-top:85px;
-  padding-bottom:85px;
-}
-
-.you-section {
-  min-height:45vh;
-  padding:80px 24px;
-}
-
-.prologue-section {
-  padding-top:85px;
-  padding-bottom:115px;
-}
-
-/* 프롤로그 영어 제목도 제거 */
-.prologue-label {
-  display:none;
-}
-
-/* 마지막 대사 중앙 정렬 및 왼쪽 선 제거 */
-.dialogue {
-  margin-top:65px;
-  padding:0;
-  border:none;
-  text-align:center;
-}
-
-.dialogue-speaker {
-  display:none;
-}
-
-.dialogue p {
-  margin-bottom:16px;
-  font-size:clamp(17px,3vw,22px);
-  text-align:center;
-}
-
-/* 모바일에서도 동일하게 적용 */
-@media(max-width:650px) {
-
-  .story-section {
-    padding-top:55px;
-    padding-bottom:55px;
-  }
-
-  .story-text p {
-    margin-bottom:15px;
-  }
-
-  .story-space {
-    height:22px;
-  }
-
-  .story-space.large {
-    height:42px;
-  }
-
-  .origin-emphasis,
-  .doctrine-line {
-    margin:40px auto;
-  }
-
-  .chapter-title {
-    font-size:29px;
-    margin-bottom:35px;
-  }
-
-  .union-definition {
-    margin:40px auto;
+  .angel-reveal p {
     font-size:16px;
   }
 
-  .death-title {
-    margin:55px 0;
-    font-size:43px;
+  .final-reveal {
+    margin:34px 0 40px;
   }
 
-  .reveal-text {
-    margin:55px auto;
-    font-size:23px;
-  }
-
-  .union-section,
-  .suffering-section,
-  .angel-section {
-    padding-top:65px;
-    padding-bottom:65px;
-  }
-
-  .you-section {
-    min-height:35vh;
-    padding:65px 24px;
-  }
-
-  .prologue-section {
-    padding-top:65px;
-    padding-bottom:95px;
+  .final-reveal p {
+    font-size:21px;
   }
 
   .dialogue {
-    margin-top:45px;
+    margin-top:30px;
   }
 
   .dialogue p {
-    font-size:18px;
-    margin-bottom:15px;
+    font-size:16px;
+    margin-bottom:10px;
   }
+
 }
 
-
 </style>
-
-<script>
-document.documentElement.classList.add("js-enabled");
-</script>
-
 </head>
 
 <body>
@@ -1101,34 +626,15 @@ document.documentElement.classList.add("js-enabled");
 
 
 <!-- =========================
-     전체 그라데이션 배경
+     본문
 ========================= -->
 
-<div class="story-background">
-
-<main class="story-container">
-
-
-<!-- =========================
-     01. 첫 화면
-========================= -->
-
-<section class="story-section intro-section">
-
-  <div class="intro-label reveal">
-    ABOUT LUHAEL
-  </div>
-
-  <h1 class="intro-title reveal">
-    교회 소개
-  </h1>
-
-  <div class="intro-line reveal"></div>
+<main>
 
 
   <!-- 교회 사진 -->
 
-  <figure class="church-photo reveal">
+  <figure class="church-photo">
 
     <img
       src="https://i.ibb.co/9krwff97/1000055639.png"
@@ -1138,308 +644,239 @@ document.documentElement.classList.add("js-enabled");
   </figure>
 
 
-  <div class="story-inner story-text">
-
-    <p class="reveal">
-      루아엘교회가 처음부터 이렇게 거대했던 것은 아니었다.
-    </p>
-
-    <div class="story-space"></div>
-
-    <p class="reveal">
-      마약 거래로 자금을 모으고 세력을 넓히던 작은 교회.
-    </p>
-
-  </div>
-
-</section>
+  <article class="article">
 
 
-<!-- =========================
-     02. 교단의 성장
-========================= -->
+    <!-- 01. 교회의 시작 -->
 
-<section class="story-section origin-section">
+    <section class="article-section">
 
-  <div class="story-inner story-text">
+      <div class="section-heading">
+        <h2>교회의 시작</h2>
+      </div>
 
-    <p class="reveal">
-      교회는 <strong>안락사 약물</strong>과
-      <strong>새로운 마약</strong> 개발에 성공했고
-      약물을 이용하여 사람들에게 죽음의 방식을 제안하기 시작했다.
-    </p>
+      <p>
+        루아엘교회가 처음부터 이렇게 거대했던 것은 아니었다.
+      </p>
 
-    <div class="doctrine-line reveal">
-      고통 없이 죽음을 맞이하고,<br>
-      천사의 인도를 받아<br>
-      천상으로 돌아간다.
-    </div>
+      <p>
+        마약 거래로 자금을 모으고 세력을 넓히던 작은 교회.
+      </p>
 
-    <p class="reveal">
-      루아엘교회가 말하는 <strong>평온한 죽음</strong>은
-      그렇게 하나의 교리가 되었고,
-      교회는 점차 거대한 교단으로 성장했다.
-    </p>
-
-    <div class="story-space large"></div>
-
-    <p class="origin-emphasis reveal">
-      그리고 그 중심에는<br>
-      신의 아이, 천사가 있었다.
-    </p>
-
-  </div>
-
-</section>
+      <p>
+        교회는 <strong>안락사 약물</strong>과
+        <strong>새로운 마약</strong> 개발에 성공했고
+        약물을 이용하여 사람들에게 죽음의 방식을 제안하기 시작했다.
+      </p>
 
 
-<!-- =========================
-     03. 천상합일
-========================= -->
+      <div class="doctrine-quote">
 
-<section class="story-section union-section">
+        <p>
+          고통 없이 죽음을 맞이하고,<br>
+          천사의 인도를 받아 천상으로 돌아간다.
+        </p>
 
-  <div class="story-inner">
-
-    <div class="chapter-label reveal">
-      HEAVENLY UNION
-    </div>
-
-    <h2 class="chapter-title reveal">
-      천상합일
-    </h2>
-
-    <div class="chapter-line reveal"></div>
+      </div>
 
 
-    <div class="story-text">
+      <p>
+        루아엘교회가 말하는 <strong>평온한 죽음</strong>은
+        그렇게 하나의 교리가 되었고,
+        교회는 점차 거대한 교단으로 성장했다.
+      </p>
 
-      <p class="reveal">
+      <p>
+        그리고 그 중심에는 신의 아이, 천사가 있었다.
+      </p>
+
+    </section>
+
+
+    <!-- 02. 천상합일 -->
+
+    <section class="article-section">
+
+      <div class="section-heading">
+        <h2>천상합일</h2>
+      </div>
+
+      <p>
         인간은 죽은 뒤 천상으로 돌아가며
         그곳에서 천사의 사랑을 받아 <strong>하나</strong>가 된다.
       </p>
 
-      <div class="union-definition reveal">
-        육신과 영혼,<br>
-        인간과 천상의 존재 사이에 놓인<br>
-        모든 경계가 사라지는 것.
+
+      <div class="definition">
+
+        <p>
+          <strong>천상합일</strong><br>
+          : 육신과 영혼, 인간과 천상의 존재 사이에 놓인
+          모든 경계가 사라지는 것.
+        </p>
+
       </div>
 
-      <p class="reveal">
+
+      <p>
         그러나 합일은 죽음 이후에만 이루어지는 것이 아니다.
         서로의 감정을 나누고, 사랑하고, 육체를 맞대는 것 또한
         서로를 구분하던 경계를 허무는 행위로 여겨진다.
       </p>
 
-      <div class="story-space"></div>
-
-      <p class="reveal">
+      <p>
         루아엘교회에서 천사는 숭배의 대상인 동시에
         인간에게 사랑을 베푸는 존재다.
       </p>
 
-      <p class="reveal">
+      <p>
         천사를 향한 욕망과 성적인 관계 역시 불경한 것으로 여기지 않으며,
         신도들은 살아 있는 동안에도 천사와의 사랑을 통해
         부분적인 <strong>천상합일</strong>을 경험할 수 있다고 믿는다.
       </p>
 
-    </div>
-
-  </div>
-
-</section>
+    </section>
 
 
-<!-- =========================
-     04. 고통과 죽음
-========================= -->
+    <!-- 03. 인간의 욕망 -->
 
-<section class="story-section suffering-section">
+    <section class="article-section">
 
-  <div class="story-inner story-text">
+      <div class="section-heading">
+        <h2>인간의 욕망</h2>
+      </div>
 
-    <p class="reveal">
-      루아엘교회가 파고든 것은
-      <strong>고통받고 싶지 않다</strong>는 인간의 욕망이었다.
-    </p>
+      <p>
+        루아엘교회가 파고든 것은
+        <strong>고통받고 싶지 않다</strong>는 인간의 욕망이었다.
+      </p>
 
-    <div class="story-space"></div>
+      <p>
+        약물은 불안과 괴로움을 잠시 잊게 만들었다.
+        교회는 그 순간의 평온을 신이 인간에게 허락한 안식이라고 설명했다.
+      </p>
 
-    <p class="reveal">
-      약물은 불안과 괴로움을 잠시 잊게 만들었다.
-      교회는 그 순간의 평온을 신이 인간에게 허락한 안식이라고 설명했다.
-    </p>
+      <p>
+        그러나 약효가 끝나면 고통은 다시 돌아왔다.
+      </p>
 
-    <p class="reveal">
-      그러나 약효가 끝나면 고통은 다시 돌아왔다.
-    </p>
+      <p>
+        아무리 편안한 순간을 반복해도 결국 인간에게는
+        피할 수 없는 마지막 두려움이 남아 있었다.
+      </p>
 
-    <div class="story-space"></div>
-
-    <p class="reveal">
-      아무리 편안한 순간을 반복해도 결국 인간에게는
-      피할 수 없는 마지막 두려움이 남아 있었다.
-    </p>
-
-    <div class="death-title reveal">
-      죽음
-    </div>
-
-    <p class="reveal">
-      교회는 죽음마저 두려워할 필요가 없다고 말했다.
-    </p>
-
-    <p class="reveal">
-      죽음은 고통의 끝이며, 천상으로 돌아가는 과정이고,
-      그곳에는 인간을 받아줄 천사가 기다리고 있다고.
-    </p>
-
-  </div>
-
-</section>
+    </section>
 
 
-<!-- =========================
-     05. 천사
-========================= -->
+    <!-- 04. 죽음 -->
 
-<section class="story-section angel-section">
+    <section class="article-section">
 
-  <div class="story-inner">
+      <div class="section-heading">
+        <h2>죽음</h2>
+      </div>
 
-    <div class="chapter-label reveal">
-      THE ANGEL
-    </div>
+      <p>
+        교회는 죽음마저 두려워할 필요가 없다고 말했다.
+      </p>
 
-    <h2 class="chapter-title reveal">
-      천사
-    </h2>
+      <p>
+        죽음은 고통의 끝이며, 천상으로 돌아가는 과정이고,
+        그곳에는 인간을 받아줄 천사가 기다리고 있다고.
+      </p>
 
-    <div class="chapter-line reveal"></div>
+    </section>
 
 
-    <div class="story-text">
+    <!-- 05. 천사 -->
 
-      <p class="reveal">
+    <section class="article-section">
+
+      <div class="section-heading">
+        <h2>천사</h2>
+      </div>
+
+      <p>
         금발과 푸른 눈을 가진 아름다운 존재.
       </p>
 
-      <p class="reveal">
+      <p>
         남자의 모습으로 나타나기도 하고,
         여자의 모습으로 나타나기도 했다.
       </p>
 
-      <div class="story-space"></div>
-
-      <p class="reveal">
+      <p>
         신도들은 그것이 하나의 천사라 믿었다.
       </p>
 
-    </div>
 
+      <div class="angel-reveal">
 
-    <div class="reveal-text reveal">
-      하지만 천사는<br>
-      처음부터 둘이었다.
+        <p>하지만 천사는 처음부터 둘이었다.</p>
+        <p>한 남자와 한 여자.</p>
 
-      <div class="reveal-sub">
-        한 남자와 한 여자.
       </div>
-    </div>
 
 
-    <div class="story-text">
-
-      <p class="reveal">
+      <p>
         아버지인 교주 밑에서 쌍둥이는
         평생 한 명의 천사인 척 살아왔다.
       </p>
 
-      <div class="story-space"></div>
-
-      <p class="reveal">
+      <p>
         그리고 스물세 살이 되던 날,
         그들은 그 역할을 그만두기로 했다.
       </p>
 
-      <p class="reveal">
+      <p>
         자신들을 대신할 새로운 천사를 찾은 것이다.
       </p>
 
-    </div>
 
-  </div>
+      <div class="final-reveal">
 
-</section>
+        <p>바로 당신을.</p>
 
+      </div>
 
-<!-- =========================
-     06. 바로 당신을
-========================= -->
-
-<section class="you-section">
-
-  <h2 class="you-text reveal">
-    바로 <span>당신을.</span>
-  </h2>
-
-</section>
+    </section>
 
 
-<!-- =========================
-     07. 프롤로그
-========================= -->
+    <!-- 마지막 장면 -->
 
-<section class="story-section prologue-section">
+    <section class="article-section prologue">
 
-  <div class="story-inner">
-
-    <div class="prologue-label reveal">
-      PROLOGUE
-    </div>
-
-    <div class="story-text">
-
-      <p class="reveal">
+      <p>
         손발이 단단히 묶여 있었다.
         두꺼운 천으로 재갈이 물려 있었고,
         당신의 입에는 미처 삼키지 못한 침이 고이기 시작했다.
       </p>
 
-      <div class="story-space"></div>
-
-      <p class="reveal">
+      <p>
         여자가 당신의 어깨를 툭 쳤다.
       </p>
 
-    </div>
+
+      <div class="dialogue">
+
+        <p>너.</p>
+
+        <p>우리가 이직시켜 줄게.</p>
+
+        <p>여기가 웬만한 대기업보다 나을걸?</p>
+
+      </div>
+
+    </section>
 
 
-    
-<div class="dialogue reveal">
-
-  <p>너.</p>
-
-  <p>우리가 이직시켜 줄게.</p>
-
-  <p>여기가 웬만한 대기업보다 나을걸?</p>
-
-</div>
-
-
-  </div>
-
-</section>
-
+  </article>
 
 </main>
 
-</div>
-
 
 <!-- =========================
-     검은색 푸터
+     푸터
 ========================= -->
 
 <footer>
@@ -1487,60 +924,12 @@ navigation.querySelectorAll("a").forEach(function (link) {
     navigation.classList.remove("open");
 
     menuButton.setAttribute("aria-expanded", "false");
+
     menuButton.setAttribute("aria-label", "메뉴 열기");
 
   });
 
 });
-
-
-/* =========================
-   스크롤 등장 효과
-========================= */
-
-const revealElements = document.querySelectorAll(".reveal");
-
-if (
-  "IntersectionObserver" in window &&
-  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-) {
-
-  const revealObserver = new IntersectionObserver(
-
-    function (entries, observer) {
-
-      entries.forEach(function (entry) {
-
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add("visible");
-
-          observer.unobserve(entry.target);
-
-        }
-
-      });
-
-    },
-
-    {
-      threshold:0.08,
-      rootMargin:"0px 0px 30px 0px"
-    }
-
-  );
-
-  revealElements.forEach(function (element) {
-    revealObserver.observe(element);
-  });
-
-} else {
-
-  revealElements.forEach(function (element) {
-    element.classList.add("visible");
-  });
-
-}
 
 </script>
 
