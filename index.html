@@ -24,9 +24,13 @@
   --accent-light: #f0f3df;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -40,9 +44,15 @@ a {
   text-decoration: none;
 }
 
-button { font: inherit; cursor: pointer; }
+button {
+  font: inherit;
+  cursor: pointer;
+}
 
-h1, h2, .brand-name, .footer-name {
+h1,
+h2,
+.brand-name,
+.footer-name {
   font-family: 'Gowun Batang', serif;
   font-weight: 400;
 }
@@ -58,7 +68,10 @@ h1, h2, .brand-name, .footer-name {
   flex-shrink: 0;
 }
 
-/* 헤더 */
+
+/* =========================
+   헤더
+========================= */
 
 header {
   position: sticky;
@@ -73,6 +86,7 @@ header {
   height: 76px;
   margin: auto;
   padding: 0 24px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -118,7 +132,10 @@ header {
   color: var(--ink);
 }
 
-/* 펼쳐지는 메뉴 */
+
+/* =========================
+   펼쳐지는 메뉴
+========================= */
 
 .navigation {
   display: none;
@@ -126,12 +143,15 @@ header {
   border-top: 1px solid var(--line);
 }
 
-.navigation.open { display: block; }
+.navigation.open {
+  display: block;
+}
 
 .navigation-inner {
   max-width: 1200px;
   margin: auto;
   padding: 12px 24px;
+
   display: flex;
   flex-direction: column;
 }
@@ -143,9 +163,13 @@ header {
   transition: color .2s;
 }
 
-.navigation a:hover { color: var(--accent); }
+.navigation a:hover {
+  color: var(--accent);
+}
 
-.navigation a:last-child { border-bottom: none; }
+.navigation a:last-child {
+  border-bottom: none;
+}
 
 .menu-divider {
   height: 1px;
@@ -161,7 +185,10 @@ header {
   color: var(--muted);
 }
 
-/* 전체 콘텐츠 */
+
+/* =========================
+   전체 콘텐츠
+========================= */
 
 main {
   max-width: 1200px;
@@ -169,7 +196,10 @@ main {
   padding: 24px;
 }
 
-/* 메인 슬라이드 — 세로 2:3 비율 */
+
+/* =========================
+   메인 슬라이드
+========================= */
 
 .hero-slider {
   position: relative;
@@ -187,7 +217,6 @@ main {
   display: flex;
   width: 100%;
   height: 100%;
-  aspect-ratio: 2 / 3;
   transition: transform .45s ease;
 }
 
@@ -196,29 +225,41 @@ main {
   flex: 0 0 100%;
   width: 100%;
   height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 60px 80px;
+
   background-color: #eeefdf;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
+
   text-align: center;
 }
 
+/* 첫 번째 슬라이드 이미지 */
+
+#slide1 {
+  background-image: url("https://i.ibb.co/rRb78zhM/file-00000000984c8206895e33e5227e0fcf.png");
+}
+
+/* 두 번째 슬라이드 이미지 */
+
+#slide2 {
+  background-image: url("https://i.ibb.co/4gMDC7RR/file-000000007c6c8206b9a1960a8858a236.png");
+}
+
+/* 이미지 위의 어두운 막 제거 */
+
 .slide.has-image::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(29,35,25,.48);
+  display: none;
 }
 
 .slide-content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 760px;
-  margin: auto;
+  display: none;
 }
 
 .slide-label {
@@ -246,41 +287,52 @@ main {
   word-break: keep-all;
 }
 
-.slide.has-image .slide-label,
-.slide.has-image h1,
-.slide.has-image .slide-description {
-  color: #fff;
-}
 
-/* 슬라이드 화살표 */
+/* =========================
+   슬라이드 화살표
+========================= */
 
 .slide-arrow {
   position: absolute;
   z-index: 5;
   top: 50%;
   transform: translateY(-50%);
+
   width: 44px;
   height: 44px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border: 1px solid var(--line);
   border-radius: 50%;
+
   background: rgba(255,255,255,.85);
   color: var(--ink);
 }
 
-.slide-arrow:hover { background: var(--surface); }
+.slide-arrow:hover {
+  background: var(--surface);
+}
 
-.slide-arrow.prev { left: 20px; }
-.slide-arrow.next { right: 20px; }
+.slide-arrow.prev {
+  left: 20px;
+}
+
+.slide-arrow.next {
+  right: 20px;
+}
 
 .slide-arrow .icon {
   width: 20px;
   height: 20px;
 }
 
-/* 슬라이드 점 위치 */
+
+/* =========================
+   슬라이드 점
+========================= */
 
 .slide-dots {
   position: absolute;
@@ -288,26 +340,28 @@ main {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 }
 
-/* 기본 동그라미 */
-
 .slide-dot {
   width: 10px;
   height: 10px;
   padding: 0;
+
   border: 1px solid #ffffff;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-  transition: width 0.3s ease, background 0.3s ease;
-}
 
-/* 선택된 동그라미만 길게 */
+  background: rgba(255,255,255,.8);
+  box-shadow: 0 1px 5px rgba(0,0,0,.3);
+
+  transition:
+    width .3s ease,
+    background .3s ease;
+}
 
 .slide-dot.active {
   width: 28px;
@@ -315,32 +369,37 @@ main {
   border-color: #ffffff;
 }
 
-/* 환영 안내 */
+
+/* =========================
+   환영 안내
+========================= */
 
 .welcome {
-  margin-top: 24px;
-  padding: 30px;
+  margin-top: 16px;
+  padding: 20px 24px;
+
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 4px;
 }
 
 .welcome h2 {
-  margin: 0 0 14px;
-  font-size: 23px;
+  margin: 0 0 8px;
+  font-size: 15px;
   line-height: 1.5;
 }
 
 .welcome p {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 12px;
+  line-height: 1.6;
   color: var(--muted);
 }
 
 
-
-/* 바로가기 메뉴 */
+/* =========================
+   바로가기 메뉴
+========================= */
 
 .quick-links {
   display: grid;
@@ -352,16 +411,23 @@ main {
 .quick-links a {
   min-height: 150px;
   padding: 28px 24px;
+
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 4px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
+
   font-size: 17px;
   font-weight: 500;
-  transition: background .2s, border-color .2s, transform .2s;
+
+  transition:
+    background .2s,
+    border-color .2s,
+    transform .2s;
 }
 
 .quick-links a:hover {
@@ -376,17 +442,24 @@ main {
   color: var(--accent);
 }
 
-/* 하단 */
+
+/* =========================
+   하단
+========================= */
 
 footer {
   margin-top: 60px;
   padding: 45px 24px;
+
   background: var(--paper);
   border-top: 1px solid var(--line);
+
   text-align: center;
 }
 
-.footer-name { font-size: 20px; }
+.footer-name {
+  font-size: 20px;
+}
 
 footer p {
   font-size: 12px;
@@ -394,34 +467,51 @@ footer p {
   color: var(--muted);
 }
 
-/* 팝업 */
+
+/* =========================
+   공지사항 팝업
+========================= */
+
+/* 숨김 속성을 최우선 적용 */
 
 .notice-overlay[hidden] {
-  display: none;
+  display: none !important;
 }
 
 .notice-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 20px;
-  background: rgba(34, 39, 29, 0.65);
+  background: rgba(34,39,29,.65);
 }
 
 .notice-popup {
   width: min(400px, 90vw, 56vh);
+  max-height: calc(100dvh - 40px);
+
   overflow: hidden;
+
   display: flex;
   flex-direction: column;
+
   background: #f8f7f1;
   border-radius: 4px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
 }
 
-/* 팝업 이미지 */
+.notice-poster {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
 
 .notice-image {
   display: block;
@@ -431,14 +521,78 @@ footer p {
   object-fit: cover;
 }
 
-/* 닫기 버튼 */
+.notice-text {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0 20px;
+
+  text-align: center;
+  font-family: 'Noto Serif KR', serif;
+
+  pointer-events: none;
+}
+
+.notice-title-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notice-title-bg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 125%;
+  height: auto;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+.notice-main-title {
+  position: relative;
+  z-index: 1;
+
+  font-family: 'Noto Serif KR', serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: .03em;
+
+  color: #fffdf6;
+
+  text-shadow:
+    0 0 3px rgba(255,244,205,.95),
+    0 0 7px rgba(238,210,151,.90),
+    0 0 14px rgba(218,181,112,.75),
+    0 0 25px rgba(190,145,73,.55),
+    0 0 42px rgba(155,108,48,.32);
+}
+
+
+/* =========================
+   공지 닫기 버튼
+========================= */
 
 #noticeClose {
   width: 100%;
   height: 46px;
   flex-shrink: 0;
+
   border: none;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255,255,255,.95);
+
   color: #30342a;
   font-size: 13px;
 }
@@ -447,7 +601,36 @@ footer p {
   background: #fffefa;
 }
 
-/* 모바일 */
+
+/* =========================
+   폰트
+========================= */
+
+.brand-name,
+.slide h1,
+.slide-label,
+.footer-name {
+  font-family: "Nanum Myeongjo", serif;
+}
+
+.brand-name {
+  letter-spacing: 1px;
+}
+
+.slide-label {
+  font-family: "Malgun Gothic", sans-serif;
+  letter-spacing: 3px;
+}
+
+.slide h1 {
+  font-weight: 800;
+  letter-spacing: -.3px;
+}
+
+
+/* =========================
+   모바일
+========================= */
 
 @media (max-width: 700px) {
 
@@ -461,14 +644,25 @@ footer p {
     height: 42px;
   }
 
-  .brand-name { font-size: 19px; }
-  .brand-eng { font-size: 9px; }
+  .brand-name {
+    font-size: 19px;
+  }
 
-  .navigation-inner { padding: 12px 20px; }
+  .brand-eng {
+    font-size: 9px;
+  }
 
-  main { padding: 16px; }
+  .navigation-inner {
+    padding: 12px 20px;
+  }
 
-  .slide { padding: 60px 48px; }
+  main {
+    padding: 16px;
+  }
+
+  .slide {
+    padding: 60px 48px;
+  }
 
   .slide-label {
     font-size: 10px;
@@ -480,19 +674,30 @@ footer p {
     line-height: 1.5;
   }
 
-  .slide-description { font-size: 14px; }
+  .slide-description {
+    font-size: 14px;
+  }
 
   .slide-arrow {
     width: 34px;
     height: 34px;
   }
 
-  .slide-arrow.prev { left: 8px; }
-  .slide-arrow.next { right: 8px; }
+  .slide-arrow.prev {
+    left: 8px;
+  }
 
-  .welcome, .worship { padding: 24px 20px; }
+  .slide-arrow.next {
+    right: 8px;
+  }
 
-  .welcome h2, .worship h2 { font-size: 20px; }
+  .welcome {
+    padding: 18px 20px;
+  }
+
+  .welcome h2 {
+    font-size: 15px;
+  }
 
   .quick-links {
     grid-template-columns: repeat(2, 1fr);
@@ -510,209 +715,36 @@ footer p {
     height: 27px;
   }
 
-  .notice-content h2 { font-size: 19px; }
-}
-
-/* 환영 박스 + 주일 말씀 박스 크기 축소 */
-
-.welcome,
-.worship {
-  margin-top: 16px;
-  padding: 20px 24px;
-}
-
-/* 환영 박스 */
-
-.welcome h2 {
-  margin-bottom: 8px;
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.welcome p {
-  font-size: 12px;
-  line-height: 1.6;
-}
-
-/* 주일 말씀 박스 */
-
-.worship-label {
-  margin-bottom: 8px;
-  font-size: 10px;
-}
-
-.worship h2 {
-  margin-bottom: 8px;
-  font-size: 18px;
-}
-
-.worship-description {
-  margin-bottom: 14px;
-  font-size: 12px;
-}
-
-.worship-time {
-  padding: 10px 0;
-  font-size: 13px;
-}
-
-/* 모바일에서도 동일하게 적용 */
-
-@media (max-width: 700px) {
-  .welcome,
-  .worship {
-    padding: 18px 20px;
+  .notice-main-title {
+    font-size: clamp(25px, 8vw, 40px);
   }
 
-  .welcome h2,
-  .worship h2 {
-    font-size: 17px;
-  }
 }
 
-.welcome h2 {
-  font-size: 15px;
-}
-
-/* 창립 25주년 · 헌혈 봉사 슬라이드 글씨 숨기기 */
-
-.slide-content {
-  display: none;
-}
-
-/* 슬라이드 이미지 위의 어두운 막 제거 */
-
-.slide.has-image::before {
-  display: none;
-}
-
-/* 포스터 이미지 전체 표시 */
-
-.slide {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-/* 나눔명조 폰트 적용 */
-
-.brand-name,
-.slide h1,
-.slide-label,
-.worship h2,
-.worship-label,
-.footer-name {
-  font-family: "Nanum Myeongjo", serif;
-}
-
-.brand-name {
-  letter-spacing: 1px;
-}
-
-.slide-label,
-.worship-label {
-  font-family: "Malgun Gothic", sans-serif;
-  letter-spacing: 3px;
-}
-
-.slide h1 {
-  font-weight: 800;
-  letter-spacing: -0.3px;
-}
-
-.worship h2 {
-  font-weight: 800;
-}
-
-/* 공지 이미지 위에 글씨 배치 */
-
-.notice-poster {
-  position: relative;
-  width: 100%;
-}
-
-/* 공지 타이틀 전체 */
-
-.notice-text {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  padding: 0 20px;
-  text-align: center;
-  font-family: 'Noto Serif KR', serif;
-  pointer-events: none;
-}
-
-/* 천사 되기 시뮬레이션 영역 */
-
-.notice-title-area {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-
-  transform: translate(-50%, -50%);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* 글씨 뒤 투명 이미지 */
-
-.notice-title-bg {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-
-  width: 125%;
-  height: auto;
-
-  transform: translate(-50%, -50%);
-
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* 천사 되기 시뮬레이션 */
-
-.notice-main-title {
-  position: relative;
-  z-index: 1;
-
-  font-family: 'Noto Serif KR', serif;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1.28;
-  letter-spacing: 0.03em;
-
-  color: #fffdf6;
-
-  text-shadow:
-    0 0 3px rgba(255, 244, 205, 0.95),
-    0 0 7px rgba(238, 210, 151, 0.90),
-    0 0 14px rgba(218, 181, 112, 0.75),
-    0 0 25px rgba(190, 145, 73, 0.55),
-    0 0 42px rgba(155, 108, 48, 0.32);
-}
-
-  
 </style>
 </head>
+
 <body>
 
 
-<!-- 공지사항 팝업 -->
+<!-- =========================
+     공지사항 팝업
+========================= -->
 
-<div class="notice-overlay" id="noticeOverlay" hidden>
-  <div class="notice-popup"
-       role="dialog"
-       aria-modal="true"
-       aria-label="천사 되기 시뮬레이션 안내">
+<div
+  class="notice-overlay"
+  id="noticeOverlay"
+  hidden
+>
+
+  <div
+    class="notice-popup"
+    role="dialog"
+    aria-modal="true"
+    aria-label="천사 되기 시뮬레이션 안내"
+  >
 
     <div class="notice-poster">
-
-      <!-- 변경된 공지 이미지 -->
 
       <img
         class="notice-image"
@@ -740,28 +772,47 @@ footer p {
 
     </div>
 
-    <button type="button" id="noticeClose">닫기</button>
+    <button
+      type="button"
+      id="noticeClose"
+    >
+      닫기
+    </button>
 
   </div>
+
 </div>
 
 
-<!-- 상단 헤더 -->
+<!-- =========================
+     상단 헤더
+========================= -->
 
 <header>
+
   <div class="header-inner">
 
     <a class="brand" href="#home">
+
       <img
         src="https://i.ibb.co/60kWKKZY/file-000000003940822fb276a79aa6bc4e32.png"
         alt="루아엘교회 로고"
       >
 
       <div class="brand-text">
-        <span class="brand-name">루아엘교회</span>
-        <span class="brand-eng">LUHAEL CHURCH</span>
+
+        <span class="brand-name">
+          루아엘교회
+        </span>
+
+        <span class="brand-eng">
+          LUHAEL CHURCH
+        </span>
+
       </div>
+
     </a>
+
 
     <button
       class="menu-button"
@@ -771,37 +822,76 @@ footer p {
       aria-expanded="false"
       aria-controls="navigation"
     >
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
         <path d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
+
     </button>
 
   </div>
 
+
   <!-- 펼쳐지는 메뉴 -->
 
-  <nav class="navigation" id="navigation">
+  <nav
+    class="navigation"
+    id="navigation"
+  >
+
     <div class="navigation-inner">
 
-      <a href="about.html">교회 소개</a>
-      <a href="faith.html">교주님 말씀</a>
-      <a href="characters.html">등장인물</a>
-      <a href="news.html">교회 소식</a>
+      <a href="about.html">
+        교회 소개
+      </a>
+
+      <a href="faith.html">
+        교주님 말씀
+      </a>
+
+      <a href="characters.html">
+        등장인물
+      </a>
+
+      <a href="news.html">
+        교회 소식
+      </a>
 
       <div class="menu-divider"></div>
-      <span class="menu-label">EXTRA</span>
 
-      <a href="gallery.html">비공식 화보</a>
-      <a href="creator.html">제작자 TMI</a>
+      <span class="menu-label">
+        EXTRA
+      </span>
+
+      <a href="gallery.html">
+        비공식 화보
+      </a>
+
+      <a href="creator.html">
+        제작자 TMI
+      </a>
 
     </div>
+
   </nav>
+
 </header>
 
 
+<!-- =========================
+     메인 콘텐츠
+========================= -->
+
 <main id="home">
 
-  <!-- 메인 슬라이드 배너 -->
+
+  <!-- =========================
+       메인 슬라이드 배너
+  ========================= -->
 
   <section
     class="hero-slider"
@@ -810,18 +900,28 @@ footer p {
     aria-roledescription="슬라이드"
   >
 
-    <div class="slides" id="slides">
+    <div
+      class="slides"
+      id="slides"
+    >
+
 
       <!-- 첫 번째 슬라이드 -->
 
-      <article class="slide" id="slide1">
+      <article
+        class="slide has-image"
+        id="slide1"
+      >
+
         <div class="slide-content">
 
           <div class="slide-label">
             25TH ANNIVERSARY
           </div>
 
-          <h1>창립 25주년</h1>
+          <h1>
+            창립 25주년
+          </h1>
 
           <p class="slide-description">
             함께 걸어온 25년,<br>
@@ -829,11 +929,17 @@ footer p {
           </p>
 
         </div>
+
       </article>
+
 
       <!-- 두 번째 슬라이드 -->
 
-      <article class="slide" id="slide2">
+      <article
+        class="slide has-image"
+        id="slide2"
+      >
+
         <div class="slide-content">
 
           <div class="slide-label">
@@ -851,9 +957,11 @@ footer p {
           </p>
 
         </div>
+
       </article>
 
     </div>
+
 
     <!-- 이전 슬라이드 -->
 
@@ -863,10 +971,17 @@ footer p {
       type="button"
       aria-label="이전 슬라이드"
     >
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
         <path d="m15 18-6-6 6-6"/>
       </svg>
+
     </button>
+
 
     <!-- 다음 슬라이드 -->
 
@@ -876,14 +991,24 @@ footer p {
       type="button"
       aria-label="다음 슬라이드"
     >
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
         <path d="m9 18 6-6-6-6"/>
       </svg>
+
     </button>
+
 
     <!-- 슬라이드 페이지 표시 -->
 
-    <div class="slide-dots" aria-label="슬라이드 선택">
+    <div
+      class="slide-dots"
+      aria-label="슬라이드 선택"
+    >
 
       <button
         class="slide-dot active"
@@ -905,9 +1030,14 @@ footer p {
   </section>
 
 
-  <!-- 환영 문구 -->
+  <!-- =========================
+       환영 문구
+  ========================= -->
 
-  <section class="welcome" id="welcome">
+  <section
+    class="welcome"
+    id="welcome"
+  >
 
     <h2>
       루아엘교회 홈페이지에 오신 것을 환영합니다.
@@ -920,37 +1050,90 @@ footer p {
   </section>
 
 
-  <!-- 바로가기 메뉴 -->
+  <!-- =========================
+       바로가기 메뉴
+  ========================= -->
 
-  <section class="quick-links" aria-label="주요 메뉴">
+  <section
+    class="quick-links"
+    aria-label="주요 메뉴"
+  >
+
+
+    <!-- 교회 소개 -->
 
     <a href="about.html">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
         <path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-7h6v7M12 3v5M9.5 5.5h5"/>
       </svg>
-      <span>교회 소개</span>
+
+      <span>
+        교회 소개
+      </span>
+
     </a>
+
+
+    <!-- 교주님 말씀 -->
 
     <a href="faith.html">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
         <path d="M12 7c-3-2-6-2-9-1v14c3-1 6-1 9 1 3-2 6-2 9-1V6c-3-1-6-1-9 1ZM12 7v14"/>
       </svg>
-      <span>교주님 말씀</span>
+
+      <span>
+        교주님 말씀
+      </span>
+
     </a>
 
+
+    <!-- 등장인물 -->
+
     <a href="characters.html">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
         <circle cx="9" cy="8" r="3"/>
         <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6M17 14a5 5 0 0 1 4 5v1"/>
       </svg>
-      <span>등장인물</span>
+
+      <span>
+        등장인물
+      </span>
+
     </a>
 
+
+    <!-- 교회 소식 -->
+
     <a href="news.html">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
         <path d="M4 3h14v16a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2ZM18 7h3v12a2 2 0 0 1-2 2M7 7h7M7 11h7M7 15h3M13 15h2"/>
       </svg>
-      <span>교회 소식</span>
+
+      <span>
+        교회 소식
+      </span>
+
     </a>
 
   </section>
@@ -958,48 +1141,86 @@ footer p {
 </main>
 
 
-<!-- 하단 -->
+<!-- =========================
+     하단
+========================= -->
 
 <footer>
-  <div class="footer-name">루아엘교회</div>
-  <p>LUHAEL CHURCH</p>
+
+  <div class="footer-name">
+    루아엘교회
+  </div>
+
+  <p>
+    LUHAEL CHURCH
+  </p>
+
   <p>
     © 2026 LUHAEL CHURCH.<br>
     All Rights Reserved.
   </p>
+
 </footer>
 
 
 <script>
 
-/* 햄버거 메뉴 */
+/* =========================
+   햄버거 메뉴
+========================= */
 
 const menuButton = document.getElementById("menuButton");
 const navigation = document.getElementById("navigation");
 
-menuButton.addEventListener("click", function () {
-  const isOpen = navigation.classList.toggle("open");
+if (menuButton && navigation) {
 
-  menuButton.setAttribute("aria-expanded", isOpen);
-  menuButton.setAttribute(
-    "aria-label",
-    isOpen ? "메뉴 닫기" : "메뉴 열기"
-  );
-});
+  menuButton.addEventListener("click", function () {
 
-navigation.querySelectorAll("a").forEach(function (link) {
-  link.addEventListener("click", function () {
-    navigation.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.setAttribute("aria-label", "메뉴 열기");
+    const isOpen = navigation.classList.toggle("open");
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+
+    menuButton.setAttribute(
+      "aria-label",
+      isOpen ? "메뉴 닫기" : "메뉴 열기"
+    );
+
   });
-});
 
 
-/* 슬라이드 기능 */
+  navigation.querySelectorAll("a").forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+      navigation.classList.remove("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuButton.setAttribute(
+        "aria-label",
+        "메뉴 열기"
+      );
+
+    });
+
+  });
+
+}
+
+
+/* =========================
+   슬라이드 기능
+========================= */
 
 const slider = document.getElementById("heroSlider");
 const slides = document.getElementById("slides");
+
 const slideElements = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".slide-dot");
 
@@ -1009,111 +1230,221 @@ const nextButton = document.getElementById("nextSlide");
 let currentSlide = 0;
 const totalSlides = slideElements.length;
 
+
 function showSlide(index) {
+
+  if (!slides || totalSlides === 0) return;
+
   currentSlide = (index + totalSlides) % totalSlides;
 
   slides.style.transform =
     "translateX(-" + (currentSlide * 100) + "%)";
 
+
   dots.forEach(function (dot, dotIndex) {
+
     const isActive = dotIndex === currentSlide;
 
     dot.classList.toggle("active", isActive);
 
     if (isActive) {
+
       dot.setAttribute("aria-current", "true");
+
     } else {
+
       dot.removeAttribute("aria-current");
+
     }
+
   });
 
+
   slideElements.forEach(function (slide, slideIndex) {
+
     slide.setAttribute(
       "aria-hidden",
       slideIndex === currentSlide ? "false" : "true"
     );
+
   });
+
 }
 
-prevButton.addEventListener("click", function () {
-  showSlide(currentSlide - 1);
-});
 
-nextButton.addEventListener("click", function () {
-  showSlide(currentSlide + 1);
-});
+if (prevButton) {
+
+  prevButton.addEventListener("click", function () {
+
+    showSlide(currentSlide - 1);
+
+  });
+
+}
+
+
+if (nextButton) {
+
+  nextButton.addEventListener("click", function () {
+
+    showSlide(currentSlide + 1);
+
+  });
+
+}
+
 
 dots.forEach(function (dot) {
+
   dot.addEventListener("click", function () {
+
     showSlide(Number(dot.dataset.slide));
+
   });
+
 });
 
 
-/* 모바일 좌우 스와이프 */
+/* =========================
+   모바일 좌우 스와이프
+========================= */
 
 let touchStartX = 0;
 let touchStartY = 0;
 
-slider.addEventListener("touchstart", function (event) {
-  touchStartX = event.changedTouches[0].screenX;
-  touchStartY = event.changedTouches[0].screenY;
-}, { passive: true });
+if (slider) {
 
-slider.addEventListener("touchend", function (event) {
-  const touchEndX = event.changedTouches[0].screenX;
-  const touchEndY = event.changedTouches[0].screenY;
+  slider.addEventListener("touchstart", function (event) {
 
-  const differenceX = touchStartX - touchEndX;
-  const differenceY = touchStartY - touchEndY;
+    touchStartX = event.changedTouches[0].screenX;
+    touchStartY = event.changedTouches[0].screenY;
 
-  if (
-    Math.abs(differenceX) > 50 &&
-    Math.abs(differenceX) > Math.abs(differenceY)
-  ) {
-    if (differenceX > 0) {
-      showSlide(currentSlide + 1);
-    } else {
-      showSlide(currentSlide - 1);
+  }, { passive: true });
+
+
+  slider.addEventListener("touchend", function (event) {
+
+    const touchEndX = event.changedTouches[0].screenX;
+    const touchEndY = event.changedTouches[0].screenY;
+
+    const differenceX = touchStartX - touchEndX;
+    const differenceY = touchStartY - touchEndY;
+
+    if (
+      Math.abs(differenceX) > 50 &&
+      Math.abs(differenceX) > Math.abs(differenceY)
+    ) {
+
+      if (differenceX > 0) {
+
+        showSlide(currentSlide + 1);
+
+      } else {
+
+        showSlide(currentSlide - 1);
+
+      }
+
     }
-  }
-}, { passive: true });
+
+  }, { passive: true });
+
+}
 
 
-/* 첫 슬라이드 초기화 */
+/* =========================
+   첫 슬라이드 초기화
+========================= */
 
 showSlide(0);
 
 
-/* 배너 배경 이미지 주소 입력 */
-
-/* 변경된 창립 25주년 · 헌혈 봉사 이미지 */
-
-const bannerImages = [
-  "https://i.ibb.co/rRb78zhM/file-00000000984c8206895e33e5227e0fcf.png",
-  "https://i.ibb.co/4gMDC7RR/file-000000007c6c8206b9a1960a8858a236.png"
-];
-
-bannerImages.forEach(function (imageUrl, index) {
-  if (!imageUrl) return;
-
-  slideElements[index].style.backgroundImage =
-    'url("' + imageUrl + '")';
-
-  slideElements[index].classList.add("has-image");
-});
-
-
-/* 공지사항 팝업 */
+/* =========================
+   공지사항 팝업
+========================= */
 
 const noticeOverlay = document.getElementById("noticeOverlay");
 const noticeClose = document.getElementById("noticeClose");
 
-noticeOverlay.hidden = false;
 
-noticeClose.addEventListener("click", function () {
+function openNotice() {
+
+  if (!noticeOverlay) return;
+
+  noticeOverlay.hidden = false;
+
+}
+
+
+function closeNotice() {
+
+  if (!noticeOverlay) return;
+
   noticeOverlay.hidden = true;
+
+}
+
+
+/* 닫기 버튼 */
+
+if (noticeClose) {
+
+  noticeClose.addEventListener("click", closeNotice);
+
+}
+
+
+/* 팝업 바깥 영역 클릭 시 닫기 */
+
+if (noticeOverlay) {
+
+  noticeOverlay.addEventListener("click", function (event) {
+
+    if (event.target === noticeOverlay) {
+
+      closeNotice();
+
+    }
+
+  });
+
+}
+
+
+/* ESC 키로 닫기 */
+
+document.addEventListener("keydown", function (event) {
+
+  if (event.key === "Escape") {
+
+    closeNotice();
+
+  }
+
 });
+
+
+/*
+  공지사항 표시 설정
+
+  true  = 처음 접속할 때 공지 표시
+  false = 공지를 표시하지 않음
+
+  홈페이지 표시 문제를 확인하기 위해
+  현재는 false로 설정.
+*/
+
+const SHOW_NOTICE_ON_LOAD = false;
+
+if (SHOW_NOTICE_ON_LOAD) {
+
+  openNotice();
+
+} else {
+
+  closeNotice();
+
+}
 
 </script>
 
